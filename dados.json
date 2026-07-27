@@ -1,0 +1,1849 @@
+{
+ "meta": {
+  "versao": 1,
+  "atualizadoEm": "2026-07-27",
+  "ano": 2026,
+  "atualizadoPor": "Importação da planilha Rede2026.xlsx"
+ },
+ "config": {
+  "anuidadeSocio": 300,
+  "mensalidadeClubinho": 30,
+  "chicoRedesMes": 350,
+  "alisamentoQuadra": 75,
+  "alisamentoDuasQuadras": 150,
+  "respSocios": "Rafael Alves (Alves)",
+  "respClubinho": "Pedro Paulo Botto (Pepa)",
+  "respClinica": "Luiz Renato Adnet Pinheiro (Dunga)",
+  "saldoInicialClubinho": 0,
+  "pagadoresLight": [
+   "Barraca Luciano",
+   "Barraca Chico",
+   "Barraca Abelha",
+   "Rede Popeye"
+  ]
+ },
+ "socios": [
+  {
+   "id": "s-97fad277",
+   "nome": "Alan Düssel Schiros",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-94b0c442",
+   "nome": "Aloísio Alencar Junior (Foca)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-5a3bb604",
+   "nome": "André Rocha",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-12",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-69535e4d",
+   "nome": "Antônio Carlos da Silva Seabra (Tonho)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-f9f74a6a",
+   "nome": "Arthur Albuquerque (Macarra)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-10",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-e3d694e8",
+   "nome": "Augusto Carange Patrício (Guto)",
+   "isento": false,
+   "valor": 0.0,
+   "pagoEm": "",
+   "obs": "DEVE",
+   "ativo": true
+  },
+  {
+   "id": "s-3c011011",
+   "nome": "Bruno Antoun Collares (Brunão)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-30",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-2ec76fc3",
+   "nome": "Bruno Benzecry",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-5c0553bc",
+   "nome": "Bruno Leonardo Palmeira (Bruno P)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-11",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-a2e44abd",
+   "nome": "Carlos Alberto de Castro Pinheiro (Carlinhos)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-20",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-39c36dd4",
+   "nome": "Carlos Gros (Cacau)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-58b7a23f",
+   "nome": "Carlos Henrique M Oliveira (Menoti)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "2X",
+   "ativo": true
+  },
+  {
+   "id": "s-85abc74e",
+   "nome": "Djalma Esberard Meyrelles (Chico)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-12",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-28483bb1",
+   "nome": "Eduardo Morrel",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-10",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-da5d0842",
+   "nome": "Gabriel Adnet",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-ba3bc4b8",
+   "nome": "Guilherme Colla Reuters",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-02-07",
+   "obs": "3X",
+   "ativo": true
+  },
+  {
+   "id": "s-23173e28",
+   "nome": "Henrique Pimentel Trigueiro",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-39d37bf9",
+   "nome": "José Carlos de Lima (Zeca)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-20",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-bc48fbe2",
+   "nome": "José Eduardo Bergamo",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-17",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-b94daa08",
+   "nome": "Juarez Igisk (Gaúcho)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-c5ee5110",
+   "nome": "Léo Frazão",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-12",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-859e4a58",
+   "nome": "Luiz Renato Adnet Pinheiro (Dunga)",
+   "isento": true,
+   "valor": 0,
+   "pagoEm": "",
+   "obs": "Síndico das redes por mais de 4 décadas — isento por deliberação dos sócios",
+   "ativo": true
+  },
+  {
+   "id": "s-215dba4d",
+   "nome": "Luiz Selva (Alemão)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-714e9a3a",
+   "nome": "Márcia Weinzettl",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-20cc6f1f",
+   "nome": "Paulo Roberto Ribeiro Filho (Paulinho)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-30",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-c416fd0d",
+   "nome": "Pedro Paulo Botto (Pepa)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-11",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-620b7e04",
+   "nome": "Rafael Alves (Alves)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-23592142",
+   "nome": "Rafael Fritsch",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-f61b8be7",
+   "nome": "Roberto Cumplido (Beto)",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-6327620b",
+   "nome": "Rodrigo Saragô",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-06",
+   "obs": "",
+   "ativo": true
+  },
+  {
+   "id": "s-c4949f3c",
+   "nome": "Tiago Gouveia",
+   "isento": false,
+   "valor": 300.0,
+   "pagoEm": "2026-01-31",
+   "obs": "",
+   "ativo": true
+  }
+ ],
+ "caixaSocios": [
+  {
+   "id": "l-0b03b54f",
+   "data": "2025-12-31",
+   "desc": "Transferência do saldo em 31/12/2025 - Ressarcimento para Dunga - Caixa com saldo negativo",
+   "cat": "Saldo anterior",
+   "receita": 0.0,
+   "despesa": 1396.49
+  },
+  {
+   "id": "l-ad8fab8b",
+   "data": "",
+   "desc": "Pagamentos da Anuidade 2026",
+   "cat": "Anuidade",
+   "receita": 8700.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-9f7a3b22",
+   "data": "2026-01-06",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 460.31
+  },
+  {
+   "id": "l-5d1204da",
+   "data": "2026-01-06",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 138.09,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8d63ac3d",
+   "data": "2026-01-06",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 276.19,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-376bf730",
+   "data": "2026-01-06",
+   "desc": "Contribuição Light Beach Tennis",
+   "cat": "Light (rateio)",
+   "receita": 46.03,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-1062880f",
+   "data": "2026-01-09",
+   "desc": "União PVC cano d´água do poço x entrada da bomba + chave gripo pequena",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 99.8
+  },
+  {
+   "id": "l-c4758d98",
+   "data": "2026-01-09",
+   "desc": "Alisamento das quadras (quadra-2) - Reforço ressaca",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 150.0
+  },
+  {
+   "id": "l-a00b9c9d",
+   "data": "2026-01-09",
+   "desc": "Alisamento das quadras (quadra-1)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-74b7a5a8",
+   "data": "2026-01-09",
+   "desc": "Eletricista - conserto fiação (neutro) + instalação de nova caixa de disjuntores com cadeado",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 500.0
+  },
+  {
+   "id": "l-949a0d25",
+   "data": "2026-01-09",
+   "desc": "Contribuição Barraqueiro Luciano",
+   "cat": "Contribuições",
+   "receita": 166.67,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-66d253bc",
+   "data": "2026-01-09",
+   "desc": "Contribuição Barraqueiro Chico",
+   "cat": "Contribuições",
+   "receita": 166.67,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-bf8b34f1",
+   "data": "2026-01-09",
+   "desc": "Contribuição Barraqueiro Miguel (Miguel está isento. Guarda nossas redes/bomba e ajuda em tudo free!",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-82d096ba",
+   "data": "2026-01-09",
+   "desc": "Cano de PVC de 1\" para alongar o cano d´água do poço. Poço deu uma secada e o cano ficou curto.",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 166.0
+  },
+  {
+   "id": "l-d55135b1",
+   "data": "2026-01-09",
+   "desc": "Fita Veda Rosca (2)",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 23.8
+  },
+  {
+   "id": "l-cb6ba992",
+   "data": "2026-01-16",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-ecf44bd8",
+   "data": "2026-01-16",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-a68fbd9c",
+   "data": "2026-01-23",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-b16315c9",
+   "data": "2026-01-23",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-0cf60cab",
+   "data": "2026-01-30",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 443.99
+  },
+  {
+   "id": "l-7d00a1b8",
+   "data": "2026-01-30",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 133.2,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-b9bd7340",
+   "data": "2026-01-30",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 177.6,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-22de95dc",
+   "data": "2026-01-30",
+   "desc": "Contribuição Light Barraqueiro Abelha - Reativamos o segundo poço. Pagamos a diferença para ficar ok!",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-13d8c3d4",
+   "data": "2026-02-06",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-6d73d41d",
+   "data": "2026-02-06",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-c4b7b1c1",
+   "data": "2026-02-13",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-443ceba9",
+   "data": "2026-02-13",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8ab85bf5",
+   "data": "2026-02-20",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-a2923649",
+   "data": "2026-02-20",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-5732947f",
+   "data": "2026-02-27",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-e0b3db7f",
+   "data": "2026-02-27",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-99f20da2",
+   "data": "2026-03-02",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 641.03
+  },
+  {
+   "id": "l-a8aa7db5",
+   "data": "2026-03-02",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 192.31,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-dd76e9aa",
+   "data": "2026-03-02",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 256.41,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-10d3dd08",
+   "data": "2026-03-02",
+   "desc": "Contribuição Light Barraqueiro Abelha",
+   "cat": "Light (rateio)",
+   "receita": 192.31,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-7a640636",
+   "data": "2026-03-06",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-4fc77544",
+   "data": "2026-03-06",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8b2365a8",
+   "data": "2026-03-13",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-ff7f6a68",
+   "data": "2026-03-13",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-ad97ac26",
+   "data": "2026-03-20",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-6d8d37a8",
+   "data": "2026-03-20",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-6275076c",
+   "data": "2026-03-27",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-bccebd55",
+   "data": "2026-03-27",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-39487307",
+   "data": "2026-03-31",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 557.31
+  },
+  {
+   "id": "l-2b7bb1fc",
+   "data": "2026-03-31",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 139.33,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-ded6ea94",
+   "data": "2026-03-31",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 139.33,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-a415f4f2",
+   "data": "2026-03-31",
+   "desc": "Contribuição Light Barraqueiro Abelha",
+   "cat": "Light (rateio)",
+   "receita": 139.33,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-310a0c5c",
+   "data": "2026-03-31",
+   "desc": "Contribuição Light Rede Popeye",
+   "cat": "Light (rateio)",
+   "receita": 139.33,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-9f29b898",
+   "data": "2026-04-03",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-cc91b2e1",
+   "data": "2026-04-03",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-0747bf84",
+   "data": "2026-04-05",
+   "desc": "Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-c772be4e",
+   "data": "2026-04-05",
+   "desc": "Alisamento das quadras (quadra-1) - Reforço, muitos jogos no feriado",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-6d315836",
+   "data": "2026-04-10",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-69fa0041",
+   "data": "2026-04-10",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-f7d3e498",
+   "data": "2026-04-17",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-4054413b",
+   "data": "2026-04-17",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-6a97789a",
+   "data": "2026-04-23",
+   "desc": "Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-ac73e95b",
+   "data": "2026-04-24",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-a0e0faef",
+   "data": "2026-04-24",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8c8dab43",
+   "data": "2026-04-30",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 645.68
+  },
+  {
+   "id": "l-2d2fc18b",
+   "data": "2026-04-30",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 161.42,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-84d53df3",
+   "data": "2026-04-30",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 161.42,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-00b0b197",
+   "data": "2026-04-30",
+   "desc": "Contribuição Light Barraqueiro Abelha",
+   "cat": "Light (rateio)",
+   "receita": 161.42,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-adf3beec",
+   "data": "2026-04-30",
+   "desc": "Contribuição Light Rede Popeye",
+   "cat": "Light (rateio)",
+   "receita": 161.42,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-a57d7ca0",
+   "data": "2026-05-01",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-a655791a",
+   "data": "2026-05-01",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-9df249b3",
+   "data": "2026-05-08",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-b2f50d0e",
+   "data": "2026-05-08",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-7423c4b3",
+   "data": "2026-05-15",
+   "desc": "Alisamento das quadras (quadra-2) - Reforço ressaca",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 150.0
+  },
+  {
+   "id": "l-eba9295b",
+   "data": "2026-05-15",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-e94e8503",
+   "data": "2026-05-22",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-2338df24",
+   "data": "2026-05-22",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-23c893fb",
+   "data": "2026-05-28",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 506.25
+  },
+  {
+   "id": "l-e4b50276",
+   "data": "2026-05-28",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 126.56,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-4a771fc3",
+   "data": "2026-05-28",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 126.56,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-057c7368",
+   "data": "2026-05-28",
+   "desc": "Contribuição Light Barraqueiro Abelha",
+   "cat": "Light (rateio)",
+   "receita": 126.56,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-6ddb3851",
+   "data": "2026-05-28",
+   "desc": "Contribuição Light Rede Popeye",
+   "cat": "Light (rateio)",
+   "receita": 126.56,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-3788876a",
+   "data": "2026-05-28",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-6a84a951",
+   "data": "2026-05-28",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8d092d65",
+   "data": "2026-06-04",
+   "desc": "Alisamento das quadras (quadra-1) - Reforço, feriado",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-52892e91",
+   "data": "2026-06-05",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-69646cff",
+   "data": "2026-06-05",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-3c71d5b0",
+   "data": "2026-06-12",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-49bd9546",
+   "data": "2026-06-12",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-e744e838",
+   "data": "2026-06-16",
+   "desc": "01 Mikasa FT5 Amarela/Preta nova",
+   "cat": "Bolas",
+   "receita": 0.0,
+   "despesa": 320.0
+  },
+  {
+   "id": "l-1a470ed5",
+   "data": "2026-06-16",
+   "desc": "01 Mikasa FT5 Amarela/Preta nova",
+   "cat": "Bolas",
+   "receita": 0.0,
+   "despesa": 320.0
+  },
+  {
+   "id": "l-30e56f4c",
+   "data": "2026-06-16",
+   "desc": "01 Mikasa FT5 Amarela/Preta velha vendida",
+   "cat": "Bolas",
+   "receita": 180.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-98eb8823",
+   "data": "2026-06-19",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-ea0c9151",
+   "data": "2026-06-19",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-fb10bf5e",
+   "data": "2026-06-26",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 345.16
+  },
+  {
+   "id": "l-aedfc448",
+   "data": "2026-06-26",
+   "desc": "Contribuição Light Barraqueiro Luciano",
+   "cat": "Light (rateio)",
+   "receita": 86.29,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-668ee65f",
+   "data": "2026-06-02",
+   "desc": "Contribuição Light Barraqueiro Chico",
+   "cat": "Light (rateio)",
+   "receita": 86.29,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-d9015082",
+   "data": "2026-06-26",
+   "desc": "Contribuição Light Barraqueiro Abelha",
+   "cat": "Light (rateio)",
+   "receita": 86.29,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-3a2a9d06",
+   "data": "2026-06-26",
+   "desc": "Contribuição Light Rede Popeye",
+   "cat": "Light (rateio)",
+   "receita": 86.29,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-92d43285",
+   "data": "2026-06-26",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-6ea66bf3",
+   "data": "2026-06-26",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-17d065e0",
+   "data": "2026-06-27",
+   "desc": "01 Mikasa FT5 Amarela/Preta velha vendida",
+   "cat": "Bolas",
+   "receita": 180.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-3dff9898",
+   "data": "2026-07-03",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-26bb91b1",
+   "data": "2026-07-03",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-400995c3",
+   "data": "2026-07-04",
+   "desc": "02 novos cadeados pequenos para a caixa dos disjuntores do relógio da Light",
+   "cat": "Manutenção",
+   "receita": 0.0,
+   "despesa": 40.2
+  },
+  {
+   "id": "l-f379b76b",
+   "data": "2026-07-10",
+   "desc": "Alisamento das quadras (quadra-2)",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 75.0
+  },
+  {
+   "id": "l-1590ed20",
+   "data": "2026-07-10",
+   "desc": "Alisamento das quadras (quadra-1) Pago pela Clínica",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-b63ad44d",
+   "data": "2026-07-13",
+   "desc": "01 SACO DE REDE VERDE/RECOMIND PARA GUARDAR AS 02 REDES DOS SÓCIOS COM O CHICO",
+   "cat": "Redes e marcações",
+   "receita": 0.0,
+   "despesa": 85.0
+  },
+  {
+   "id": "l-872cb6d9",
+   "data": "2026-07-13",
+   "desc": "DEIXEI DE SER O SÍNDICO DAS REDES. AGUARDANDO O NOVO PARA PASSAR O CAIXA!",
+   "cat": "Outros",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-8e46f946",
+   "data": "2026-07-20",
+   "desc": "Alisamento das quadras 1 e 2 do Quiosque. NINGUÉM FEZ EM 17/07, FIZ EM 20/07",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 150.0
+  },
+  {
+   "id": "l-ca440b48",
+   "data": "2026-07-24",
+   "desc": "Alisamento das quadras 1 e 2 do Quiosque. PAGUEI POR CONTA DO TORNEIO DA CLÍNICA!",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-6231e8cc",
+   "data": "",
+   "desc": "Light",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-9857018a",
+   "data": "",
+   "desc": "Contribuição Light Barraqueiro Luciano (25%)",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-9f7f33ef",
+   "data": "",
+   "desc": "Contribuição Light Barraqueiro Chico (25%)",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-71a8d622",
+   "data": "",
+   "desc": "Contribuição Light Barraqueiro Abelha (25%)",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-37b22088",
+   "data": "",
+   "desc": "Contribuição Light Rede Popeye (25%)",
+   "cat": "Light (rateio)",
+   "receita": 0.0,
+   "despesa": 0.0
+  },
+  {
+   "id": "l-142efc1a",
+   "data": "2026-07-31",
+   "desc": "Alisamento das quadras 1 e 2 do Quiosque",
+   "cat": "Alisamento das quadras",
+   "receita": 0.0,
+   "despesa": 0.0
+  }
+ ],
+ "clubinho": {
+  "alunos": [
+   {
+    "id": "a-3621b7e9",
+    "nome": "Fernando",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-aeb05b03",
+    "nome": "Edu Ferro",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-7f09e3dc",
+    "nome": "Johan",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-2815a8c8",
+    "nome": "Luan",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-fb8519bc",
+    "nome": "Helo",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-90c68f97",
+    "nome": "Luiz Guilherme",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-2b9f09ba",
+    "nome": "Medina",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-20a1eacf",
+    "nome": "Eric Miguez",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-eec55bc8",
+    "nome": "João Pedro Linhares",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-6864ddd6",
+    "nome": "Rod",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-7c8ae6ab",
+    "nome": "Nick",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-23cf21e4",
+    "nome": "Saavedra",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-7c354090",
+    "nome": "Luiz augusto biaggi",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-b292e36d",
+    "nome": "Marina",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-bf443251",
+    "nome": "Vini",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   },
+   {
+    "id": "a-17bc7d75",
+    "nome": "Jola",
+    "inscritoClinica": true,
+    "ativo": true,
+    "obs": "",
+    "pagamentos": {}
+   }
+  ],
+  "caixa": []
+ },
+ "patrimonio": [
+  {
+   "id": "p-190f400e",
+   "item": "Rede-1 de futevôlei + marcação",
+   "cat": "Redes",
+   "qtd": 1,
+   "com": "Chico (Saco de rede verde)",
+   "desde": "2018-02-01",
+   "obs": "Em uso desde 01/02/2018",
+   "historico": [
+    {
+     "com": "Chico (Saco de rede verde)",
+     "desde": "2018-02-01",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-0f4eb775",
+   "item": "Rede-2 de futevôlei + marcação",
+   "cat": "Redes",
+   "qtd": 1,
+   "com": "Chico (Saco de rede verde)",
+   "desde": "2020-08-23",
+   "obs": "Em uso desde 23/08/2020",
+   "historico": [
+    {
+     "com": "Chico (Saco de rede verde)",
+     "desde": "2020-08-23",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-aab237f1",
+   "item": "Rede-3 de Beach Tennis + marcação",
+   "cat": "Redes",
+   "qtd": 1,
+   "com": "Luiz Renato Adnet Pinheiro (Dunga)",
+   "desde": "2021-09-17",
+   "obs": "Em uso desde 17/09/2021",
+   "historico": [
+    {
+     "com": "Luiz Renato Adnet Pinheiro (Dunga)",
+     "desde": "2021-09-17",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-e84ee858",
+   "item": "Bola Mikasa FT5 Amarela/Preta — Nova 01/2026",
+   "cat": "Bolas",
+   "qtd": 1,
+   "com": "Macarra",
+   "desde": "2026-06-16",
+   "obs": "Comprada em 16/06/2026 por R$320",
+   "historico": [
+    {
+     "com": "Macarra",
+     "desde": "2026-06-16",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-b75e5898",
+   "item": "Bola Mikasa FT5 Amarela/Preta — Nova 02/2026",
+   "cat": "Bolas",
+   "qtd": 1,
+   "com": "Alan Düssel",
+   "desde": "2026-06-16",
+   "obs": "Comprada em 16/06/2026 por R$320",
+   "historico": [
+    {
+     "com": "Alan Düssel",
+     "desde": "2026-06-16",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-8a37e2b2",
+   "item": "Bomba Nova 1cv",
+   "cat": "Bombas",
+   "qtd": 1,
+   "com": "Chico",
+   "desde": "2026-01-29",
+   "obs": "",
+   "historico": [
+    {
+     "com": "Chico",
+     "desde": "2026-01-29",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-4a7d4e4d",
+   "item": "Bomba BT 1cv",
+   "cat": "Bombas",
+   "qtd": 1,
+   "com": "Abelha",
+   "desde": "2026-01-17",
+   "obs": "",
+   "historico": [
+    {
+     "com": "Abelha",
+     "desde": "2026-01-17",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-555ab4bd",
+   "item": "Bomba Antiga 1cv",
+   "cat": "Bombas",
+   "qtd": 1,
+   "com": "Miguel",
+   "desde": "",
+   "obs": "",
+   "historico": [
+    {
+     "com": "Miguel",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-f405065e",
+   "item": "Bomba Antiga / Base de Madeira",
+   "cat": "Bombas",
+   "qtd": 1,
+   "com": "Miguel",
+   "desde": "",
+   "obs": "",
+   "historico": [
+    {
+     "com": "Miguel",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-a59cef93",
+   "item": "Estacas/postes de redes",
+   "cat": "Estrutura",
+   "qtd": 8,
+   "com": "Chico (Saco de rede verde)",
+   "desde": "",
+   "obs": "Guardadas com as redes",
+   "historico": [
+    {
+     "com": "Chico (Saco de rede verde)",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-12531837",
+   "item": "Saco de rede verde (Recomind)",
+   "cat": "Estrutura",
+   "qtd": 1,
+   "com": "Chico",
+   "desde": "2026-07-13",
+   "obs": "Comprado em 13/07/2026 por R$85 — guarda as 02 redes dos sócios",
+   "historico": [
+    {
+     "com": "Chico",
+     "desde": "2026-07-13",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-e5eefb57",
+   "item": "Churrasqueira",
+   "cat": "Estrutura",
+   "qtd": 1,
+   "com": "—",
+   "desde": "",
+   "obs": "",
+   "historico": [
+    {
+     "com": "—",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-672b324e",
+   "item": "Poços artesianos",
+   "cat": "Estrutura",
+   "qtd": 2,
+   "com": "—",
+   "desde": "",
+   "obs": "Usados pelas Barracas do Chico e do Abelha",
+   "historico": [
+    {
+     "com": "—",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  },
+  {
+   "id": "p-e399f64c",
+   "item": "Ponto de energia / relógio da Light",
+   "cat": "Estrutura",
+   "qtd": 1,
+   "com": "—",
+   "desde": "",
+   "obs": "O primeiro relógio instalado na orla",
+   "historico": [
+    {
+     "com": "—",
+     "desde": "",
+     "ate": ""
+    }
+   ]
+  }
+ ],
+ "licencas": [
+  {
+   "id": "lic-54d9ef9d",
+   "modulo": "53A",
+   "titular": "Tonho"
+  },
+  {
+   "id": "lic-bd64c2ad",
+   "modulo": "53B",
+   "titular": "Zeca"
+  },
+  {
+   "id": "lic-a77ffca7",
+   "modulo": "55A",
+   "titular": "Dunga"
+  },
+  {
+   "id": "lic-3cf013e1",
+   "modulo": "55B",
+   "titular": "Chico"
+  },
+  {
+   "id": "lic-73a96233",
+   "modulo": "56A",
+   "titular": "Henrique"
+  }
+ ],
+ "light": [
+  {
+   "id": "lz-c8da7917",
+   "data": "2026-01-06",
+   "valor": 460.31,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 138.09,
+     "pago": true,
+     "pagoEm": "2026-01-06"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 276.19,
+     "pago": true,
+     "pagoEm": "2026-01-06"
+    },
+    {
+     "quem": "Beach Tennis",
+     "valor": 46.03,
+     "pago": true,
+     "pagoEm": "2026-01-06"
+    }
+   ]
+  },
+  {
+   "id": "lz-5deaec17",
+   "data": "2026-01-30",
+   "valor": 443.99,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 133.2,
+     "pago": true,
+     "pagoEm": "2026-01-30"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 177.6,
+     "pago": true,
+     "pagoEm": "2026-01-30"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 0.0,
+     "pago": true,
+     "pagoEm": "2026-01-30"
+    }
+   ]
+  },
+  {
+   "id": "lz-2f5a6703",
+   "data": "2026-03-02",
+   "valor": 641.03,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 192.31,
+     "pago": true,
+     "pagoEm": "2026-03-02"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 256.41,
+     "pago": true,
+     "pagoEm": "2026-03-02"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 192.31,
+     "pago": true,
+     "pagoEm": "2026-03-02"
+    }
+   ]
+  },
+  {
+   "id": "lz-9d6d6542",
+   "data": "2026-03-31",
+   "valor": 557.31,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 139.33,
+     "pago": true,
+     "pagoEm": "2026-03-31"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 139.33,
+     "pago": true,
+     "pagoEm": "2026-03-31"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 139.33,
+     "pago": true,
+     "pagoEm": "2026-03-31"
+    },
+    {
+     "quem": "Rede Popeye",
+     "valor": 139.33,
+     "pago": true,
+     "pagoEm": "2026-03-31"
+    }
+   ]
+  },
+  {
+   "id": "lz-05babfc4",
+   "data": "2026-04-30",
+   "valor": 645.68,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 161.42,
+     "pago": true,
+     "pagoEm": "2026-04-30"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 161.42,
+     "pago": true,
+     "pagoEm": "2026-04-30"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 161.42,
+     "pago": true,
+     "pagoEm": "2026-04-30"
+    },
+    {
+     "quem": "Rede Popeye",
+     "valor": 161.42,
+     "pago": true,
+     "pagoEm": "2026-04-30"
+    }
+   ]
+  },
+  {
+   "id": "lz-1218a6bf",
+   "data": "2026-05-28",
+   "valor": 506.25,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 126.56,
+     "pago": true,
+     "pagoEm": "2026-05-28"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 126.56,
+     "pago": true,
+     "pagoEm": "2026-05-28"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 126.56,
+     "pago": true,
+     "pagoEm": "2026-05-28"
+    },
+    {
+     "quem": "Rede Popeye",
+     "valor": 126.56,
+     "pago": true,
+     "pagoEm": "2026-05-28"
+    }
+   ]
+  },
+  {
+   "id": "lz-7dcf0f14",
+   "data": "2026-06-26",
+   "valor": 345.16,
+   "rateio": [
+    {
+     "quem": "Barraca Luciano",
+     "valor": 86.29,
+     "pago": true,
+     "pagoEm": "2026-06-26"
+    },
+    {
+     "quem": "Barraca Chico",
+     "valor": 86.29,
+     "pago": true,
+     "pagoEm": "2026-06-26"
+    },
+    {
+     "quem": "Barraca Abelha",
+     "valor": 86.29,
+     "pago": true,
+     "pagoEm": "2026-06-26"
+    },
+    {
+     "quem": "Rede Popeye",
+     "valor": 86.29,
+     "pago": true,
+     "pagoEm": "2026-06-26"
+    }
+   ]
+  }
+ ],
+ "regras": [
+  {
+   "t": "Armação e desarmação",
+   "d": "Sócios que armam a rede e chegam primeiro podem dobrar a primeira partida. Quem arma não desarma. Sócios que forem saindo da praia devem, primeiro, saber se têm que desarmar e guardar alguma rede."
+  },
+  {
+   "t": "Prioridade nas quadras",
+   "d": "Sócios têm prioridade sobre todos, mas devem respeitar os alunos do Clubinho. A mensalidade cobrada deles é que paga o Chico nos fins de semana e feriados."
+  },
+  {
+   "t": "Convidados",
+   "d": "Convidados devem aguardar para jogar. Nunca podem armar jogos entre eles sem o ok dos sócios e dos alunos do Clubinho."
+  },
+  {
+   "t": "Ex-alunos e não integrantes",
+   "d": "Ex-alunos ou não integrantes do Clubinho não podem frequentar as redes."
+  },
+  {
+   "t": "Guarda das redes",
+   "d": "Redes e marcações: o último sócio sempre retira e guarda tudo no saco verde, deixando na Barraca 67 do Chico."
+  },
+  {
+   "t": "Guarda das bolas",
+   "d": "Bolas nunca podem ficar com terceiros. O último sócio leva para casa. Atualizar aqui todo fim de semana com quem estão as bolas."
+  },
+  {
+   "t": "Anuidade",
+   "d": "Paga sempre no mês de janeiro, quando entram ou saem sócios após votação. O síndico das redes é isento da anuidade."
+  },
+  {
+   "t": "Patrimônio",
+   "d": "Com quem está, com quem fica. Toda troca de responsável deve ser registrada aqui."
+  },
+  {
+   "t": "Chico — fins de semana",
+   "d": "Recebe R$350/mês do caixa do Clubinho para armar e desarmar as duas redes, além de guardá-las no seu carro. As redes ficam semi-armadas e são desarmadas por conta de usuários de fora chegando antes e jogando até tarde."
+  },
+  {
+   "t": "Chico — alisamento",
+   "d": "R$150 toda sexta/sábado (R$75 por quadra) pelo alisamento das quadras 1 e 2 do Quiosque, pago pelo caixa dos sócios. Tem que pagar na mesma hora, pois ele paga os caras na praia."
+  },
+  {
+   "t": "Acordo 1 — Barracas Chico e Abelha",
+   "d": "Usam nosso poço, nossa energia, bomba e mangueiras; armam e desarmam tudo; pagam as manutenções e a conta da Light. Tudo tem que estar à nossa disposição de segunda a segunda."
+  },
+  {
+   "t": "Acordo 2 — Barraca Luciano e Rede Popeye",
+   "d": "Usam nossa energia e também são responsáveis por pagar a Light e suas manutenções."
+  },
+  {
+   "t": "Clínica x Módulos",
+   "d": "A Clínica protege os módulos. Para participar do Clubinho, o aluno precisa estar inscrito na Clínica — controle do Dunga."
+  },
+  {
+   "t": "Conta da Light",
+   "d": "Chega em nome e endereço do Dunga. A rede não paga nada (custo zero): o valor é rateado entre 3 barracas e a Rede do Popeye, que fazem o Pix na conta do caixa dos sócios."
+  }
+ ]
+}
