@@ -251,6 +251,19 @@ footer b{color:var(--texto-2)}
   footer{padding-bottom:80px}
   body{padding-bottom:0}
 }
+/* escolha de nome ao trocar responsável */
+.nomes-lista{border:1px solid var(--linha);border-radius:10px;max-height:224px;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;margin-bottom:14px;background:var(--branco)}
+.nome-op{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:12px 13px;border:0;
+  background:none;border-bottom:1px solid var(--linha-2);font-size:14.5px;cursor:pointer;color:var(--texto);
+  font-weight:600;line-height:1.3}
+.nome-op:last-child{border-bottom:0}
+.nome-op:hover{background:var(--azul-50)}
+.nome-op.sel{background:var(--azul-100);color:var(--azul-800)}
+.nome-op .marca-sel{margin-left:auto;font-size:13px;color:var(--azul-600);font-weight:800}
+.nome-op small{display:block;font-size:11.5px;color:var(--texto-3);font-weight:600;margin-top:1px}
+.nomes-vazio{padding:16px 13px;font-size:13.5px;color:var(--texto-3);text-align:center}
+
 /* editor de rateio da Light */
 .rat-linha{display:grid;grid-template-columns:1fr 78px 96px 32px;gap:7px;align-items:center;margin-bottom:7px}
 .rat-linha input{padding:7px 9px;font-size:13.5px}
@@ -946,25 +959,74 @@ function renderPatrimonio(){
         <button class="bt-icone perigo" title="Remover" onclick="removerItem('${p.id}')">✕</button></td>
     </tr>`).join('') : '<tr><td colspan="7" class="vazio">Nenhum item encontrado</td></tr>') + '</tbody>';
 }
+let NOMES_TROCA=[], NOMES_TOPO=[], NOME_SEL='';
 function passarItem(id){
-  const p = D.patrimonio.find(x=>x.id===id);
-  const nomes = [...new Set([...D.socios.map(s=>s.nome), 'Chico','Abelha','Miguel','Luciano','Popeye'])].sort((a,b)=>a.localeCompare(b,'pt-BR',{sensitivity:'base'}));
-  abrirModal(`Passar "${p.item}" para outra pessoa`, `
-    <div class="campo"><label>Está agora com</label>
-      <input type="text" id="mCom" list="listaNomes" value="" placeholder="Digite ou escolha um nome">
-      <datalist id="listaNomes">${nomes.map(n=>`<option value="${esc(n)}">`).join('')}</datalist></div>
-    <div class="campo"><label>A partir de</label><input type="date" id="mDesde" value="${hoje()}"></div>
-    <div class="aviso info"><span>Responsável atual: <b>${esc(p.com||'ninguém')}</b>. A troca fica registrada no histórico.</span></div>
+  const p=D.patrimonio.find(x=>x.id===id);
+  const recentes=[...new Set(D.patrimonio.filter(x=>x.com&&x.com!=='—').map(x=>x.com))];
+  const socios=D.socios.filter(s=>s.ativo!==false).map(s=>s.nome);
+  const fixos=['Chico','Abelha','Miguel','Luciano','Popeye'];
+  const ord=(x,y)=>x.localeCompare(y,'pt-BR',{sensitivity:'base'});
+  const topo=recentes.filter(n=>n&&n!==p.com).sort(ord);
+  const resto=[...new Set([...socios,...fixos])].filter(n=>n&&n!==p.com&&!topo.includes(n)).sort(ord);
+  NOMES_TROCA=[...topo,...resto];
+  NOMES_TOPO=topo;
+  NOME_SEL='';
+  abrirModal('Trocar responsável', `
+    <div class="aviso info" style="margin-bottom:14px"><span><b>${esc(p.item)}</b><br>
+      Agora está com <b>${esc(p.com||'ninguém')}</b>. Toque no novo responsável ou digite um nome novo.</span></div>
+    <div class="campo"><label>Buscar ou digitar um nome</label>
+      <input type="text" id="mCom" value="" placeholder="Comece a digitar..." autocomplete="off"
+        autocapitalize="words" autocorrect="off" spellcheck="false" oninput="filtrarNomesTroca()"></div>
+    <div class="nomes-lista" id="listaNomesTroca"></div>
+    <div class="campo" style="margin-bottom:0"><label>A partir de</label>
+      <input type="date" id="mDesde" value="${hoje()}"></div>
   `, () => {
-    const com = $('mCom').value.trim(); if(!com) return torrada('Informe com quem o item ficou');
-    const desde = $('mDesde').value || hoje();
-    p.historico = p.historico||[];
-    const ativo = p.historico.find(h=>!h.ate && h.com===p.com);
-    if(ativo) ativo.ate = desde; else if(p.com) p.historico.push({com:p.com, desde:p.desde||'', ate:desde});
-    p.historico.push({com, desde, ate:''});
-    p.com = com; p.desde = desde;
+    const com=(NOME_SEL||$('mCom').value).trim();
+    if(!com) return torrada('Escolha ou digite com quem o item ficou');
+    const desde=$('mDesde').value||hoje();
+    p.historico=p.historico||[];
+    const ativo=p.historico.find(x=>!x.ate&&x.com===p.com);
+    if(ativo) ativo.ate=desde; else if(p.com) p.historico.push({com:p.com,desde:p.desde||'',ate:desde});
+    p.historico.push({com,desde,ate:''});
+    p.com=com; p.desde=desde;
     fecharModal(); salvar(`${p.item} agora está com ${com}`);
   }, 'Registrar troca');
+  setTimeout(filtrarNomesTroca,20);
+}
+function filtrarNomesTroca(){
+  const cx=$('mCom'); if(!cx) return;
+  const q=cx.value.trim().toLowerCase();
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const qn=norm(q);
+  const achados=NOMES_TROCA.filter(n=>!qn||norm(n).includes(qn));
+  if(q && !NOMES_TROCA.some(n=>norm(n)===qn)) NOME_SEL='';
+  const alvo=$('listaNomesTroca');
+  const sepDepois = (!q && NOMES_TOPO.length && achados.length>NOMES_TOPO.length) ? NOMES_TOPO.length : -1;
+  const cabTopo=(!q&&NOMES_TOPO.length)
+    ? '<div style="padding:7px 13px;background:var(--azul-50);border-bottom:1px solid var(--linha-2)" class="mini-rot">Quem já está com material</div>' : '';
+  alvo.innerHTML = achados.length
+    ? cabTopo + achados.map((n,idx)=>{
+        const sep = idx===sepDepois
+          ? '<div style="padding:7px 13px;background:var(--azul-50);border-bottom:1px solid var(--linha-2)" class="mini-rot">Outros sócios</div>' : '';
+        return sep + (()=>{
+        const sel=NOME_SEL===n;
+        const itens=D.patrimonio.filter(x=>x.com===n).map(x=>x.item);
+        return `<button type="button" class="nome-op ${sel?'sel':''}" onclick="escolherNome(${JSON.stringify(n).replace(/"/g,'&quot;')})">
+          <span>${esc(n)}${itens.length?`<small>já está com ${esc(itens[0])}${itens.length>1?` +${itens.length-1}`:''}</small>`:''}</span>
+          ${sel?'<span class="marca-sel">✓ escolhido</span>':''}</button>`;})();}).join('')
+    : `<div class="nomes-vazio">Nenhum nome parecido.<br>Vai ser cadastrado como <b>${esc(cx.value.trim()||'—')}</b>.</div>`;
+  atualizarBotaoTroca();
+}
+function escolherNome(n){
+  NOME_SEL=n; const cx=$('mCom'); if(cx) cx.value=n;
+  filtrarNomesTroca();
+  const l=$('listaNomesTroca'); if(l) l.scrollTop=0;
+}
+function atualizarBotaoTroca(){
+  const bt=document.querySelector('#modalPe .bt.pri'); if(!bt) return;
+  const nome=(NOME_SEL||($('mCom')?$('mCom').value.trim():''));
+  const primeiro=nome.split(' ')[0];
+  bt.textContent = nome ? ('Passar para '+primeiro) : 'Registrar troca';
 }
 function verHistorico(id){
   const p = D.patrimonio.find(x=>x.id===id);
