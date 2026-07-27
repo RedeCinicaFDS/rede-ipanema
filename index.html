@@ -6,6 +6,14 @@
 <title>Rede de Futevôlei — Ipanema | Controle 2026</title>
 <meta name="description" content="Sistema de controle da rede de futevôlei do Quiosque — caixa dos sócios, clubinho, patrimônio e regras.">
 <meta name="theme-color" content="#062B3D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Rede FTV">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Rede%20de%20Futev%C3%B4lei%20Ipanema%22%2C%22short_name%22%3A%22Rede%20FTV%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23F4F8FA%22%2C%22theme_color%22%3A%22%23062B3D%22%7D">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%23062B3D'/%3E%3Ccircle cx='96' cy='96' r='52' fill='none' stroke='%23F5B72E' stroke-width='11'/%3E%3Cpath d='M96 44c16 15 24 33 24 52s-8 37-24 52M96 44c-16 15-24 33-24 52s8 37 24 52M44 96h104' fill='none' stroke='%23F5B72E' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%23062B3D'/%3E%3Ccircle cx='96' cy='96' r='52' fill='none' stroke='%23F5B72E' stroke-width='11'/%3E%3Cpath d='M96 44c16 15 24 33 24 52s-8 37-24 52M96 44c-16 15-24 33-24 52s8 37 24 52M44 96h104' fill='none' stroke='%23F5B72E' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 :root{
   --azul-900:#062B3D; --azul-800:#083A52; --azul-700:#0A4D6E; --azul-600:#0C6288;
@@ -215,6 +223,21 @@ footer b{color:var(--texto-2)}
   transition:.3s;box-shadow:var(--sombra-lg);pointer-events:none;max-width:92vw;text-align:center}
 .torrada.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ---------- CELULAR ---------- */
+.so-celular{display:none}
+@media(max-width:760px){
+  .so-celular{display:block}
+  .so-computador{display:none!important}
+  .grade.g4{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi{padding:13px 13px} .kpi .val{font-size:19px} .kpi .rot{font-size:10px}
+  .kpi .sub{font-size:11px}
+  nav button{padding:10px 12px 12px;font-size:13px}
+  .cab h2{font-size:18px}
+  .card-cab{padding:13px 14px} .card-corpo{padding:14px}
+  .modal{max-height:92vh} .modal-corpo{padding:16px}
+  .bt{padding:9px 13px}
+  .selo{gap:6px}
+}
 @media(max-width:640px){
   body{font-size:14.5px}
   .marca h1{font-size:17px} .selo{width:100%;margin-left:0;margin-top:4px}
@@ -223,7 +246,34 @@ footer b{color:var(--texto-2)}
   .cab .acoes{margin-left:0;width:100%}
   th,td{padding:9px 10px}
   main{padding:18px 12px 34px} .topo-in{padding:16px 12px 0}
+  .grade.g3{grid-template-columns:1fr 1fr;gap:10px}
+  .cab .acoes .bt{flex:1;justify-content:center}
+  footer{padding-bottom:80px}
+  body{padding-bottom:0}
 }
+/* editor de rateio da Light */
+.rat-linha{display:grid;grid-template-columns:1fr 78px 96px 32px;gap:7px;align-items:center;margin-bottom:7px}
+.rat-linha input{padding:7px 9px;font-size:13.5px}
+.rat-linha .calc{font-size:13px;font-weight:700;text-align:right;color:var(--azul-700);
+  font-variant-numeric:tabular-nums;padding-right:2px}
+.rat-cab{display:grid;grid-template-columns:1fr 78px 96px 32px;gap:7px;margin-bottom:5px}
+.rat-cab span{font-size:10.5px;font-weight:700;color:var(--texto-2);text-transform:uppercase;letter-spacing:.4px}
+.rat-cab span:nth-child(3){text-align:right}
+@media(max-width:520px){
+  .rat-linha,.rat-cab{grid-template-columns:1fr 62px 82px 30px}
+}
+
+/* lista do clubinho no celular */
+.mes-nav{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.mes-nav select{flex:1}
+.aluno-linha{display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--linha-2)}
+.aluno-linha:last-child{border-bottom:0}
+.aluno-linha .nome{flex:1;min-width:0}
+.aluno-linha .nome b{display:block;font-size:14.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aluno-linha .nome span{font-size:11.5px;color:var(--texto-3)}
+.pagar-bt{border:1.5px solid var(--linha);background:var(--branco);border-radius:9px;padding:8px 14px;
+  font-size:12.5px;font-weight:800;cursor:pointer;white-space:nowrap;transition:.15s;color:var(--texto-2)}
+.pagar-bt.pago{background:var(--verde);border-color:var(--verde);color:#fff}
 @media print{
   nav,.cab .acoes,.barra-ferramentas,.flutuante,.bt,.bt-icone,footer{display:none!important}
   section{display:block!important} body{background:#fff;padding:0}
@@ -250,6 +300,9 @@ footer b{color:var(--texto-2)}
         <span class="chip-topo">Saldo sócios <b id="chipSocios">—</b></span>
         <span class="chip-topo">Caixa clubinho <b id="chipClubinho">—</b></span>
         <span class="chip-topo" id="chipSync" title="Estado da sincronização">Conectando…</span>
+        <select id="selAno" onchange="mudarAno(this.value)" title="Ano do exercício"
+          style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;
+          padding:5px 10px;border-radius:99px;font-size:11.5px;font-weight:700;cursor:pointer;width:auto"></select>
       </div>
     </div>
     <nav id="nav">
@@ -280,19 +333,19 @@ footer b{color:var(--texto-2)}
       <div class="sub" id="kSaldoSub">—</div></div>
     <div class="kpi sol"><div class="rot">Caixa do clubinho</div><div class="val" id="kClube">—</div>
       <div class="sub" id="kClubeSub">—</div></div>
-    <div class="kpi"><div class="rot">Anuidade 2026</div><div class="val" id="kAnu">—</div>
-      <div class="sub" id="kAnuSub">—</div></div>
-    <div class="kpi"><div class="rot">Patrimônio em uso</div><div class="val" id="kPat">—</div>
-      <div class="sub" id="kPatSub">—</div></div>
+    <div class="kpi"><div class="rot" id="kMesAtualRot">Participantes do clubinho</div><div class="val" id="kMesAtual">—</div>
+      <div class="sub" id="kMesAtualSub">—</div></div>
+    <div class="kpi"><div class="rot" id="kMesAntRot">Participantes do clubinho</div><div class="val" id="kMesAnt">—</div>
+      <div class="sub" id="kMesAntSub">—</div></div>
   </div>
 
   <div id="alertas" style="margin-bottom:16px"></div>
 
   <div class="grade g2" style="margin-bottom:16px">
     <div class="card">
-      <div class="card-cab"><h3>Onde estão as bolas e as redes</h3>
-        <div class="dir"><button class="bt mini" onclick="irPara('patrimonio')">Ver tudo</button></div></div>
-      <div class="tabela-wrap"><table id="tbBolas"></table></div>
+      <div class="card-cab"><h3>Bolas</h3>
+        <div class="dir"><button class="bt mini" onclick="irPara('patrimonio')">Redes e patrimônio</button></div></div>
+      <div id="cartoesMaterial" class="card-corpo"></div>
     </div>
     <div class="card">
       <div class="card-cab"><h3>Contas fixas do mês</h3></div>
@@ -300,23 +353,10 @@ footer b{color:var(--texto-2)}
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:16px">
-    <div class="card-cab"><h3>Movimento mensal do caixa dos sócios</h3>
-      <div class="dir mini-rot">Receitas × Despesas · 2026</div></div>
-    <div class="card-corpo" id="grafico"></div>
-  </div>
-
-  <div class="grade g2">
-    <div class="card">
-      <div class="card-cab"><h3>Últimos lançamentos — sócios</h3>
-        <div class="dir"><button class="bt mini" onclick="irPara('caixa')">Ver caixa</button></div></div>
-      <div class="tabela-wrap"><table id="tbUltimos"></table></div>
-    </div>
-    <div class="card">
-      <div class="card-cab"><h3>Licenças de módulos esportivos</h3>
-        <div class="dir mini-rot">Uma por CPF</div></div>
-      <div class="tabela-wrap"><table id="tbLicencas"></table></div>
-    </div>
+  <div class="card">
+    <div class="card-cab"><h3>Últimos lançamentos — sócios</h3>
+      <div class="dir"><button class="bt mini" onclick="irPara('caixa')">Ver caixa</button></div></div>
+    <div class="tabela-wrap"><table id="tbUltimos"></table></div>
   </div>
 </section>
 
@@ -353,6 +393,7 @@ footer b{color:var(--texto-2)}
   <div class="cab">
     <div><h2>Caixa dos sócios</h2><p>Responsável: <b id="respSocios">—</b> · Alisamento das quadras, manutenções, bolas e rateio da Light.</p></div>
     <div class="acoes">
+      <button class="bt" onclick="exportarPlanilha()">Exportar Planilha</button>
       <button class="bt" onclick="lancRapido('alisamento')">Alisamento R$150</button>
       <button class="bt pri" onclick="editarLanc()">+ Lançamento</button>
     </div>
@@ -387,20 +428,13 @@ footer b{color:var(--texto-2)}
 
   <div class="grade g4" style="margin-bottom:16px">
     <div class="kpi"><div class="rot">Alunos ativos</div><div class="val" id="clAtivos">—</div><div class="sub" id="clAtivosSub">—</div></div>
-    <div class="kpi sol"><div class="rot">Não inscritos na Clínica</div><div class="val" id="clNaoInsc">—</div><div class="sub">Controle do Dunga</div></div>
     <div class="kpi verde"><div class="rot">Recebido no mês</div><div class="val" id="clMes">—</div><div class="sub" id="clMesSub">—</div></div>
-    <div class="kpi vermelho"><div class="rot">Pendente no mês</div><div class="val" id="clPend">—</div><div class="sub" id="clPendSub">—</div></div>
-  </div>
-
-  <div class="card" style="margin-bottom:16px">
-    <div class="card-cab"><h3>Arrecadação por mês</h3>
-      <div class="dir mini-rot">Mensalidades recebidas em <span id="anoClube">2026</span></div></div>
-    <div class="card-corpo" id="graficoClube"></div>
-    <div class="tabela-wrap"><table id="tbArrecClube"></table></div>
+    <div class="kpi"><div class="rot" id="clAtualRot">Participantes</div><div class="val" id="clAtual">—</div><div class="sub" id="clAtualSub">—</div></div>
+    <div class="kpi"><div class="rot" id="clAntRot">Participantes</div><div class="val" id="clAnt">—</div><div class="sub" id="clAntSub">—</div></div>
   </div>
 
   <div class="aviso info" style="margin-bottom:14px">
-    <span>Clique nos quadradinhos para marcar o pagamento de cada mês. Verde = pago. O valor é salvo na hora para todos os sócios.</span>
+    <span class="so-computador">Clique nos quadradinhos para marcar o pagamento de cada mês. Verde = pago. O valor é salvo na hora para todos os sócios.</span><span class="so-celular">Escolha o mês e toque em <b>Marcar</b> ao lado de cada aluno. O pagamento é salvo na hora para todos os sócios.</span>
   </div>
 
   <div class="card">
@@ -408,7 +442,14 @@ footer b{color:var(--texto-2)}
       <div class="busca"><input type="text" id="buscaAluno" placeholder="Buscar aluno..." oninput="renderClubinho()"></div>
       <div class="dir"><label class="check"><input type="checkbox" id="soAtivos" checked onchange="renderClubinho()"> Só ativos</label></div>
     </div>
-    <div class="tabela-wrap"><table class="mensal" id="tbClubinho"></table></div>
+    <div class="tabela-wrap so-computador"><table class="mensal" id="tbClubinho"></table></div>
+    <div class="so-celular" id="clubinhoCelular"></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-cab"><h3>Arrecadação por mês</h3>
+      <div class="dir mini-rot">Mensalidades e despesas do clubinho em <span id="anoClube">—</span></div></div>
+    <div class="tabela-wrap"><table id="tbArrecClube"></table></div>
   </div>
 </section>
 
@@ -417,7 +458,7 @@ footer b{color:var(--texto-2)}
   <div class="cab">
     <div><h2>Caixa do clubinho</h2><p>Responsável: <b id="respClubinho">—</b> · Contabilidade separada da dos sócios. Paga o Chico das redes nos fins de semana.</p></div>
     <div class="acoes">
-      <button class="bt" onclick="lancRapido('chico')">Pagar Chico do mês</button>
+      <button class="bt" onclick="lancRapido('chico')">Pagar Chico</button>
       <button class="bt pri" onclick="editarLancClube()">+ Lançamento</button>
     </div>
   </div>
@@ -426,7 +467,9 @@ footer b{color:var(--texto-2)}
     <div class="kpi verde"><div class="rot">Mensalidades recebidas</div><div class="val" id="ccRec">—</div><div class="sub" id="ccRecSub">—</div></div>
     <div class="kpi vermelho"><div class="rot">Despesas</div><div class="val" id="ccDesp">—</div><div class="sub" id="ccDespSub">—</div></div>
     <div class="kpi"><div class="rot">Saldo do clubinho</div><div class="val" id="ccSaldo">—</div><div class="sub">Receitas menos despesas</div></div>
-    <div class="kpi sol"><div class="rot">Compromisso mensal</div><div class="val" id="ccChico">—</div><div class="sub">Chico — armar/desarmar as redes</div></div>
+    <div class="kpi sol" style="cursor:pointer" onclick="editarChico()" title="Clique para corrigir o valor">
+      <div class="rot">Compromisso mensal ✎</div><div class="val" id="ccChico">—</div>
+      <div class="sub">Chico — pago no fim do mês anterior</div></div>
   </div>
 
   <div class="card" style="margin-bottom:16px">
@@ -435,10 +478,6 @@ footer b{color:var(--texto-2)}
     <div class="tabela-wrap"><table id="tbCaixaClube"></table></div>
   </div>
 
-  <div class="card">
-    <div class="card-cab"><h3>Resumo por mês</h3></div>
-    <div class="tabela-wrap"><table id="tbResumoClube"></table></div>
-  </div>
 </section>
 
 <!-- ============ PATRIMONIO ============ -->
@@ -548,6 +587,19 @@ footer b{color:var(--texto-2)}
     </div>
   </div>
 
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-cab"><h3>Anos do sistema</h3><div class="dir" id="badgeAnos"></div></div>
+    <div class="card-corpo">
+      <p style="font-size:13.5px;color:var(--texto-2);line-height:1.65;margin-bottom:12px">
+        Cada ano tem a sua própria anuidade, o seu caixa e as suas mensalidades. O patrimônio e as regras são os mesmos
+        para todos os anos. Use o seletor no topo da página para mudar de ano.</p>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;align-items:center">
+        <button class="bt pri" onclick="abrirNovoAno()">Abrir novo ano</button>
+        <span class="mini-rot" id="infoAnos">—</span>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-cab"><h3>Últimas alterações</h3></div>
     <div class="tabela-wrap"><table id="tbLog"></table></div>
@@ -577,7 +629,7 @@ footer b{color:var(--texto-2)}
 
 <div class="torrada" id="torrada"></div>
 <script>
-const SEED = {"meta":{"versao":1,"atualizadoEm":"2026-07-27","ano":2026,"atualizadoPor":"Importação da planilha Rede2026.xlsx"},"config":{"anuidadeSocio":300,"mensalidadeClubinho":30,"chicoRedesMes":350,"alisamentoQuadra":75,"alisamentoDuasQuadras":150,"respSocios":"Rafael Alves (Alves)","respClubinho":"Pedro Paulo Botto (Pepa)","respClinica":"Luiz Renato Adnet Pinheiro (Dunga)","saldoInicialClubinho":0,"pagadoresLight":["Barraca Luciano","Barraca Chico","Barraca Abelha","Rede Popeye"]},"socios":[{"id":"s-97fad277","nome":"Alan Düssel Schiros","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-94b0c442","nome":"Aloísio Alencar Junior (Foca)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-5a3bb604","nome":"André Rocha","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-69535e4d","nome":"Antônio Carlos da Silva Seabra (Tonho)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-f9f74a6a","nome":"Arthur Albuquerque (Macarra)","isento":false,"valor":300.0,"pagoEm":"2026-01-10","obs":"","ativo":true},{"id":"s-e3d694e8","nome":"Augusto Carange Patrício (Guto)","isento":false,"valor":0.0,"pagoEm":"","obs":"DEVE","ativo":true},{"id":"s-3c011011","nome":"Bruno Antoun Collares (Brunão)","isento":false,"valor":300.0,"pagoEm":"2026-01-30","obs":"","ativo":true},{"id":"s-2ec76fc3","nome":"Bruno Benzecry","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-5c0553bc","nome":"Bruno Leonardo Palmeira (Bruno P)","isento":false,"valor":300.0,"pagoEm":"2026-01-11","obs":"","ativo":true},{"id":"s-a2e44abd","nome":"Carlos Alberto de Castro Pinheiro (Carlinhos)","isento":false,"valor":300.0,"pagoEm":"2026-01-20","obs":"","ativo":true},{"id":"s-39c36dd4","nome":"Carlos Gros (Cacau)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-58b7a23f","nome":"Carlos Henrique M Oliveira (Menoti)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"2X","ativo":true},{"id":"s-85abc74e","nome":"Djalma Esberard Meyrelles (Chico)","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-28483bb1","nome":"Eduardo Morrel","isento":false,"valor":300.0,"pagoEm":"2026-01-10","obs":"","ativo":true},{"id":"s-da5d0842","nome":"Gabriel Adnet","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-ba3bc4b8","nome":"Guilherme Colla Reuters","isento":false,"valor":300.0,"pagoEm":"2026-02-07","obs":"3X","ativo":true},{"id":"s-23173e28","nome":"Henrique Pimentel Trigueiro","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-39d37bf9","nome":"José Carlos de Lima (Zeca)","isento":false,"valor":300.0,"pagoEm":"2026-01-20","obs":"","ativo":true},{"id":"s-bc48fbe2","nome":"José Eduardo Bergamo","isento":false,"valor":300.0,"pagoEm":"2026-01-17","obs":"","ativo":true},{"id":"s-b94daa08","nome":"Juarez Igisk (Gaúcho)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-c5ee5110","nome":"Léo Frazão","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-859e4a58","nome":"Luiz Renato Adnet Pinheiro (Dunga)","isento":true,"valor":0,"pagoEm":"","obs":"Síndico das redes por mais de 4 décadas — isento por deliberação dos sócios","ativo":true},{"id":"s-215dba4d","nome":"Luiz Selva (Alemão)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-714e9a3a","nome":"Márcia Weinzettl","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-20cc6f1f","nome":"Paulo Roberto Ribeiro Filho (Paulinho)","isento":false,"valor":300.0,"pagoEm":"2026-01-30","obs":"","ativo":true},{"id":"s-c416fd0d","nome":"Pedro Paulo Botto (Pepa)","isento":false,"valor":300.0,"pagoEm":"2026-01-11","obs":"","ativo":true},{"id":"s-620b7e04","nome":"Rafael Alves (Alves)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-23592142","nome":"Rafael Fritsch","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-f61b8be7","nome":"Roberto Cumplido (Beto)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-6327620b","nome":"Rodrigo Saragô","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-c4949f3c","nome":"Tiago Gouveia","isento":false,"valor":300.0,"pagoEm":"2026-01-31","obs":"","ativo":true}],"caixaSocios":[{"id":"l-0b03b54f","data":"2025-12-31","desc":"Transferência do saldo em 31/12/2025 - Ressarcimento para Dunga - Caixa com saldo negativo","cat":"Saldo anterior","receita":0.0,"despesa":1396.49},{"id":"l-ad8fab8b","data":"","desc":"Pagamentos da Anuidade 2026","cat":"Anuidade","receita":8700.0,"despesa":0.0},{"id":"l-9f7a3b22","data":"2026-01-06","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":460.31},{"id":"l-5d1204da","data":"2026-01-06","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":138.09,"despesa":0.0},{"id":"l-8d63ac3d","data":"2026-01-06","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":276.19,"despesa":0.0},{"id":"l-376bf730","data":"2026-01-06","desc":"Contribuição Light Beach Tennis","cat":"Light (rateio)","receita":46.03,"despesa":0.0},{"id":"l-1062880f","data":"2026-01-09","desc":"União PVC cano d´água do poço x entrada da bomba + chave gripo pequena","cat":"Manutenção","receita":0.0,"despesa":99.8},{"id":"l-c4758d98","data":"2026-01-09","desc":"Alisamento das quadras (quadra-2) - Reforço ressaca","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-a00b9c9d","data":"2026-01-09","desc":"Alisamento das quadras (quadra-1)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-74b7a5a8","data":"2026-01-09","desc":"Eletricista - conserto fiação (neutro) + instalação de nova caixa de disjuntores com cadeado","cat":"Manutenção","receita":0.0,"despesa":500.0},{"id":"l-949a0d25","data":"2026-01-09","desc":"Contribuição Barraqueiro Luciano","cat":"Contribuições","receita":166.67,"despesa":0.0},{"id":"l-66d253bc","data":"2026-01-09","desc":"Contribuição Barraqueiro Chico","cat":"Contribuições","receita":166.67,"despesa":0.0},{"id":"l-bf8b34f1","data":"2026-01-09","desc":"Contribuição Barraqueiro Miguel (Miguel está isento. Guarda nossas redes/bomba e ajuda em tudo free!","cat":"Manutenção","receita":0.0,"despesa":0.0},{"id":"l-82d096ba","data":"2026-01-09","desc":"Cano de PVC de 1\" para alongar o cano d´água do poço. Poço deu uma secada e o cano ficou curto.","cat":"Manutenção","receita":0.0,"despesa":166.0},{"id":"l-d55135b1","data":"2026-01-09","desc":"Fita Veda Rosca (2)","cat":"Manutenção","receita":0.0,"despesa":23.8},{"id":"l-cb6ba992","data":"2026-01-16","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ecf44bd8","data":"2026-01-16","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-a68fbd9c","data":"2026-01-23","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-b16315c9","data":"2026-01-23","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-0cf60cab","data":"2026-01-30","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":443.99},{"id":"l-7d00a1b8","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":133.2,"despesa":0.0},{"id":"l-b9bd7340","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":177.6,"despesa":0.0},{"id":"l-22de95dc","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Abelha - Reativamos o segundo poço. Pagamos a diferença para ficar ok!","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-13d8c3d4","data":"2026-02-06","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d73d41d","data":"2026-02-06","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-c4b7b1c1","data":"2026-02-13","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-443ceba9","data":"2026-02-13","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8ab85bf5","data":"2026-02-20","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a2923649","data":"2026-02-20","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-5732947f","data":"2026-02-27","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-e0b3db7f","data":"2026-02-27","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-99f20da2","data":"2026-03-02","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":641.03},{"id":"l-a8aa7db5","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":192.31,"despesa":0.0},{"id":"l-dd76e9aa","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":256.41,"despesa":0.0},{"id":"l-10d3dd08","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":192.31,"despesa":0.0},{"id":"l-7a640636","data":"2026-03-06","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-4fc77544","data":"2026-03-06","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8b2365a8","data":"2026-03-13","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ff7f6a68","data":"2026-03-13","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-ad97ac26","data":"2026-03-20","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d8d37a8","data":"2026-03-20","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-6275076c","data":"2026-03-27","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-bccebd55","data":"2026-03-27","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-39487307","data":"2026-03-31","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":557.31},{"id":"l-2b7bb1fc","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-ded6ea94","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-a415f4f2","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-310a0c5c","data":"2026-03-31","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-9f29b898","data":"2026-04-03","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-cc91b2e1","data":"2026-04-03","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-0747bf84","data":"2026-04-05","desc":"Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-c772be4e","data":"2026-04-05","desc":"Alisamento das quadras (quadra-1) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d315836","data":"2026-04-10","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-69fa0041","data":"2026-04-10","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-f7d3e498","data":"2026-04-17","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-4054413b","data":"2026-04-17","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-6a97789a","data":"2026-04-23","desc":"Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ac73e95b","data":"2026-04-24","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a0e0faef","data":"2026-04-24","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8c8dab43","data":"2026-04-30","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":645.68},{"id":"l-2d2fc18b","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-84d53df3","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-00b0b197","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-adf3beec","data":"2026-04-30","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-a57d7ca0","data":"2026-05-01","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a655791a","data":"2026-05-01","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-9df249b3","data":"2026-05-08","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-b2f50d0e","data":"2026-05-08","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-7423c4b3","data":"2026-05-15","desc":"Alisamento das quadras (quadra-2) - Reforço ressaca","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-eba9295b","data":"2026-05-15","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-e94e8503","data":"2026-05-22","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-2338df24","data":"2026-05-22","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-23c893fb","data":"2026-05-28","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":506.25},{"id":"l-e4b50276","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-4a771fc3","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-057c7368","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-6ddb3851","data":"2026-05-28","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-3788876a","data":"2026-05-28","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6a84a951","data":"2026-05-28","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8d092d65","data":"2026-06-04","desc":"Alisamento das quadras (quadra-1) - Reforço, feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-52892e91","data":"2026-06-05","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-69646cff","data":"2026-06-05","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-3c71d5b0","data":"2026-06-12","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-49bd9546","data":"2026-06-12","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-e744e838","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta nova","cat":"Bolas","receita":0.0,"despesa":320.0},{"id":"l-1a470ed5","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta nova","cat":"Bolas","receita":0.0,"despesa":320.0},{"id":"l-30e56f4c","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta velha vendida","cat":"Bolas","receita":180.0,"despesa":0.0},{"id":"l-98eb8823","data":"2026-06-19","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ea0c9151","data":"2026-06-19","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-fb10bf5e","data":"2026-06-26","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":345.16},{"id":"l-aedfc448","data":"2026-06-26","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-668ee65f","data":"2026-06-02","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-d9015082","data":"2026-06-26","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-3a2a9d06","data":"2026-06-26","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-92d43285","data":"2026-06-26","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6ea66bf3","data":"2026-06-26","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-17d065e0","data":"2026-06-27","desc":"01 Mikasa FT5 Amarela/Preta velha vendida","cat":"Bolas","receita":180.0,"despesa":0.0},{"id":"l-3dff9898","data":"2026-07-03","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-26bb91b1","data":"2026-07-03","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-400995c3","data":"2026-07-04","desc":"02 novos cadeados pequenos para a caixa dos disjuntores do relógio da Light","cat":"Manutenção","receita":0.0,"despesa":40.2},{"id":"l-f379b76b","data":"2026-07-10","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-1590ed20","data":"2026-07-10","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-b63ad44d","data":"2026-07-13","desc":"01 SACO DE REDE VERDE/RECOMIND PARA GUARDAR AS 02 REDES DOS SÓCIOS COM O CHICO","cat":"Redes e marcações","receita":0.0,"despesa":85.0},{"id":"l-872cb6d9","data":"2026-07-13","desc":"DEIXEI DE SER O SÍNDICO DAS REDES. AGUARDANDO O NOVO PARA PASSAR O CAIXA!","cat":"Outros","receita":0.0,"despesa":0.0},{"id":"l-8e46f946","data":"2026-07-20","desc":"Alisamento das quadras 1 e 2 do Quiosque. NINGUÉM FEZ EM 17/07, FIZ EM 20/07","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-ca440b48","data":"2026-07-24","desc":"Alisamento das quadras 1 e 2 do Quiosque. PAGUEI POR CONTA DO TORNEIO DA CLÍNICA!","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-6231e8cc","data":"","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-9857018a","data":"","desc":"Contribuição Light Barraqueiro Luciano (25%)","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-9f7f33ef","data":"","desc":"Contribuição Light Barraqueiro Chico (25%)","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-71a8d622","data":"","desc":"Contribuição Light Barraqueiro Abelha (25%)","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-37b22088","data":"","desc":"Contribuição Light Rede Popeye (25%)","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-142efc1a","data":"2026-07-31","desc":"Alisamento das quadras 1 e 2 do Quiosque","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0}],"clubinho":{"alunos":[{"id":"a-3621b7e9","nome":"Fernando","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-aeb05b03","nome":"Edu Ferro","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7f09e3dc","nome":"Johan","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-2815a8c8","nome":"Luan","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-fb8519bc","nome":"Helo","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-90c68f97","nome":"Luiz Guilherme","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-2b9f09ba","nome":"Medina","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-20a1eacf","nome":"Eric Miguez","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-eec55bc8","nome":"João Pedro Linhares","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-6864ddd6","nome":"Rod","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7c8ae6ab","nome":"Nick","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-23cf21e4","nome":"Saavedra","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7c354090","nome":"Luiz augusto biaggi","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-b292e36d","nome":"Marina","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-bf443251","nome":"Vini","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-17bc7d75","nome":"Jola","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}}],"caixa":[]},"patrimonio":[{"id":"p-190f400e","item":"Rede-1 de futevôlei + marcação","cat":"Redes","qtd":1,"com":"Chico (Saco de rede verde)","desde":"2018-02-01","obs":"Em uso desde 01/02/2018","historico":[{"com":"Chico (Saco de rede verde)","desde":"2018-02-01","ate":""}]},{"id":"p-0f4eb775","item":"Rede-2 de futevôlei + marcação","cat":"Redes","qtd":1,"com":"Chico (Saco de rede verde)","desde":"2020-08-23","obs":"Em uso desde 23/08/2020","historico":[{"com":"Chico (Saco de rede verde)","desde":"2020-08-23","ate":""}]},{"id":"p-aab237f1","item":"Rede-3 de Beach Tennis + marcação","cat":"Redes","qtd":1,"com":"Luiz Renato Adnet Pinheiro (Dunga)","desde":"2021-09-17","obs":"Em uso desde 17/09/2021","historico":[{"com":"Luiz Renato Adnet Pinheiro (Dunga)","desde":"2021-09-17","ate":""}]},{"id":"p-e84ee858","item":"Bola Mikasa FT5 Amarela/Preta — Nova 01/2026","cat":"Bolas","qtd":1,"com":"Macarra","desde":"2026-06-16","obs":"Comprada em 16/06/2026 por R$320","historico":[{"com":"Macarra","desde":"2026-06-16","ate":""}]},{"id":"p-b75e5898","item":"Bola Mikasa FT5 Amarela/Preta — Nova 02/2026","cat":"Bolas","qtd":1,"com":"Alan Düssel","desde":"2026-06-16","obs":"Comprada em 16/06/2026 por R$320","historico":[{"com":"Alan Düssel","desde":"2026-06-16","ate":""}]},{"id":"p-8a37e2b2","item":"Bomba Nova 1cv","cat":"Bombas","qtd":1,"com":"Chico","desde":"2026-01-29","obs":"","historico":[{"com":"Chico","desde":"2026-01-29","ate":""}]},{"id":"p-4a7d4e4d","item":"Bomba BT 1cv","cat":"Bombas","qtd":1,"com":"Abelha","desde":"2026-01-17","obs":"","historico":[{"com":"Abelha","desde":"2026-01-17","ate":""}]},{"id":"p-555ab4bd","item":"Bomba Antiga 1cv","cat":"Bombas","qtd":1,"com":"Miguel","desde":"","obs":"","historico":[{"com":"Miguel","desde":"","ate":""}]},{"id":"p-f405065e","item":"Bomba Antiga / Base de Madeira","cat":"Bombas","qtd":1,"com":"Miguel","desde":"","obs":"","historico":[{"com":"Miguel","desde":"","ate":""}]},{"id":"p-a59cef93","item":"Estacas/postes de redes","cat":"Estrutura","qtd":8,"com":"Chico (Saco de rede verde)","desde":"","obs":"Guardadas com as redes","historico":[{"com":"Chico (Saco de rede verde)","desde":"","ate":""}]},{"id":"p-12531837","item":"Saco de rede verde (Recomind)","cat":"Estrutura","qtd":1,"com":"Chico","desde":"2026-07-13","obs":"Comprado em 13/07/2026 por R$85 — guarda as 02 redes dos sócios","historico":[{"com":"Chico","desde":"2026-07-13","ate":""}]},{"id":"p-e5eefb57","item":"Churrasqueira","cat":"Estrutura","qtd":1,"com":"—","desde":"","obs":"","historico":[{"com":"—","desde":"","ate":""}]},{"id":"p-672b324e","item":"Poços artesianos","cat":"Estrutura","qtd":2,"com":"—","desde":"","obs":"Usados pelas Barracas do Chico e do Abelha","historico":[{"com":"—","desde":"","ate":""}]},{"id":"p-e399f64c","item":"Ponto de energia / relógio da Light","cat":"Estrutura","qtd":1,"com":"—","desde":"","obs":"O primeiro relógio instalado na orla","historico":[{"com":"—","desde":"","ate":""}]}],"licencas":[{"id":"lic-54d9ef9d","modulo":"53A","titular":"Tonho"},{"id":"lic-bd64c2ad","modulo":"53B","titular":"Zeca"},{"id":"lic-a77ffca7","modulo":"55A","titular":"Dunga"},{"id":"lic-3cf013e1","modulo":"55B","titular":"Chico"},{"id":"lic-73a96233","modulo":"56A","titular":"Henrique"}],"light":[{"id":"lz-c8da7917","data":"2026-01-06","valor":460.31,"rateio":[{"quem":"Barraca Luciano","valor":138.09,"pago":true,"pagoEm":"2026-01-06"},{"quem":"Barraca Chico","valor":276.19,"pago":true,"pagoEm":"2026-01-06"},{"quem":"Beach Tennis","valor":46.03,"pago":true,"pagoEm":"2026-01-06"}]},{"id":"lz-5deaec17","data":"2026-01-30","valor":443.99,"rateio":[{"quem":"Barraca Luciano","valor":133.2,"pago":true,"pagoEm":"2026-01-30"},{"quem":"Barraca Chico","valor":177.6,"pago":true,"pagoEm":"2026-01-30"},{"quem":"Barraca Abelha","valor":0.0,"pago":true,"pagoEm":"2026-01-30"}]},{"id":"lz-2f5a6703","data":"2026-03-02","valor":641.03,"rateio":[{"quem":"Barraca Luciano","valor":192.31,"pago":true,"pagoEm":"2026-03-02"},{"quem":"Barraca Chico","valor":256.41,"pago":true,"pagoEm":"2026-03-02"},{"quem":"Barraca Abelha","valor":192.31,"pago":true,"pagoEm":"2026-03-02"}]},{"id":"lz-9d6d6542","data":"2026-03-31","valor":557.31,"rateio":[{"quem":"Barraca Luciano","valor":139.33,"pago":true,"pagoEm":"2026-03-31"},{"quem":"Barraca Chico","valor":139.33,"pago":true,"pagoEm":"2026-03-31"},{"quem":"Barraca Abelha","valor":139.33,"pago":true,"pagoEm":"2026-03-31"},{"quem":"Rede Popeye","valor":139.33,"pago":true,"pagoEm":"2026-03-31"}]},{"id":"lz-05babfc4","data":"2026-04-30","valor":645.68,"rateio":[{"quem":"Barraca Luciano","valor":161.42,"pago":true,"pagoEm":"2026-04-30"},{"quem":"Barraca Chico","valor":161.42,"pago":true,"pagoEm":"2026-04-30"},{"quem":"Barraca Abelha","valor":161.42,"pago":true,"pagoEm":"2026-04-30"},{"quem":"Rede Popeye","valor":161.42,"pago":true,"pagoEm":"2026-04-30"}]},{"id":"lz-1218a6bf","data":"2026-05-28","valor":506.25,"rateio":[{"quem":"Barraca Luciano","valor":126.56,"pago":true,"pagoEm":"2026-05-28"},{"quem":"Barraca Chico","valor":126.56,"pago":true,"pagoEm":"2026-05-28"},{"quem":"Barraca Abelha","valor":126.56,"pago":true,"pagoEm":"2026-05-28"},{"quem":"Rede Popeye","valor":126.56,"pago":true,"pagoEm":"2026-05-28"}]},{"id":"lz-7dcf0f14","data":"2026-06-26","valor":345.16,"rateio":[{"quem":"Barraca Luciano","valor":86.29,"pago":true,"pagoEm":"2026-06-26"},{"quem":"Barraca Chico","valor":86.29,"pago":true,"pagoEm":"2026-06-26"},{"quem":"Barraca Abelha","valor":86.29,"pago":true,"pagoEm":"2026-06-26"},{"quem":"Rede Popeye","valor":86.29,"pago":true,"pagoEm":"2026-06-26"}]}],"regras":[{"t":"Armação e desarmação","d":"Sócios que armam a rede e chegam primeiro podem dobrar a primeira partida. Quem arma não desarma. Sócios que forem saindo da praia devem, primeiro, saber se têm que desarmar e guardar alguma rede."},{"t":"Prioridade nas quadras","d":"Sócios têm prioridade sobre todos, mas devem respeitar os alunos do Clubinho. A mensalidade cobrada deles é que paga o Chico nos fins de semana e feriados."},{"t":"Convidados","d":"Convidados devem aguardar para jogar. Nunca podem armar jogos entre eles sem o ok dos sócios e dos alunos do Clubinho."},{"t":"Ex-alunos e não integrantes","d":"Ex-alunos ou não integrantes do Clubinho não podem frequentar as redes."},{"t":"Guarda das redes","d":"Redes e marcações: o último sócio sempre retira e guarda tudo no saco verde, deixando na Barraca 67 do Chico."},{"t":"Guarda das bolas","d":"Bolas nunca podem ficar com terceiros. O último sócio leva para casa. Atualizar aqui todo fim de semana com quem estão as bolas."},{"t":"Anuidade","d":"Paga sempre no mês de janeiro, quando entram ou saem sócios após votação. O síndico das redes é isento da anuidade."},{"t":"Patrimônio","d":"Com quem está, com quem fica. Toda troca de responsável deve ser registrada aqui."},{"t":"Chico — fins de semana","d":"Recebe R$350/mês do caixa do Clubinho para armar e desarmar as duas redes, além de guardá-las no seu carro. As redes ficam semi-armadas e são desarmadas por conta de usuários de fora chegando antes e jogando até tarde."},{"t":"Chico — alisamento","d":"R$150 toda sexta/sábado (R$75 por quadra) pelo alisamento das quadras 1 e 2 do Quiosque, pago pelo caixa dos sócios. Tem que pagar na mesma hora, pois ele paga os caras na praia."},{"t":"Acordo 1 — Barracas Chico e Abelha","d":"Usam nosso poço, nossa energia, bomba e mangueiras; armam e desarmam tudo; pagam as manutenções e a conta da Light. Tudo tem que estar à nossa disposição de segunda a segunda."},{"t":"Acordo 2 — Barraca Luciano e Rede Popeye","d":"Usam nossa energia e também são responsáveis por pagar a Light e suas manutenções."},{"t":"Clínica x Módulos","d":"A Clínica protege os módulos. Para participar do Clubinho, o aluno precisa estar inscrito na Clínica — controle do Dunga."},{"t":"Conta da Light","d":"Chega em nome e endereço do Dunga. A rede não paga nada (custo zero): o valor é rateado entre 3 barracas e a Rede do Popeye, que fazem o Pix na conta do caixa dos sócios."}]};
+const SEED = {"meta":{"versao":1,"atualizadoEm":"2026-07-27","ano":2026,"atualizadoPor":"Importação da planilha Rede2026.xlsx"},"config":{"anuidadeSocio":300,"mensalidadeClubinho":30,"chicoRedesMes":350,"alisamentoQuadra":75,"alisamentoDuasQuadras":150,"respSocios":"Rafael Alves (Alves)","respClubinho":"Pedro Paulo Botto (Pepa)","respClinica":"Luiz Renato Adnet Pinheiro (Dunga)","saldoInicialClubinho":0,"pagadoresLight":["Barraca Luciano","Barraca Chico","Barraca Abelha","Rede Popeye"]},"socios":[{"id":"s-97fad277","nome":"Alan Düssel Schiros","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-94b0c442","nome":"Aloísio Alencar Junior (Foca)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-5a3bb604","nome":"André Rocha","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-69535e4d","nome":"Antônio Carlos da Silva Seabra (Tonho)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-f9f74a6a","nome":"Arthur Albuquerque (Macarra)","isento":false,"valor":300.0,"pagoEm":"2026-01-10","obs":"","ativo":true},{"id":"s-e3d694e8","nome":"Augusto Carange Patrício (Guto)","isento":false,"valor":0.0,"pagoEm":"","obs":"DEVE","ativo":true},{"id":"s-3c011011","nome":"Bruno Antoun Collares (Brunão)","isento":false,"valor":300.0,"pagoEm":"2026-01-30","obs":"","ativo":true},{"id":"s-2ec76fc3","nome":"Bruno Benzecry","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-5c0553bc","nome":"Bruno Leonardo Palmeira (Bruno P)","isento":false,"valor":300.0,"pagoEm":"2026-01-11","obs":"","ativo":true},{"id":"s-a2e44abd","nome":"Carlos Alberto de Castro Pinheiro (Carlinhos)","isento":false,"valor":300.0,"pagoEm":"2026-01-20","obs":"","ativo":true},{"id":"s-39c36dd4","nome":"Carlos Gros (Cacau)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-58b7a23f","nome":"Carlos Henrique M Oliveira (Menoti)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"2X","ativo":true},{"id":"s-85abc74e","nome":"Djalma Esberard Meyrelles (Chico)","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-28483bb1","nome":"Eduardo Morrel","isento":false,"valor":300.0,"pagoEm":"2026-01-10","obs":"","ativo":true},{"id":"s-da5d0842","nome":"Gabriel Adnet","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-ba3bc4b8","nome":"Guilherme Colla Reuters","isento":false,"valor":300.0,"pagoEm":"2026-02-07","obs":"3X","ativo":true},{"id":"s-23173e28","nome":"Henrique Pimentel Trigueiro","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-39d37bf9","nome":"José Carlos de Lima (Zeca)","isento":false,"valor":300.0,"pagoEm":"2026-01-20","obs":"","ativo":true},{"id":"s-bc48fbe2","nome":"José Eduardo Bergamo","isento":false,"valor":300.0,"pagoEm":"2026-01-17","obs":"","ativo":true},{"id":"s-b94daa08","nome":"Juarez Igisk (Gaúcho)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-c5ee5110","nome":"Léo Frazão","isento":false,"valor":300.0,"pagoEm":"2026-01-12","obs":"","ativo":true},{"id":"s-859e4a58","nome":"Luiz Renato Adnet Pinheiro (Dunga)","isento":true,"valor":0,"pagoEm":"","obs":"Síndico das redes por mais de 4 décadas — isento por deliberação dos sócios","ativo":true},{"id":"s-215dba4d","nome":"Luiz Selva (Alemão)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-714e9a3a","nome":"Márcia Weinzettl","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-20cc6f1f","nome":"Paulo Roberto Ribeiro Filho (Paulinho)","isento":false,"valor":300.0,"pagoEm":"2026-01-30","obs":"","ativo":true},{"id":"s-c416fd0d","nome":"Pedro Paulo Botto (Pepa)","isento":false,"valor":300.0,"pagoEm":"2026-01-11","obs":"","ativo":true},{"id":"s-620b7e04","nome":"Rafael Alves (Alves)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-23592142","nome":"Rafael Fritsch","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-f61b8be7","nome":"Roberto Cumplido (Beto)","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-6327620b","nome":"Rodrigo Saragô","isento":false,"valor":300.0,"pagoEm":"2026-01-06","obs":"","ativo":true},{"id":"s-c4949f3c","nome":"Tiago Gouveia","isento":false,"valor":300.0,"pagoEm":"2026-01-31","obs":"","ativo":true}],"caixaSocios":[{"id":"l-0b03b54f","data":"2025-12-31","desc":"Transferência do saldo em 31/12/2025 - Ressarcimento para Dunga - Caixa com saldo negativo","cat":"Saldo anterior","receita":0.0,"despesa":1396.49},{"id":"l-ad8fab8b","data":"2026-01-31","desc":"Pagamentos da Anuidade 2026","cat":"Anuidade","receita":8700.0,"despesa":0.0},{"id":"l-9f7a3b22","data":"2026-01-06","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":460.31},{"id":"l-5d1204da","data":"2026-01-06","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":138.09,"despesa":0.0},{"id":"l-8d63ac3d","data":"2026-01-06","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":276.19,"despesa":0.0},{"id":"l-376bf730","data":"2026-01-06","desc":"Contribuição Light Beach Tennis","cat":"Light (rateio)","receita":46.03,"despesa":0.0},{"id":"l-1062880f","data":"2026-01-09","desc":"União PVC cano d´água do poço x entrada da bomba + chave gripo pequena","cat":"Manutenção","receita":0.0,"despesa":99.8},{"id":"l-c4758d98","data":"2026-01-09","desc":"Alisamento das quadras (quadra-2) - Reforço ressaca","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-a00b9c9d","data":"2026-01-09","desc":"Alisamento das quadras (quadra-1)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-74b7a5a8","data":"2026-01-09","desc":"Eletricista - conserto fiação (neutro) + instalação de nova caixa de disjuntores com cadeado","cat":"Manutenção","receita":0.0,"despesa":500.0},{"id":"l-949a0d25","data":"2026-01-09","desc":"Contribuição Barraqueiro Luciano","cat":"Contribuições","receita":166.67,"despesa":0.0},{"id":"l-66d253bc","data":"2026-01-09","desc":"Contribuição Barraqueiro Chico","cat":"Contribuições","receita":166.67,"despesa":0.0},{"id":"l-bf8b34f1","data":"2026-01-09","desc":"Contribuição Barraqueiro Miguel (Miguel está isento. Guarda nossas redes/bomba e ajuda em tudo free!","cat":"Manutenção","receita":0.0,"despesa":0.0},{"id":"l-82d096ba","data":"2026-01-09","desc":"Cano de PVC de 1\" para alongar o cano d´água do poço. Poço deu uma secada e o cano ficou curto.","cat":"Manutenção","receita":0.0,"despesa":166.0},{"id":"l-d55135b1","data":"2026-01-09","desc":"Fita Veda Rosca (2)","cat":"Manutenção","receita":0.0,"despesa":23.8},{"id":"l-cb6ba992","data":"2026-01-16","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ecf44bd8","data":"2026-01-16","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-a68fbd9c","data":"2026-01-23","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-b16315c9","data":"2026-01-23","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-0cf60cab","data":"2026-01-30","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":443.99},{"id":"l-7d00a1b8","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":133.2,"despesa":0.0},{"id":"l-b9bd7340","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":177.6,"despesa":0.0},{"id":"l-22de95dc","data":"2026-01-30","desc":"Contribuição Light Barraqueiro Abelha - Reativamos o segundo poço. Pagamos a diferença para ficar ok!","cat":"Light (rateio)","receita":0.0,"despesa":0.0},{"id":"l-13d8c3d4","data":"2026-02-06","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d73d41d","data":"2026-02-06","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-c4b7b1c1","data":"2026-02-13","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-443ceba9","data":"2026-02-13","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8ab85bf5","data":"2026-02-20","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a2923649","data":"2026-02-20","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-5732947f","data":"2026-02-27","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-e0b3db7f","data":"2026-02-27","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-99f20da2","data":"2026-03-02","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":641.03},{"id":"l-a8aa7db5","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":192.31,"despesa":0.0},{"id":"l-dd76e9aa","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":256.41,"despesa":0.0},{"id":"l-10d3dd08","data":"2026-03-02","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":192.31,"despesa":0.0},{"id":"l-7a640636","data":"2026-03-06","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-4fc77544","data":"2026-03-06","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8b2365a8","data":"2026-03-13","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ff7f6a68","data":"2026-03-13","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-ad97ac26","data":"2026-03-20","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d8d37a8","data":"2026-03-20","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-6275076c","data":"2026-03-27","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-bccebd55","data":"2026-03-27","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-39487307","data":"2026-03-31","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":557.31},{"id":"l-2b7bb1fc","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-ded6ea94","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-a415f4f2","data":"2026-03-31","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-310a0c5c","data":"2026-03-31","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":139.33,"despesa":0.0},{"id":"l-9f29b898","data":"2026-04-03","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-cc91b2e1","data":"2026-04-03","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-0747bf84","data":"2026-04-05","desc":"Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-c772be4e","data":"2026-04-05","desc":"Alisamento das quadras (quadra-1) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6d315836","data":"2026-04-10","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-69fa0041","data":"2026-04-10","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-f7d3e498","data":"2026-04-17","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-4054413b","data":"2026-04-17","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-6a97789a","data":"2026-04-23","desc":"Alisamento das quadras (quadra-2) - Reforço, muitos jogos no feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ac73e95b","data":"2026-04-24","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a0e0faef","data":"2026-04-24","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8c8dab43","data":"2026-04-30","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":645.68},{"id":"l-2d2fc18b","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-84d53df3","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-00b0b197","data":"2026-04-30","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-adf3beec","data":"2026-04-30","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":161.42,"despesa":0.0},{"id":"l-a57d7ca0","data":"2026-05-01","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-a655791a","data":"2026-05-01","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-9df249b3","data":"2026-05-08","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-b2f50d0e","data":"2026-05-08","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-7423c4b3","data":"2026-05-15","desc":"Alisamento das quadras (quadra-2) - Reforço ressaca","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-eba9295b","data":"2026-05-15","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-e94e8503","data":"2026-05-22","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-2338df24","data":"2026-05-22","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-23c893fb","data":"2026-05-28","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":506.25},{"id":"l-e4b50276","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-4a771fc3","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-057c7368","data":"2026-05-28","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-6ddb3851","data":"2026-05-28","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":126.56,"despesa":0.0},{"id":"l-3788876a","data":"2026-05-28","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6a84a951","data":"2026-05-28","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-8d092d65","data":"2026-06-04","desc":"Alisamento das quadras (quadra-1) - Reforço, feriado","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-52892e91","data":"2026-06-05","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-69646cff","data":"2026-06-05","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-3c71d5b0","data":"2026-06-12","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-49bd9546","data":"2026-06-12","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-e744e838","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta nova","cat":"Bolas","receita":0.0,"despesa":320.0},{"id":"l-1a470ed5","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta nova","cat":"Bolas","receita":0.0,"despesa":320.0},{"id":"l-30e56f4c","data":"2026-06-16","desc":"01 Mikasa FT5 Amarela/Preta velha vendida","cat":"Bolas","receita":180.0,"despesa":0.0},{"id":"l-98eb8823","data":"2026-06-19","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-ea0c9151","data":"2026-06-19","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-fb10bf5e","data":"2026-06-26","desc":"Light","cat":"Light (rateio)","receita":0.0,"despesa":345.16},{"id":"l-aedfc448","data":"2026-06-26","desc":"Contribuição Light Barraqueiro Luciano","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-668ee65f","data":"2026-06-02","desc":"Contribuição Light Barraqueiro Chico","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-d9015082","data":"2026-06-26","desc":"Contribuição Light Barraqueiro Abelha","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-3a2a9d06","data":"2026-06-26","desc":"Contribuição Light Rede Popeye","cat":"Light (rateio)","receita":86.29,"despesa":0.0},{"id":"l-92d43285","data":"2026-06-26","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-6ea66bf3","data":"2026-06-26","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-17d065e0","data":"2026-06-27","desc":"01 Mikasa FT5 Amarela/Preta velha vendida","cat":"Bolas","receita":180.0,"despesa":0.0},{"id":"l-3dff9898","data":"2026-07-03","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-26bb91b1","data":"2026-07-03","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-400995c3","data":"2026-07-04","desc":"02 novos cadeados pequenos para a caixa dos disjuntores do relógio da Light","cat":"Manutenção","receita":0.0,"despesa":40.2},{"id":"l-f379b76b","data":"2026-07-10","desc":"Alisamento das quadras (quadra-2)","cat":"Alisamento das quadras","receita":0.0,"despesa":75.0},{"id":"l-1590ed20","data":"2026-07-10","desc":"Alisamento das quadras (quadra-1) Pago pela Clínica","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-b63ad44d","data":"2026-07-13","desc":"01 SACO DE REDE VERDE/RECOMIND PARA GUARDAR AS 02 REDES DOS SÓCIOS COM O CHICO","cat":"Redes e marcações","receita":0.0,"despesa":85.0},{"id":"l-872cb6d9","data":"2026-07-13","desc":"DEIXEI DE SER O SÍNDICO DAS REDES. AGUARDANDO O NOVO PARA PASSAR O CAIXA!","cat":"Outros","receita":0.0,"despesa":0.0},{"id":"l-8e46f946","data":"2026-07-20","desc":"Alisamento das quadras 1 e 2 do Quiosque. NINGUÉM FEZ EM 17/07, FIZ EM 20/07","cat":"Alisamento das quadras","receita":0.0,"despesa":150.0},{"id":"l-ca440b48","data":"2026-07-24","desc":"Alisamento das quadras 1 e 2 do Quiosque. PAGUEI POR CONTA DO TORNEIO DA CLÍNICA!","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0},{"id":"l-142efc1a","data":"2026-07-31","desc":"Alisamento das quadras 1 e 2 do Quiosque","cat":"Alisamento das quadras","receita":0.0,"despesa":0.0}],"clubinho":{"alunos":[{"id":"a-3621b7e9","nome":"Fernando","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-aeb05b03","nome":"Edu Ferro","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7f09e3dc","nome":"Johan","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-2815a8c8","nome":"Luan","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-fb8519bc","nome":"Helo","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-90c68f97","nome":"Luiz Guilherme","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-2b9f09ba","nome":"Medina","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-20a1eacf","nome":"Eric Miguez","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-eec55bc8","nome":"João Pedro Linhares","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-6864ddd6","nome":"Rod","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7c8ae6ab","nome":"Nick","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-23cf21e4","nome":"Saavedra","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-7c354090","nome":"Luiz augusto biaggi","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-b292e36d","nome":"Marina","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-bf443251","nome":"Vini","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}},{"id":"a-17bc7d75","nome":"Jola","inscritoClinica":true,"ativo":true,"obs":"","pagamentos":{}}],"caixa":[]},"patrimonio":[{"id":"p-190f400e","item":"Rede-1 de futevôlei + marcação","cat":"Redes","qtd":1,"com":"Chico (Saco de rede verde)","desde":"2018-02-01","obs":"Em uso desde 01/02/2018","historico":[{"com":"Chico (Saco de rede verde)","desde":"2018-02-01","ate":""}]},{"id":"p-0f4eb775","item":"Rede-2 de futevôlei + marcação","cat":"Redes","qtd":1,"com":"Chico (Saco de rede verde)","desde":"2020-08-23","obs":"Em uso desde 23/08/2020","historico":[{"com":"Chico (Saco de rede verde)","desde":"2020-08-23","ate":""}]},{"id":"p-aab237f1","item":"Rede-3 de Beach Tennis + marcação","cat":"Redes","qtd":1,"com":"Luiz Renato Adnet Pinheiro (Dunga)","desde":"2021-09-17","obs":"Em uso desde 17/09/2021","historico":[{"com":"Luiz Renato Adnet Pinheiro (Dunga)","desde":"2021-09-17","ate":""}]},{"id":"p-e84ee858","item":"Bola Mikasa FT5 Amarela/Preta — Nova 01/2026","cat":"Bolas","qtd":1,"com":"Macarra","desde":"2026-06-16","obs":"Comprada em 16/06/2026 por R$320","historico":[{"com":"Macarra","desde":"2026-06-16","ate":""}]},{"id":"p-b75e5898","item":"Bola Mikasa FT5 Amarela/Preta — Nova 02/2026","cat":"Bolas","qtd":1,"com":"Alan Düssel","desde":"2026-06-16","obs":"Comprada em 16/06/2026 por R$320","historico":[{"com":"Alan Düssel","desde":"2026-06-16","ate":""}]},{"id":"p-8a37e2b2","item":"Bomba Nova 1cv","cat":"Bombas","qtd":1,"com":"Chico","desde":"2026-01-29","obs":"","historico":[{"com":"Chico","desde":"2026-01-29","ate":""}]},{"id":"p-4a7d4e4d","item":"Bomba BT 1cv","cat":"Bombas","qtd":1,"com":"Abelha","desde":"2026-01-17","obs":"","historico":[{"com":"Abelha","desde":"2026-01-17","ate":""}]},{"id":"p-555ab4bd","item":"Bomba Antiga 1cv","cat":"Bombas","qtd":1,"com":"Miguel","desde":"","obs":"","historico":[{"com":"Miguel","desde":"","ate":""}]},{"id":"p-f405065e","item":"Bomba Antiga / Base de Madeira","cat":"Bombas","qtd":1,"com":"Miguel","desde":"","obs":"","historico":[{"com":"Miguel","desde":"","ate":""}]},{"id":"p-a59cef93","item":"Estacas/postes de redes","cat":"Estrutura","qtd":8,"com":"Chico (Saco de rede verde)","desde":"","obs":"Guardadas com as redes","historico":[{"com":"Chico (Saco de rede verde)","desde":"","ate":""}]},{"id":"p-12531837","item":"Saco de rede verde (Recomind)","cat":"Estrutura","qtd":1,"com":"Chico","desde":"2026-07-13","obs":"Comprado em 13/07/2026 por R$85 — guarda as 02 redes dos sócios","historico":[{"com":"Chico","desde":"2026-07-13","ate":""}]},{"id":"p-e5eefb57","item":"Churrasqueira","cat":"Estrutura","qtd":1,"com":"—","desde":"","obs":"","historico":[{"com":"—","desde":"","ate":""}]},{"id":"p-672b324e","item":"Poços artesianos","cat":"Estrutura","qtd":2,"com":"—","desde":"","obs":"Usados pelas Barracas do Chico e do Abelha","historico":[{"com":"—","desde":"","ate":""}]},{"id":"p-e399f64c","item":"Ponto de energia / relógio da Light","cat":"Estrutura","qtd":1,"com":"—","desde":"","obs":"O primeiro relógio instalado na orla","historico":[{"com":"—","desde":"","ate":""}]}],"licencas":[{"id":"lic-54d9ef9d","modulo":"53A","titular":"Tonho"},{"id":"lic-bd64c2ad","modulo":"53B","titular":"Zeca"},{"id":"lic-a77ffca7","modulo":"55A","titular":"Dunga"},{"id":"lic-3cf013e1","modulo":"55B","titular":"Chico"},{"id":"lic-73a96233","modulo":"56A","titular":"Henrique"}],"light":[{"id":"lz-c8da7917","data":"2026-01-06","valor":460.31,"rateio":[{"quem":"Barraca Luciano","valor":138.09,"pago":true,"pagoEm":"2026-01-06","pct":30.0},{"quem":"Barraca Chico","valor":276.19,"pago":true,"pagoEm":"2026-01-06","pct":60.0},{"quem":"Beach Tennis","valor":46.03,"pago":true,"pagoEm":"2026-01-06","pct":10.0}]},{"id":"lz-5deaec17","data":"2026-01-30","valor":443.99,"rateio":[{"quem":"Barraca Luciano","valor":133.2,"pago":true,"pagoEm":"2026-01-30","pct":30.0},{"quem":"Barraca Chico","valor":177.6,"pago":true,"pagoEm":"2026-01-30","pct":40.0},{"quem":"Barraca Abelha","valor":0.0,"pago":true,"pagoEm":"2026-01-30","pct":0.0}]},{"id":"lz-2f5a6703","data":"2026-03-02","valor":641.03,"rateio":[{"quem":"Barraca Luciano","valor":192.31,"pago":true,"pagoEm":"2026-03-02","pct":30.0},{"quem":"Barraca Chico","valor":256.41,"pago":true,"pagoEm":"2026-03-02","pct":40.0},{"quem":"Barraca Abelha","valor":192.31,"pago":true,"pagoEm":"2026-03-02","pct":30.0}]},{"id":"lz-9d6d6542","data":"2026-03-31","valor":557.31,"rateio":[{"quem":"Barraca Luciano","valor":139.33,"pago":true,"pagoEm":"2026-03-31","pct":25.0},{"quem":"Barraca Chico","valor":139.33,"pago":true,"pagoEm":"2026-03-31","pct":25.0},{"quem":"Barraca Abelha","valor":139.33,"pago":true,"pagoEm":"2026-03-31","pct":25.0},{"quem":"Rede Popeye","valor":139.33,"pago":true,"pagoEm":"2026-03-31","pct":25.0}]},{"id":"lz-05babfc4","data":"2026-04-30","valor":645.68,"rateio":[{"quem":"Barraca Luciano","valor":161.42,"pago":true,"pagoEm":"2026-04-30","pct":25.0},{"quem":"Barraca Chico","valor":161.42,"pago":true,"pagoEm":"2026-04-30","pct":25.0},{"quem":"Barraca Abelha","valor":161.42,"pago":true,"pagoEm":"2026-04-30","pct":25.0},{"quem":"Rede Popeye","valor":161.42,"pago":true,"pagoEm":"2026-04-30","pct":25.0}]},{"id":"lz-1218a6bf","data":"2026-05-28","valor":506.25,"rateio":[{"quem":"Barraca Luciano","valor":126.56,"pago":true,"pagoEm":"2026-05-28","pct":25.0},{"quem":"Barraca Chico","valor":126.56,"pago":true,"pagoEm":"2026-05-28","pct":25.0},{"quem":"Barraca Abelha","valor":126.56,"pago":true,"pagoEm":"2026-05-28","pct":25.0},{"quem":"Rede Popeye","valor":126.56,"pago":true,"pagoEm":"2026-05-28","pct":25.0}]},{"id":"lz-7dcf0f14","data":"2026-06-26","valor":345.16,"rateio":[{"quem":"Barraca Luciano","valor":86.29,"pago":true,"pagoEm":"2026-06-26","pct":25.0},{"quem":"Barraca Chico","valor":86.29,"pago":true,"pagoEm":"2026-06-26","pct":25.0},{"quem":"Barraca Abelha","valor":86.29,"pago":true,"pagoEm":"2026-06-26","pct":25.0},{"quem":"Rede Popeye","valor":86.29,"pago":true,"pagoEm":"2026-06-26","pct":25.0}]}],"regras":[{"t":"Armação e desarmação","d":"Sócios que armam a rede e chegam primeiro podem dobrar a primeira partida. Quem arma não desarma. Sócios que forem saindo da praia devem, primeiro, saber se têm que desarmar e guardar alguma rede."},{"t":"Prioridade nas quadras","d":"Sócios têm prioridade sobre todos, mas devem respeitar os alunos do Clubinho. A mensalidade cobrada deles é que paga o Chico nos fins de semana e feriados."},{"t":"Convidados","d":"Convidados devem aguardar para jogar. Nunca podem armar jogos entre eles sem o ok dos sócios e dos alunos do Clubinho."},{"t":"Ex-alunos e não integrantes","d":"Ex-alunos ou não integrantes do Clubinho não podem frequentar as redes."},{"t":"Guarda das redes","d":"Redes e marcações: o último sócio sempre retira e guarda tudo no saco verde, deixando na Barraca 67 do Chico."},{"t":"Guarda das bolas","d":"Bolas nunca podem ficar com terceiros. O último sócio leva para casa. Atualizar aqui todo fim de semana com quem estão as bolas."},{"t":"Anuidade","d":"Paga sempre no mês de janeiro, quando entram ou saem sócios após votação. O síndico das redes é isento da anuidade."},{"t":"Patrimônio","d":"Com quem está, com quem fica. Toda troca de responsável deve ser registrada aqui."},{"t":"Chico — fins de semana","d":"Recebe R$350/mês do caixa do Clubinho para armar e desarmar as duas redes, além de guardá-las no seu carro. As redes ficam semi-armadas e são desarmadas por conta de usuários de fora chegando antes e jogando até tarde."},{"t":"Chico — alisamento","d":"R$150 toda sexta/sábado (R$75 por quadra) pelo alisamento das quadras 1 e 2 do Quiosque, pago pelo caixa dos sócios. Tem que pagar na mesma hora, pois ele paga os caras na praia."},{"t":"Acordo 1 — Barracas Chico e Abelha","d":"Usam nosso poço, nossa energia, bomba e mangueiras; armam e desarmam tudo; pagam as manutenções e a conta da Light. Tudo tem que estar à nossa disposição de segunda a segunda."},{"t":"Acordo 2 — Barraca Luciano e Rede Popeye","d":"Usam nossa energia e também são responsáveis por pagar a Light e suas manutenções."},{"t":"Clínica x Módulos","d":"A Clínica protege os módulos. Para participar do Clubinho, o aluno precisa estar inscrito na Clínica — controle do Dunga."},{"t":"Conta da Light","d":"Chega em nome e endereço do Dunga. A rede não paga nada (custo zero): o valor é rateado entre 3 barracas e a Rede do Popeye, que fazem o Pix na conta do caixa dos sócios."}]};
 </script>
 <script>
 /* ------------------------------------------------------------------
@@ -624,6 +676,7 @@ function torrada(msg){ const t=$('torrada'); t.textContent=msg; t.classList.add(
 const NUVEM = (typeof CONFIG_NUVEM !== 'undefined') ? CONFIG_NUVEM : {url:'',chave:''};
 const temNuvem = () => !!(NUVEM.url && NUVEM.chave && !/COLE_AQUI/i.test(NUVEM.url+NUVEM.chave));
 let versao = 0, sincronizando = false, pendente = false, erroRede = false, ultimoAutor = '', ultimoQuando = '';
+let anoAtivo = 0;
 let euNome = ''; try{ euNome = localStorage.getItem('redeEuNome')||''; }catch(e){}
 
 const apiURL = q => NUVEM.url.replace(/\/+$/,'') + '/rest/v1/rede' + (q||'');
@@ -676,6 +729,17 @@ function normalizar(){
   D.clubinho.alunos.forEach(a=>{ a.pagamentos=a.pagamentos||{}; if(a.ativo===undefined)a.ativo=true;
     if(a.inscritoClinica===undefined)a.inscritoClinica=true; });
   D.patrimonio.forEach(p=>p.historico=p.historico||[]);
+  const anoBase=String((D.meta&&D.meta.ano)||2026);
+  D.socios.forEach(s=>{
+    if(!s.anuidades){ s.anuidades={};
+      s.anuidades[anoBase]={valor:+s.valor||0, pagoEm:s.pagoEm||'', obs:s.obs||''};
+      delete s.valor; delete s.pagoEm; delete s.obs; }
+    if(s.ativo===undefined) s.ativo=true; });
+  D.clubinho.caixa.forEach(l=>{ if(!l.competencia) l.competencia=mesDe(l.data); });
+  D.light.forEach(l=>{ const t=+l.valor||0;
+    (l.rateio||[]).forEach(r=>{ if(r.pct===undefined||r.pct===null||r.pct==='')
+      r.pct = t ? Math.round((+r.valor||0)/t*10000)/100 : Math.round(10000/Math.max((l.rateio||[]).length,1))/100; }); });
+  D.meta=D.meta||{}; D.meta.anos=D.meta.anos||[+anoBase];
 }
 
 function salvar(desc){
@@ -782,177 +846,11 @@ document.getElementById('nav').addEventListener('click', e => {
 });
 
 /* ============================================================
-   CÁLCULOS
-   ============================================================ */
-const totRec = () => D.caixaSocios.reduce((s,l)=>s+(+l.receita||0),0);
-const totDesp = () => D.caixaSocios.reduce((s,l)=>s+(+l.despesa||0),0);
-const saldoSocios = () => totRec()-totDesp();
-
-function mensalidadesClube(){
-  const v = +D.config.mensalidadeClubinho||30; const out=[];
-  D.clubinho.alunos.forEach(a => Object.keys(a.pagamentos||{}).forEach(m => {
-    if(a.pagamentos[m]) out.push({mes:m, aluno:a.nome, valor:v});
-  }));
-  return out;
-}
-const recClube = () => mensalidadesClube().reduce((s,x)=>s+x.valor,0)
-  + D.clubinho.caixa.reduce((s,l)=>s+(+l.receita||0),0);
-const despClube = () => D.clubinho.caixa.reduce((s,l)=>s+(+l.despesa||0),0);
-const saldoClube = () => (+D.config.saldoInicialClubinho||0) + recClube() - despClube();
-
-/* ============================================================
    RENDER PRINCIPAL
    ============================================================ */
-function renderTudo(){
-  renderPainel(); renderSocios(); renderCaixa(); renderClubinho(); renderCaixaClube();
-  renderPatrimonio(); renderLight(); renderRegras(); renderAjustes();
-  $('chipSocios').textContent = dinheiroCurto(saldoSocios());
-  $('chipClubinho').textContent = dinheiroCurto(saldoClube());
-  $('rodapeS').textContent = dinheiroCurto(saldoSocios());
-  $('rodapeC').textContent = dinheiroCurto(saldoClube());
-  $('rodapeData').textContent = dataBR(D.meta && D.meta.atualizadoEm);
-  $('vlrAnuidade').textContent = dinheiroCurto(D.config.anuidadeSocio);
-  $('vlrMensal').textContent = dinheiroCurto(D.config.mensalidadeClubinho);
-  $('respSocios').textContent = D.config.respSocios||'—';
-  $('respClubinho').textContent = D.config.respClubinho||'—';
-  if(!temNuvem()) marcarSync('local');
-}
-
 /* ---------- PAINEL ---------- */
-function renderPainel(){
-  const s = saldoSocios(), c = saldoClube();
-  $('kSaldo').textContent = dinheiroCurto(s);
-  $('kSaldo').parentElement.className = 'kpi ' + (s>=0?'verde':'vermelho');
-  $('kSaldoSub').textContent = `${D.caixaSocios.length} lançamentos · resp. ${(D.config.respSocios||'—').split('(')[0].trim()}`;
-  $('kClube').textContent = dinheiroCurto(c);
-  $('kClubeSub').textContent = `${D.clubinho.alunos.filter(a=>a.ativo).length} alunos · resp. ${(D.config.respClubinho||'—').split('(')[0].trim()}`;
-
-  const pag = D.socios.filter(x=>x.ativo!==false && !x.isento && x.pagoEm).length;
-  const dev = D.socios.filter(x=>x.ativo!==false && !x.isento && !x.pagoEm).length;
-  const arrec = D.socios.reduce((t,x)=>t+(x.pagoEm?(+x.valor||0):0),0);
-  $('kAnu').textContent = dinheiroCurto(arrec);
-  $('kAnuSub').textContent = `${pag} pagaram · ${dev} em aberto`;
-
-  const comAlguem = D.patrimonio.filter(p=>p.com && p.com!=='—').length;
-  $('kPat').textContent = D.patrimonio.length;
-  $('kPatSub').textContent = `${comAlguem} itens com responsável · ${D.licencas.length} licenças`;
-
-  /* alertas */
-  const al = [];
-  D.socios.filter(x=>x.ativo!==false && !x.isento && !x.pagoEm).forEach(x =>
-    al.push({t:'erro', m:`<b>${esc(x.nome)}</b> está com a anuidade de 2026 em aberto.`}));
-  D.light.forEach(l => { const f = (l.rateio||[]).filter(r=>!r.pago);
-    if(f.length) al.push({t:'alerta', m:`Light de ${dataBR(l.data)}: falta o Pix de <b>${f.map(r=>esc(r.quem)).join(', ')}</b> (${dinheiroCurto(f.reduce((s,r)=>s+(+r.valor||0),0))}).`}); });
-  const mAtual = hoje().slice(0,7);
-  const semPag = D.clubinho.alunos.filter(a=>a.ativo && !a.pagamentos[mAtual]);
-  if(semPag.length) al.push({t:'alerta', m:`Clubinho: <b>${semPag.length} aluno(s)</b> ainda não pagaram ${MESES_LONGO[+mAtual.slice(5)-1].toLowerCase()}.`});
-  const naoInsc = D.clubinho.alunos.filter(a=>a.ativo && !a.inscritoClinica);
-  if(naoInsc.length) al.push({t:'erro', m:`Clubinho: <b>${naoInsc.map(a=>esc(a.nome)).join(', ')}</b> não está(ão) inscrito(s) na Clínica.`});
-  const bolas = D.patrimonio.filter(p=>p.cat==='Bolas' && (!p.com||p.com==='—'));
-  if(bolas.length) al.push({t:'erro', m:`<b>${bolas.length} bola(s)</b> sem responsável registrado.`});
-  if(!al.length) al.push({t:'ok', m:'Tudo em dia: anuidades pagas, Light rateada e patrimônio com responsável.'});
-  $('alertas').innerHTML = al.slice(0,7).map(a=>`<div class="aviso ${a.t}" style="margin-bottom:8px"><span>${a.m}</span></div>`).join('');
-
-  /* bolas e redes */
-  const chave = D.patrimonio.filter(p=>['Bolas','Redes'].includes(p.cat));
-  $('tbBolas').innerHTML = `<thead><tr><th>Item</th><th>Com quem está</th><th>Desde</th></tr></thead><tbody>` +
-    (chave.length ? chave.map(p=>`<tr><td class="forte">${esc(p.item)}</td>
-      <td>${p.com&&p.com!=='—'?esc(p.com):'<span class="tag deve">Sem responsável</span>'}</td>
-      <td class="mudo">${dataBR(p.desde)}</td></tr>`).join('') :
-      '<tr><td colspan="3" class="vazio">Nada cadastrado</td></tr>') + '</tbody>';
-
-  /* contas fixas */
-  const cf = +D.config.chicoRedesMes||350, al2 = +D.config.alisamentoDuasQuadras||150;
-  $('contasFixas').innerHTML = `
-    <table><tbody>
-      <tr><td class="forte">Light</td><td class="mudo">Rateada entre 3 barracas e a Rede do Popeye</td>
-        <td class="num"><span class="tag ok">Custo zero</span></td></tr>
-      <tr><td class="forte">Alisamento das quadras</td><td class="mudo">Toda sexta/sábado · caixa dos sócios</td>
-        <td class="num desp">${dinheiroCurto(al2)}</td></tr>
-      <tr><td class="forte">Chico — redes do fim de semana</td><td class="mudo">Mensal · caixa do clubinho</td>
-        <td class="num desp">${dinheiroCurto(cf)}</td></tr>
-      <tr><td class="forte">Contas eventuais</td><td class="mudo">Bombas, energia, bolas, redes, pintura das estacas</td>
-        <td class="num mudo">variável</td></tr>
-    </tbody></table>`;
-
-  /* gráfico */
-  desenharGrafico();
-
-  /* últimos lançamentos */
-  const ult = [...D.caixaSocios].filter(l=>l.data).sort((a,b)=>b.data.localeCompare(a.data)).slice(0,8);
-  $('tbUltimos').innerHTML = `<thead><tr><th>Data</th><th>Descrição</th><th class="num">Valor</th></tr></thead><tbody>` +
-    ult.map(l=>`<tr><td class="mudo">${dataBR(l.data)}</td><td>${esc(l.desc).slice(0,60)}</td>
-      <td class="num ${l.receita?'rec':'desp'}">${l.receita?'+':'−'}${dinheiroCurto(l.receita||l.despesa)}</td></tr>`).join('') + '</tbody>';
-
-  const lic = `<thead><tr><th>Módulo</th><th>Titular</th></tr></thead><tbody>` +
-    D.licencas.map(l=>`<tr><td class="forte">${esc(l.modulo)}</td><td>${esc(l.titular)}</td></tr>`).join('') + '</tbody>';
-  $('tbLicencas').innerHTML = lic;
-  $('tbLicencas2').innerHTML = lic;
-  $('painelSub').textContent = `Atualizado em ${dataBR(D.meta && D.meta.atualizadoEm)}`;
-}
-
-function desenharGrafico(){
-  const por = {};
-  D.caixaSocios.forEach(l => { if(!l.data) return; const m = mesDe(l.data);
-    por[m] = por[m]||{r:0,d:0}; por[m].r += (+l.receita||0); por[m].d += (+l.despesa||0); });
-  const chaves = Object.keys(por).sort();
-  if(!chaves.length){ $('grafico').innerHTML = '<div class="vazio">Sem lançamentos</div>'; return; }
-  const max = Math.max(...chaves.map(k=>Math.max(por[k].r,por[k].d)),1);
-  const W = Math.max(chaves.length*72+50, 340), H = 210, base = H-32, topo = 14;
-  let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;min-height:190px" preserveAspectRatio="xMinYMid meet">`;
-  [0,.5,1].forEach(f => { const y = base-(base-topo)*f;
-    svg += `<line x1="34" y1="${y}" x2="${W-8}" y2="${y}" stroke="#EEF3F6" stroke-width="1"/>`;
-    svg += `<text x="30" y="${y+3.5}" font-size="9" fill="#8AA0AD" text-anchor="end">${Math.round(max*f/100)/10}k</text>`; });
-  chaves.forEach((k,i) => {
-    const x = 44+i*72, hr = (base-topo)*(por[k].r/max), hd = (base-topo)*(por[k].d/max);
-    svg += `<rect x="${x}" y="${base-hr}" width="24" height="${Math.max(hr,1)}" rx="4" fill="#1E9E6A"><title>Receitas ${dinheiroCurto(por[k].r)}</title></rect>`;
-    svg += `<rect x="${x+27}" y="${base-hd}" width="24" height="${Math.max(hd,1)}" rx="4" fill="#D14343"><title>Despesas ${dinheiroCurto(por[k].d)}</title></rect>`;
-    svg += `<text x="${x+25}" y="${H-11}" font-size="10.5" fill="#5A7180" text-anchor="middle" font-weight="600">${MESES[+k.slice(5)-1]}</text>`;
-  });
-  svg += '</svg>';
-  svg += `<div style="display:flex;gap:16px;justify-content:center;margin-top:8px;font-size:12px;color:#5A7180;font-weight:600">
-    <span><span style="display:inline-block;width:10px;height:10px;background:#1E9E6A;border-radius:3px;margin-right:5px"></span>Receitas</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:#D14343;border-radius:3px;margin-right:5px"></span>Despesas</span></div>`;
-  $('grafico').innerHTML = svg;
-}
-
 /* ---------- SÓCIOS ---------- */
-function filtroSocio(bt,f){ fSocio=f; document.querySelectorAll('[data-fs]').forEach(b=>b.classList.toggle('on',b===bt)); renderSocios(); }
-function renderSocios(){
-  const q = ($('buscaSocio').value||'').toLowerCase();
-  const ativos = D.socios.filter(s=>s.ativo!==false);
-  let lista = ativos.filter(s => s.nome.toLowerCase().includes(q));
-  if(fSocio==='pagos') lista = lista.filter(s=>s.pagoEm || s.isento);
-  if(fSocio==='devendo') lista = lista.filter(s=>!s.pagoEm && !s.isento);
-  lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
-
-  const arrec = ativos.reduce((t,s)=>t+(s.pagoEm?(+s.valor||0):0),0);
-  const devendo = ativos.filter(s=>!s.pagoEm && !s.isento);
-  const aberto = devendo.reduce((t)=>t+(+D.config.anuidadeSocio||300),0);
-  $('sArrec').textContent = dinheiroCurto(arrec);
-  $('sArrecSub').textContent = `${ativos.filter(s=>s.pagoEm).length} de ${ativos.length} sócios`;
-  $('sAberto').textContent = dinheiroCurto(aberto);
-  $('sAbertoSub').textContent = devendo.length ? devendo.map(s=>s.nome.split(' ')[0]).join(', ') : 'Ninguém devendo';
-  $('sTotal').textContent = ativos.length;
-  $('sTotalSub').textContent = `${ativos.filter(s=>s.isento).length} isento(s)`;
-
-  $('tbSocios').innerHTML = `<thead><tr><th style="width:34px">#</th><th>Sócio</th><th class="num">Valor</th>
-    <th>Pagamento</th><th>Situação</th><th>Obs.</th><th style="width:76px"></th></tr></thead><tbody>` +
-    (lista.length ? lista.map((s,i)=>`<tr>
-      <td class="mudo">${i+1}</td>
-      <td class="forte">${esc(s.nome)}</td>
-      <td class="num">${s.isento?'<span class="mudo">—</span>':dinheiroCurto(s.valor)}</td>
-      <td class="mudo">${dataBR(s.pagoEm)}</td>
-      <td>${s.isento?'<span class="tag azul">Isento</span>':(s.pagoEm?'<span class="tag ok">Pago</span>':'<span class="tag deve">Em aberto</span>')}</td>
-      <td class="mudo">${esc(s.obs||'')}</td>
-      <td style="white-space:nowrap">
-        <button class="bt-icone" title="Editar" onclick="editarSocio('${s.id}')">✎</button>
-        <button class="bt-icone perigo" title="Remover" onclick="removerSocio('${s.id}')">✕</button></td>
-    </tr>`).join('') : '<tr><td colspan="7" class="vazio">Nenhum sócio encontrado</td></tr>') +
-    `</tbody><tfoot><tr class="linha-total"><td></td><td>Total arrecadado</td>
-      <td class="num">${dinheiroCurto(arrec)}</td><td colspan="4"></td></tr></tfoot>`;
-}
-function editarSocio(id){
+function filtroSocio(bt,f){ fSocio=f; document.querySelectorAll('[data-fs]').forEach(b=>b.classList.toggle('on',b===bt)); renderSocios(); }function editarSocio(id){
   const s = id ? D.socios.find(x=>x.id===id) : {id:'',nome:'',valor:+D.config.anuidadeSocio||300,pagoEm:'',obs:'',isento:false};
   abrirModal(id?'Editar sócio':'Novo sócio', `
     <div class="campo"><label>Nome completo</label><input type="text" id="mNome" value="${esc(s.nome)}" placeholder="Nome e apelido"></div>
@@ -971,52 +869,8 @@ function editarSocio(id){
     fecharModal(); salvar(id?'Sócio atualizado':'Sócio cadastrado');
   });
 }
-function removerSocio(id){
-  const s = D.socios.find(x=>x.id===id);
-  if(!confirm(`Remover ${s.nome} da lista de sócios?`)) return;
-  D.socios = D.socios.filter(x=>x.id!==id); salvar('Sócio removido');
-}
-
 /* ---------- CAIXA DOS SÓCIOS ---------- */
-function limparFiltrosCaixa(){ $('buscaLanc').value=''; $('filtroMes').value=''; $('filtroCat').value=''; renderCaixa(); }
-function renderCaixa(){
-  const q = ($('buscaLanc').value||'').toLowerCase();
-  const meses = [...new Set(D.caixaSocios.filter(l=>l.data).map(l=>mesDe(l.data)))].sort();
-  const cats = [...new Set(D.caixaSocios.map(l=>l.cat).filter(Boolean))].sort();
-  const mSel = $('filtroMes').value, cSel = $('filtroCat').value;
-  $('filtroMes').innerHTML = '<option value="">Todos os meses</option>' +
-    meses.map(m=>`<option value="${m}" ${m===mSel?'selected':''}>${MESES_LONGO[+m.slice(5)-1]} ${m.slice(0,4)}</option>`).join('');
-  $('filtroCat').innerHTML = '<option value="">Todas as categorias</option>' +
-    cats.map(c=>`<option value="${esc(c)}" ${c===cSel?'selected':''}>${esc(c)}</option>`).join('');
-
-  let lista = D.caixaSocios.filter(l => (l.desc||'').toLowerCase().includes(q));
-  if(mSel) lista = lista.filter(l=>mesDe(l.data)===mSel);
-  if(cSel) lista = lista.filter(l=>l.cat===cSel);
-  lista = [...lista].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
-
-  $('cRec').textContent = dinheiroCurto(totRec());
-  $('cDesp').textContent = dinheiroCurto(totDesp());
-  $('cSaldo').textContent = dinheiroCurto(saldoSocios());
-  $('cSaldo').parentElement.className = 'kpi ' + (saldoSocios()>=0?'verde':'vermelho');
-  $('cQtd').textContent = D.caixaSocios.length;
-
-  const sr = lista.reduce((s,l)=>s+(+l.receita||0),0), sd = lista.reduce((s,l)=>s+(+l.despesa||0),0);
-  $('tbCaixa').innerHTML = `<thead><tr><th style="width:96px">Data</th><th>Descrição</th><th style="width:150px">Categoria</th>
-      <th class="num" style="width:110px">Receita</th><th class="num" style="width:110px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>` +
-    (lista.length ? lista.map(l=>`<tr>
-      <td class="mudo">${dataBR(l.data)}</td>
-      <td>${esc(l.desc)}</td>
-      <td><span class="tag neutra">${esc(l.cat||'Outros')}</span></td>
-      <td class="num ${l.receita?'rec':'mudo'}">${l.receita?dinheiroCurto(l.receita):'—'}</td>
-      <td class="num ${l.despesa?'desp':'mudo'}">${l.despesa?dinheiroCurto(l.despesa):'—'}</td>
-      <td style="white-space:nowrap">
-        <button class="bt-icone" title="Editar" onclick="editarLanc('${l.id}')">✎</button>
-        <button class="bt-icone perigo" title="Remover" onclick="removerLanc('${l.id}')">✕</button></td>
-    </tr>`).join('') : '<tr><td colspan="6" class="vazio">Nenhum lançamento encontrado</td></tr>') +
-    `</tbody><tfoot><tr class="linha-total"><td colspan="3">${lista.length} lançamento(s) — saldo do filtro: ${dinheiroCurto(sr-sd)}</td>
-      <td class="num">${dinheiroCurto(sr)}</td><td class="num">${dinheiroCurto(sd)}</td><td></td></tr></tfoot>`;
-}
-const CATS = ['Alisamento das quadras','Light (rateio)','Anuidade','Bolas','Redes e marcações','Manutenção','Contribuições','Saldo anterior','Outros'];
+function limparFiltrosCaixa(){ $('buscaLanc').value=''; $('filtroMes').value=''; $('filtroCat').value=''; renderCaixa(); }const CATS = ['Alisamento das quadras','Light (rateio)','Anuidade','Bolas','Redes e marcações','Manutenção','Contribuições','Saldo anterior','Outros'];
 function editarLanc(id){
   const l = id ? D.caixaSocios.find(x=>x.id===id) : {id:'',data:hoje(),desc:'',cat:'Outros',receita:0,despesa:0};
   abrirModal(id?'Editar lançamento':'Novo lançamento no caixa dos sócios', `
@@ -1040,67 +894,7 @@ function editarLanc(id){
 }
 function removerLanc(id){ if(!confirm('Remover este lançamento?')) return;
   D.caixaSocios = D.caixaSocios.filter(x=>x.id!==id); salvar('Lançamento removido'); }
-function lancRapido(tipo){
-  if(tipo==='alisamento'){
-    D.caixaSocios.push({id:uid('l'),data:hoje(),desc:'Alisamento das quadras 1 e 2 do Quiosque',
-      cat:'Alisamento das quadras',receita:0,despesa:+D.config.alisamentoDuasQuadras||150});
-    salvar('Alisamento lançado no caixa dos sócios'); irPara('caixa');
-  }
-  if(tipo==='chico'){
-    const m = MESES_LONGO[new Date().getMonth()];
-    D.clubinho.caixa.push({id:uid('cc'),data:hoje(),desc:`Chico — armação e desarmação das redes (${m})`,
-      cat:'Chico — redes',receita:0,despesa:+D.config.chicoRedesMes||350});
-    salvar('Pagamento do Chico lançado no caixa do clubinho'); irPara('caixaClube');
-  }
-}
-
-/* ---------- CLUBINHO ---------- */
-function renderClubinho(){
-  const q = ($('buscaAluno').value||'').toLowerCase();
-  const so = $('soAtivos').checked;
-  let lista = D.clubinho.alunos.filter(a => a.nome.toLowerCase().includes(q) && (!so || a.ativo));
-  lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
-  const v = +D.config.mensalidadeClubinho||30;
-  const ano = (D.meta && D.meta.ano) || 2026;
-  const mAtual = hoje().slice(0,7);
-  const mesAtualIdx = (hoje().slice(0,4)==String(ano)) ? new Date().getMonth() : 11;
-
-  const ativos = D.clubinho.alunos.filter(a=>a.ativo);
-  $('clAtivos').textContent = ativos.length;
-  $('clAtivosSub').textContent = `${D.clubinho.alunos.length} cadastrados no total`;
-  $('clNaoInsc').textContent = ativos.filter(a=>!a.inscritoClinica).length;
-  const pagosMes = ativos.filter(a=>a.pagamentos[mAtual]).length;
-  $('clMes').textContent = dinheiroCurto(pagosMes*v);
-  $('clMesSub').textContent = `${pagosMes} de ${ativos.length} alunos · ${MESES_LONGO[+mAtual.slice(5)-1]}`;
-  $('clPend').textContent = dinheiroCurto((ativos.length-pagosMes)*v);
-  $('clPendSub').textContent = `${ativos.length-pagosMes} aluno(s) em aberto`;
-
-  let head = `<thead><tr><th>Aluno</th><th style="width:60px">Clínica</th>` +
-    MESES.map((m,i)=>`<th style="width:34px">${m}</th>`).join('') +
-    `<th class="num" style="width:82px">Total</th><th style="width:66px"></th></tr></thead>`;
-  let body = lista.length ? lista.map(a => {
-    const pagos = MESES.map((_,i)=>`${ano}-${String(i+1).padStart(2,'0')}`).filter(k=>a.pagamentos[k]).length;
-    return `<tr>
-      <td class="forte">${esc(a.nome)}${a.ativo?'':' <span class="tag neutra">inativo</span>'}</td>
-      <td style="text-align:center"><button class="bt-icone" title="${a.inscritoClinica?'Inscrito na Clínica':'NÃO inscrito na Clínica'}"
-        onclick="alternarInscricao('${a.id}')" style="font-size:15px">${a.inscritoClinica?'✅':'⛔'}</button></td>` +
-      MESES.map((_,i)=>{ const k = `${ano}-${String(i+1).padStart(2,'0')}`; const fut = i>mesAtualIdx;
-        return `<td><button class="mes-bt ${a.pagamentos[k]?'pago':''} ${fut?'futuro':''}"
-          onclick="alternarMes('${a.id}','${k}')" title="${MESES_LONGO[i]} — ${a.pagamentos[k]?'pago':'em aberto'}">${a.pagamentos[k]?'✓':''}</button></td>`;}).join('') +
-      `<td class="num forte">${dinheiroCurto(pagos*v)}</td>
-      <td style="white-space:nowrap">
-        <button class="bt-icone" title="Editar" onclick="editarAluno('${a.id}')">✎</button>
-        <button class="bt-icone perigo" title="Remover" onclick="removerAluno('${a.id}')">✕</button></td></tr>`;
-  }).join('') : `<tr><td colspan="${MESES.length+4}" class="vazio">Nenhum aluno encontrado</td></tr>`;
-  const totMes = MESES.map((_,i)=>{ const k=`${ano}-${String(i+1).padStart(2,'0')}`;
-    return lista.filter(a=>a.pagamentos[k]).length; });
-  body += `<tr class="linha-total"><td>Pagantes por mês</td><td></td>` +
-    totMes.map(n=>`<td style="text-align:center">${n||'—'}</td>`).join('') +
-    `<td class="num">${dinheiroCurto(totMes.reduce((s,n)=>s+n,0)*v)}</td><td></td></tr>`;
-  $('tbClubinho').innerHTML = head + '<tbody>' + body + '</tbody>';
-  renderArrecClube();
-}
-function alternarMes(id,k){ const a = D.clubinho.alunos.find(x=>x.id===id);
+/* ---------- CLUBINHO ---------- */function alternarMes(id,k){ const a = D.clubinho.alunos.find(x=>x.id===id);
   if(a.pagamentos[k]) delete a.pagamentos[k]; else a.pagamentos[k]=true; salvar(); }
 function alternarInscricao(id){ const a = D.clubinho.alunos.find(x=>x.id===id);
   a.inscritoClinica = !a.inscritoClinica; salvar(a.inscritoClinica?`${a.nome} marcado como inscrito na Clínica`:`${a.nome} marcado como NÃO inscrito`); }
@@ -1124,77 +918,6 @@ function removerAluno(id){ const a = D.clubinho.alunos.find(x=>x.id===id);
   if(!confirm(`Remover ${a.nome} do clubinho? O histórico de pagamentos será apagado.`)) return;
   D.clubinho.alunos = D.clubinho.alunos.filter(x=>x.id!==id); salvar('Aluno removido'); }
 
-/* ---------- CAIXA DO CLUBINHO ---------- */
-function renderCaixaClube(){
-  const v = +D.config.mensalidadeClubinho||30;
-  const mens = mensalidadesClube();
-  const porMes = {};
-  mens.forEach(x => { porMes[x.mes] = porMes[x.mes]||{n:0,v:0}; porMes[x.mes].n++; porMes[x.mes].v+=x.valor; });
-
-  $('ccRec').textContent = dinheiroCurto(recClube());
-  $('ccRecSub').textContent = `${mens.length} mensalidade(s) de ${dinheiroCurto(v)}`;
-  $('ccDesp').textContent = dinheiroCurto(despClube());
-  $('ccDespSub').textContent = `${D.clubinho.caixa.filter(l=>l.despesa).length} despesa(s) lançada(s)`;
-  $('ccSaldo').textContent = dinheiroCurto(saldoClube());
-  $('ccSaldo').parentElement.className = 'kpi ' + (saldoClube()>=0?'verde':'vermelho');
-  $('ccChico').textContent = dinheiroCurto(D.config.chicoRedesMes);
-
-  const auto = Object.keys(porMes).sort().map(m=>({data:m+'-01', desc:`Mensalidades do clubinho — ${MESES_LONGO[+m.slice(5)-1]} (${porMes[m].n} aluno(s))`,
-    cat:'Mensalidades', receita:porMes[m].v, despesa:0, auto:true}));
-  const todos = [...auto, ...D.clubinho.caixa].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
-
-  $('tbCaixaClube').innerHTML = `<thead><tr><th style="width:96px">Data</th><th>Descrição</th><th style="width:150px">Categoria</th>
-      <th class="num" style="width:110px">Receita</th><th class="num" style="width:110px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>` +
-    (todos.length ? todos.map(l=>`<tr>
-      <td class="mudo">${dataBR(l.data)}</td>
-      <td>${esc(l.desc)}</td>
-      <td><span class="tag ${l.auto?'azul':'neutra'}">${esc(l.cat||'Outros')}</span></td>
-      <td class="num ${l.receita?'rec':'mudo'}">${l.receita?dinheiroCurto(l.receita):'—'}</td>
-      <td class="num ${l.despesa?'desp':'mudo'}">${l.despesa?dinheiroCurto(l.despesa):'—'}</td>
-      <td style="white-space:nowrap">${l.auto?'<span class="mudo" style="font-size:11px">automático</span>':
-        `<button class="bt-icone" title="Editar" onclick="editarLancClube('${l.id}')">✎</button>
-         <button class="bt-icone perigo" title="Remover" onclick="removerLancClube('${l.id}')">✕</button>`}</td>
-    </tr>`).join('') : '<tr><td colspan="6" class="vazio">Nenhum lançamento ainda</td></tr>') +
-    `</tbody><tfoot><tr class="linha-total"><td colspan="3">Saldo do clubinho</td>
-      <td class="num">${dinheiroCurto(recClube())}</td><td class="num">${dinheiroCurto(despClube())}</td><td></td></tr></tfoot>`;
-
-  const mesesTodos = [...new Set([...Object.keys(porMes), ...D.clubinho.caixa.filter(l=>l.data).map(l=>mesDe(l.data))])].sort();
-  $('tbResumoClube').innerHTML = `<thead><tr><th>Mês</th><th class="num">Mensalidades</th><th class="num">Outras receitas</th>
-      <th class="num">Despesas</th><th class="num">Resultado</th></tr></thead><tbody>` +
-    (mesesTodos.length ? mesesTodos.map(m=>{
-      const mv = (porMes[m]||{v:0}).v;
-      const or = D.clubinho.caixa.filter(l=>mesDe(l.data)===m).reduce((s,l)=>s+(+l.receita||0),0);
-      const dp = D.clubinho.caixa.filter(l=>mesDe(l.data)===m).reduce((s,l)=>s+(+l.despesa||0),0);
-      const res = mv+or-dp;
-      return `<tr><td class="forte">${MESES_LONGO[+m.slice(5)-1]} ${m.slice(0,4)}</td>
-        <td class="num ${mv?'rec':'mudo'}">${mv?dinheiroCurto(mv):'—'}</td>
-        <td class="num ${or?'rec':'mudo'}">${or?dinheiroCurto(or):'—'}</td>
-        <td class="num ${dp?'desp':'mudo'}">${dp?dinheiroCurto(dp):'—'}</td>
-        <td class="num forte" style="color:${res>=0?'var(--verde)':'var(--vermelho)'}">${dinheiroCurto(res)}</td></tr>`;
-    }).join('') : '<tr><td colspan="5" class="vazio">Marque os pagamentos na aba Clubinho para o resumo aparecer</td></tr>') + '</tbody>';
-}
-const CATS_CLUBE = ['Chico — redes','Mensalidades','Material','Outros'];
-function editarLancClube(id){
-  const l = id ? D.clubinho.caixa.find(x=>x.id===id) : {id:'',data:hoje(),desc:'',cat:'Outros',receita:0,despesa:0};
-  abrirModal(id?'Editar lançamento':'Novo lançamento no caixa do clubinho', `
-    <div class="campo-linha">
-      <div class="campo"><label>Data</label><input type="date" id="mData" value="${l.data||hoje()}"></div>
-      <div class="campo"><label>Categoria</label><select id="mCat">${CATS_CLUBE.map(c=>`<option ${c===l.cat?'selected':''}>${c}</option>`).join('')}</select></div>
-    </div>
-    <div class="campo"><label>Descrição</label><input type="text" id="mDesc" value="${esc(l.desc)}" placeholder="Ex.: Chico — redes de julho"></div>
-    <div class="campo-linha">
-      <div class="campo"><label>Receita</label><input type="number" id="mRec" value="${l.receita||''}" step="0.01"></div>
-      <div class="campo"><label>Despesa</label><input type="number" id="mDesp" value="${l.despesa||''}" step="0.01"></div>
-    </div>
-    <div class="aviso info"><span>As mensalidades marcadas na aba Clubinho já entram automaticamente — não precisa lançar aqui.</span></div>
-  `, () => {
-    const desc = $('mDesc').value.trim(); if(!desc) return torrada('Informe a descrição');
-    const o = {data:$('mData').value, desc, cat:$('mCat').value, receita:+$('mRec').value||0, despesa:+$('mDesp').value||0};
-    if(!o.receita && !o.despesa) return torrada('Informe um valor');
-    if(id) Object.assign(D.clubinho.caixa.find(x=>x.id===id), o); else D.clubinho.caixa.push({id:uid('cc'),...o});
-    fecharModal(); salvar('Lançamento salvo');
-  });
-}
 function removerLancClube(id){ if(!confirm('Remover este lançamento?')) return;
   D.clubinho.caixa = D.clubinho.caixa.filter(x=>x.id!==id); salvar('Lançamento removido'); }
 
@@ -1225,7 +948,7 @@ function renderPatrimonio(){
 }
 function passarItem(id){
   const p = D.patrimonio.find(x=>x.id===id);
-  const nomes = [...new Set([...D.socios.map(s=>s.nome), 'Chico','Abelha','Miguel','Luciano','Popeye'])].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  const nomes = [...new Set([...D.socios.map(s=>s.nome), 'Chico','Abelha','Miguel','Luciano','Popeye'])].sort((a,b)=>a.localeCompare(b,'pt-BR',{sensitivity:'base'}));
   abrirModal(`Passar "${p.item}" para outra pessoa`, `
     <div class="campo"><label>Está agora com</label>
       <input type="text" id="mCom" list="listaNomes" value="" placeholder="Digite ou escolha um nome">
@@ -1279,72 +1002,84 @@ function removerItem(id){ const p = D.patrimonio.find(x=>x.id===id);
   if(!confirm(`Remover "${p.item}" do patrimônio?`)) return;
   D.patrimonio = D.patrimonio.filter(x=>x.id!==id); salvar('Item removido'); }
 
-/* ---------- LIGHT ---------- */
-function renderLight(){
-  const lista = [...D.light].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
-  let rec=0, falta=0, nFalta=0;
-  lista.forEach(l => (l.rateio||[]).forEach(r => { if(r.pago) rec+=(+r.valor||0); else { falta+=(+r.valor||0); nFalta++; } }));
-  $('lgRec').textContent = dinheiroCurto(rec);
-  $('lgRecSub').textContent = `${lista.length} conta(s) rateada(s)`;
-  $('lgFalta').textContent = dinheiroCurto(falta);
-  $('lgFaltaSub').textContent = nFalta ? `${nFalta} Pix pendente(s)` : 'Nenhum Pix pendente';
-
-  $('listaLight').innerHTML = lista.length ? lista.map(l => {
-    const pago = (l.rateio||[]).filter(r=>r.pago).reduce((s,r)=>s+(+r.valor||0),0);
-    const pct = l.valor ? Math.round(pago/l.valor*100) : 0;
-    return `<div class="card" style="margin-bottom:12px">
-      <div class="card-cab">
-        <h3>Light de ${dataBR(l.data)} — ${dinheiroCurto(l.valor)}</h3>
-        <div class="dir">
-          <span class="tag ${pct>=100?'ok':'sol'}">${pct}% recebido</span>
-          <button class="bt-icone" title="Editar" onclick="editarLight('${l.id}')">✎</button>
-          <button class="bt-icone perigo" title="Remover" onclick="removerLight('${l.id}')">✕</button>
-        </div>
-      </div>
-      <div class="card-corpo">
-        <div class="barra" style="margin-bottom:14px"><i class="${pct>=100?'verde':'sol'}" style="width:${Math.min(pct,100)}%"></i></div>
-        <div class="grade g4">
-          ${(l.rateio||[]).map((r,i)=>`
-            <div onclick="alternarLight('${l.id}',${i})" style="cursor:pointer;border:1px solid ${r.pago?'#B9E4D0':'var(--linha)'};
-              background:${r.pago?'var(--verde-100)':'var(--branco)'};border-radius:10px;padding:11px 13px;transition:.15s">
-              <div style="font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px">
-                ${r.pago?'✅':'⬜'} ${esc(r.quem)}</div>
-              <div style="font-size:16px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums;
-                color:${r.pago?'#15734C':'var(--texto-2)'}">${dinheiroCurto(r.valor)}</div>
-              <div class="mini-rot" style="margin-top:2px">${r.pago?('Pix em '+dataBR(r.pagoEm||l.data)):'aguardando Pix'}</div>
-            </div>`).join('')}
-        </div>
-      </div></div>`;
-  }).join('') : '<div class="card"><div class="vazio">Nenhuma conta da Light cadastrada</div></div>';
-}
-function alternarLight(id,i){
+/* ---------- LIGHT ---------- */function alternarLight(id,i){
   const l = D.light.find(x=>x.id===id); const r = l.rateio[i];
   r.pago = !r.pago; r.pagoEm = r.pago ? hoje() : '';
   salvar(r.pago?`${r.quem} marcado como pago`:`${r.quem} marcado como pendente`);
 }
 function editarLight(id){
-  const l = id ? D.light.find(x=>x.id===id)
-    : {id:'',data:hoje(),valor:0,rateio:(D.config.pagadoresLight||[]).map(q=>({quem:q,valor:0,pago:false,pagoEm:''}))};
+  const l=id?D.light.find(x=>x.id===id)
+    :{id:'',data:hoje(),valor:0,rateio:(D.config.pagadoresLight||[]).map(q=>({quem:q,pct:0,valor:0,pago:false,pagoEm:''}))};
+  const total=+l.valor||0;
+  const linhas=(l.rateio||[]).map(r=>({quem:r.quem,
+    pct: (r.pct!==undefined&&r.pct!==null&&r.pct!=='') ? +r.pct
+         : (total? Math.round((+r.valor||0)/total*10000)/100 : Math.round(10000/Math.max((l.rateio||[]).length,1))/100)}));
   abrirModal(id?'Editar conta da Light':'Nova conta da Light', `
     <div class="campo-linha">
       <div class="campo"><label>Data da conta</label><input type="date" id="mData" value="${l.data||hoje()}"></div>
-      <div class="campo"><label>Valor total</label><input type="number" id="mValor" value="${l.valor||''}" step="0.01" placeholder="0,00"></div>
+      <div class="campo"><label>Valor total</label>
+        <input type="number" id="mValor" value="${l.valor||''}" step="0.01" placeholder="0,00" oninput="recalcLight()"></div>
     </div>
-    <div class="campo"><label>Quem rateia (um por linha)</label>
-      <textarea id="mQuem" rows="4" style="resize:vertical">${(l.rateio||[]).map(r=>r.quem).join('\n')}</textarea></div>
-    <div class="aviso info"><span>O valor é dividido em partes iguais entre os nomes listados. A rede não entra no rateio — custo zero.</span></div>
+    <label>Rateio</label>
+    <div class="rat-cab"><span>Quem paga</span><span>%</span><span>Valor</span><span></span></div>
+    <div id="ratLista">${linhas.map(r=>linhaRateio(r.quem,r.pct)).join('')}</div>
+    <button class="bt mini" type="button" onclick="addLinhaLight()" style="margin:4px 0 12px">+ Adicionar quem paga</button>
+    <div id="ratAviso"></div>
+    <div class="aviso info" style="margin-top:10px"><span>Digite o percentual de cada um — o valor é calculado sozinho.
+      Se preferir, clique em <b>Dividir igualmente</b>. A rede não entra no rateio: o custo para ela é sempre zero.</span></div>
+    <button class="bt mini" type="button" onclick="dividirIgualLight()" style="margin-top:8px">Dividir igualmente</button>
   `, () => {
-    const valor = +$('mValor').value||0;
-    const quens = $('mQuem').value.split('\n').map(s=>s.trim()).filter(Boolean);
-    if(!quens.length) return torrada('Informe pelo menos um pagador');
-    const parte = Math.round(valor/quens.length*100)/100;
-    const antigos = l.rateio||[];
-    const rateio = quens.map(q => { const a = antigos.find(x=>x.quem===q);
-      return {quem:q, valor:parte, pago:a?!!a.pago:false, pagoEm:a?a.pagoEm||'':''}; });
-    const o = {data:$('mData').value, valor, rateio};
-    if(id) Object.assign(D.light.find(x=>x.id===id), o); else D.light.push({id:uid('lz'),...o});
-    fecharModal(); salvar('Conta da Light salva');
+    const valor=+$('mValor').value||0;
+    const dados=lerRateio();
+    if(!dados.length) return torrada('Informe pelo menos um pagador');
+    const antigos=l.rateio||[];
+    const rateio=dados.map(d=>{ const ant=antigos.find(x=>x.quem===d.quem);
+      return {quem:d.quem, pct:d.pct, valor:Math.round(valor*d.pct)/100,
+              pago:ant?!!ant.pago:false, pagoEm:ant?(ant.pagoEm||''):''}; });
+    const o={data:$('mData').value, valor, rateio};
+    if(id) Object.assign(D.light.find(x=>x.id===id),o); else D.light.push({id:uid('lz'),...o});
+    fecharModal(); salvar('Conta da Light de '+dataBR(o.data)+' salva');
   });
+  setTimeout(recalcLight,30);
+}
+function linhaRateio(quem,pct){
+  return `<div class="rat-linha">
+    <input type="text" value="${esc(quem||'')}" placeholder="Nome" oninput="recalcLight()">
+    <input type="number" value="${pct===undefined?'':pct}" step="0.01" min="0" max="100" placeholder="%" oninput="recalcLight()">
+    <div class="calc">—</div>
+    <button class="bt-icone perigo" type="button" title="Remover" onclick="this.parentElement.remove();recalcLight()">✕</button>
+  </div>`;
+}
+function addLinhaLight(){ $('ratLista').insertAdjacentHTML('beforeend',linhaRateio('',0)); recalcLight(); }
+function lerRateio(){
+  return [...document.querySelectorAll('#ratLista .rat-linha')].map(d=>{
+    const c=d.querySelectorAll('input');
+    return {quem:c[0].value.trim(), pct:+c[1].value||0};
+  }).filter(x=>x.quem);
+}
+function dividirIgualLight(){
+  const ls=[...document.querySelectorAll('#ratLista .rat-linha')].filter(d=>d.querySelectorAll('input')[0].value.trim());
+  if(!ls.length) return;
+  const p=Math.round(10000/ls.length)/100;
+  ls.forEach((d,i)=>{ d.querySelectorAll('input')[1].value =
+    (i===ls.length-1) ? Math.round((100-p*(ls.length-1))*100)/100 : p; });
+  recalcLight();
+}
+function recalcLight(){
+  const valor=+($('mValor')||{}).value||0;
+  let soma=0;
+  document.querySelectorAll('#ratLista .rat-linha').forEach(d=>{
+    const c=d.querySelectorAll('input'); const pct=+c[1].value||0;
+    if(c[0].value.trim()) soma+=pct;
+    d.querySelector('.calc').textContent = dinheiroCurto(Math.round(valor*pct)/100);
+  });
+  soma=Math.round(soma*100)/100;
+  const av=$('ratAviso'); if(!av) return;
+  av.innerHTML = Math.abs(soma-100)<0.011
+    ? `<div class="aviso ok"><span>Soma dos percentuais: <b>100%</b> — ${dinheiroCurto(valor)} totalmente rateado.</span></div>`
+    : `<div class="aviso ${soma>100?'erro':'alerta'}"><span>Soma dos percentuais: <b>${soma}%</b>.
+        ${soma<100?`Faltam ${Math.round((100-soma)*100)/100}% (${dinheiroCurto(Math.round(valor*(100-soma))/100)} sobrando para a rede pagar).`
+                  :`Passou ${Math.round((soma-100)*100)/100}% do total.`}</span></div>`;
 }
 function removerLight(id){ if(!confirm('Remover esta conta da Light?')) return;
   D.light = D.light.filter(x=>x.id!==id); salvar('Conta removida'); }
@@ -1375,41 +1110,7 @@ function editarRegra(i){
 }
 function removerRegra(i){ if(!confirm('Remover esta regra?')) return; D.regras.splice(i,1); salvar('Regra removida'); }
 
-/* ---------- AJUSTES ---------- */
-function renderAjustes(){
-  $('cfgAnuidade').value=D.config.anuidadeSocio||300;
-  $('cfgMensal').value=D.config.mensalidadeClubinho||30;
-  $('cfgChico').value=D.config.chicoRedesMes||350;
-  $('cfgAlisa').value=D.config.alisamentoQuadra||75;
-  $('cfgRespS').value=D.config.respSocios||'';
-  $('cfgRespC').value=D.config.respClubinho||'';
-  $('cfgRespCl').value=D.config.respClinica||'';
-  if($('cfgEuNome')!==document.activeElement) $('cfgEuNome').value=euNome;
-
-  const b=$('badgeNuvem');
-  if(!temNuvem()) b.innerHTML='<span class="tag sol">Modo local</span>';
-  else if(erroRede) b.innerHTML='<span class="tag deve">Sem conexão</span>';
-  else b.innerHTML='<span class="tag ok">Conectado</span>';
-
-  $('avisoNuvem').innerHTML = !temNuvem()
-    ? `<div class="aviso alerta"><span><b>A nuvem ainda não foi configurada.</b> Por enquanto as alterações ficam salvas só neste aparelho.
-        Preencha o arquivo <b>config.js</b> com o endereço e a chave do Supabase (o guia explica como) para que todos passem a editar ao vivo.</span></div>`
-    : erroRede
-    ? `<div class="aviso erro"><span>Não estou conseguindo falar com a nuvem. Suas alterações estão guardadas aqui e serão enviadas assim que a conexão voltar.</span></div>`
-    : `<div class="aviso ok"><span>Tudo sincronizado. Qualquer sócio com o link edita e todos veem na hora — não precisa baixar nem subir arquivo.
-        Última alteração ${ultimoQuando?('em '+new Date(ultimoQuando).toLocaleString('pt-BR')):''} por <b>${esc(ultimoAutor||'—')}</b>.</span></div>`;
-
-  $('statusDados').textContent = temNuvem()
-    ? `Versão ${versao} · ${D.socios.length} sócios · ${D.caixaSocios.length} lançamentos · ${D.clubinho.alunos.length} alunos`
-    : 'Modo local — as alterações não estão sendo compartilhadas.';
-
-  const log=(D.log||[]).slice(0,20);
-  $('tbLog').innerHTML = `<thead><tr><th style="width:150px">Quando</th><th style="width:130px">Quem</th><th>O que</th></tr></thead><tbody>` +
-    (log.length ? log.map(l=>`<tr><td class="mudo">${new Date(l.q).toLocaleString('pt-BR')}</td>
-      <td class="forte">${esc(l.n||'—')}</td><td>${esc(l.o||'Alteração')}</td></tr>`).join('')
-      : '<tr><td colspan="3" class="vazio">Nenhuma alteração registrada ainda</td></tr>') + '</tbody>';
-}
-function salvarConfig(){
+/* ---------- AJUSTES ---------- */function salvarConfig(){
   D.config.anuidadeSocio = +$('cfgAnuidade').value||300;
   D.config.mensalidadeClubinho = +$('cfgMensal').value||30;
   D.config.chicoRedesMes = +$('cfgChico').value||350;
@@ -1427,55 +1128,6 @@ function baixarDados(){
   a.click(); URL.revokeObjectURL(a.href);
   torrada('Cópia de segurança baixada');
 }
-function renderArrecClube(){
-  const v=+D.config.mensalidadeClubinho||30;
-  const ano=(D.meta&&D.meta.ano)||2026;
-  $('anoClube').textContent=ano;
-  const alunos=D.clubinho.alunos;
-  const dados=MESES.map((_,i)=>{ const k=`${ano}-${String(i+1).padStart(2,'0')}`;
-    const n=alunos.filter(a=>a.pagamentos[k]).length; return {i,k,n,valor:n*v}; });
-  const total=dados.reduce((s,d)=>s+d.valor,0);
-  const max=Math.max(...dados.map(d=>d.valor),1);
-  const comAlgo=dados.filter(d=>d.valor>0);
-  const media=comAlgo.length?total/comAlgo.length:0;
-
-  const W=Math.max(MESES.length*58+40,360), H=185, base=H-30, topo=16;
-  let svg=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;min-height:170px" preserveAspectRatio="xMinYMid meet">`;
-  [0,.5,1].forEach(f=>{ const y=base-(base-topo)*f;
-    svg+=`<line x1="34" y1="${y}" x2="${W-6}" y2="${y}" stroke="#EEF3F6" stroke-width="1"/>`;
-    svg+=`<text x="30" y="${y+3.5}" font-size="9" fill="#8AA0AD" text-anchor="end">${Math.round(max*f)}</text>`; });
-  if(media>0){ const y=base-(base-topo)*(media/max);
-    svg+=`<line x1="34" y1="${y}" x2="${W-6}" y2="${y}" stroke="#F5B72E" stroke-width="1.5" stroke-dasharray="5 4"/>`; }
-  dados.forEach(d=>{ const x=40+d.i*58, h=(base-topo)*(d.valor/max);
-    svg+=`<rect x="${x}" y="${base-h}" width="34" height="${Math.max(h,2)}" rx="5" fill="${d.valor?'#0E7BA8':'#E1E8ED'}">
-      <title>${MESES_LONGO[d.i]}: ${dinheiroCurto(d.valor)} (${d.n} aluno(s))</title></rect>`;
-    if(d.valor) svg+=`<text x="${x+17}" y="${base-h-5}" font-size="9.5" fill="#0A4D6E" text-anchor="middle" font-weight="700">${d.n}</text>`;
-    svg+=`<text x="${x+17}" y="${H-10}" font-size="10.5" fill="#5A7180" text-anchor="middle" font-weight="600">${MESES[d.i]}</text>`; });
-  svg+='</svg>';
-  svg+=`<div style="display:flex;gap:18px;justify-content:center;margin-top:6px;font-size:12px;color:#5A7180;font-weight:600;flex-wrap:wrap">
-    <span>Total no ano <b style="color:#1E9E6A">${dinheiroCurto(total)}</b></span>
-    <span>Média mensal <b style="color:#D99A12">${dinheiroCurto(media)}</b></span>
-    <span class="mudo">O número em cima da barra é a quantidade de alunos que pagaram</span></div>`;
-  $('graficoClube').innerHTML=svg;
-
-  let acum=0;
-  const desp=m=>D.clubinho.caixa.filter(l=>mesDe(l.data)===m).reduce((s,l)=>s+(+l.despesa||0),0);
-  $('tbArrecClube').innerHTML=`<thead><tr><th>Mês</th><th class="num">Alunos que pagaram</th><th class="num">Arrecadado</th>
-      <th class="num">Despesas do mês</th><th class="num">Resultado</th><th class="num">Acumulado</th></tr></thead><tbody>` +
-    dados.map(d=>{ const dp=desp(d.k); acum+=d.valor-dp;
-      return `<tr><td class="forte">${MESES_LONGO[d.i]}</td>
-        <td class="num ${d.n?'':'mudo'}">${d.n||'—'} ${d.n?`<span class="mudo">de ${alunos.filter(a=>a.ativo).length}</span>`:''}</td>
-        <td class="num ${d.valor?'rec':'mudo'}">${d.valor?dinheiroCurto(d.valor):'—'}</td>
-        <td class="num ${dp?'desp':'mudo'}">${dp?dinheiroCurto(dp):'—'}</td>
-        <td class="num forte" style="color:${(d.valor-dp)>=0?'var(--verde)':'var(--vermelho)'}">${(d.valor||dp)?dinheiroCurto(d.valor-dp):'—'}</td>
-        <td class="num mudo">${dinheiroCurto(acum)}</td></tr>`; }).join('') +
-    `</tbody><tfoot><tr class="linha-total"><td>Total do ano</td>
-      <td class="num">${dados.reduce((s,d)=>s+d.n,0)} mensalidade(s)</td>
-      <td class="num">${dinheiroCurto(total)}</td>
-      <td class="num">${dinheiroCurto(dados.reduce((s,d)=>s+desp(d.k),0))}</td>
-      <td class="num">${dinheiroCurto(total-dados.reduce((s,d)=>s+desp(d.k),0))}</td><td></td></tr></tfoot>`;
-}
-
 function importarDados(ev){
   const f = ev.target.files[0]; if(!f) return;
   const fr = new FileReader();
@@ -1486,15 +1138,774 @@ function importarDados(ev){
 }
 function exportarCSV(){
   const linhas = [['Data','Descrição','Categoria','Receita','Despesa']];
-  [...D.caixaSocios].sort((a,b)=>(a.data||'').localeCompare(b.data||''))
+  D.caixaSocios.filter(l=>noAno(l.data)).sort((a,b)=>(a.data||'').localeCompare(b.data||''))
     .forEach(l => linhas.push([dataBR(l.data), l.desc, l.cat||'', String(l.receita||0).replace('.',','), String(l.despesa||0).replace('.',',')]));
   linhas.push(['','','TOTAL', String(totRec().toFixed(2)).replace('.',','), String(totDesp().toFixed(2)).replace('.',',')]);
   const csv = '﻿' + linhas.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(';')).join('\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
-  a.download = 'caixa-socios-2026.csv'; a.click(); URL.revokeObjectURL(a.href);
+  a.download = 'caixa-socios-'+anoAtivo+'.csv'; a.click(); URL.revokeObjectURL(a.href);
   torrada('CSV exportado');
 }
+
+/* ---------- ANO ATIVO ---------- */
+function anoDe(s){ return +String(s||'').slice(0,4) || 0; }
+function anosDisponiveis(){
+  const s=new Set();
+  (D.caixaSocios||[]).forEach(l=>{ if(l.data) s.add(anoDe(l.data)); });
+  (D.clubinho.caixa||[]).forEach(l=>{ const d=l.competencia||l.data; if(d) s.add(anoDe(d)); });
+  (D.light||[]).forEach(l=>{ if(l.data) s.add(anoDe(l.data)); });
+  (D.socios||[]).forEach(x=>Object.keys(x.anuidades||{}).forEach(a=>s.add(+a)));
+  (D.clubinho.alunos||[]).forEach(a=>Object.keys(a.pagamentos||{}).forEach(k=>s.add(anoDe(k))));
+  ((D.meta&&D.meta.anos)||[]).forEach(a=>s.add(+a));
+  if(!s.size) s.add(new Date().getFullYear());
+  return [...s].filter(Boolean).sort((a,b)=>a-b);
+}
+function anu(s){ return (s.anuidades&&s.anuidades[anoAtivo]) || {valor:0,pagoEm:'',obs:''}; }
+function setAnu(s){ s.anuidades=s.anuidades||{};
+  if(!s.anuidades[anoAtivo]) s.anuidades[anoAtivo]={valor:0,pagoEm:'',obs:''};
+  return s.anuidades[anoAtivo]; }
+function noAno(data){ return anoDe(data)===anoAtivo; }
+function mudarAno(a){ anoAtivo=+a; renderTudo();
+  torrada('Exercício de '+anoAtivo); }
+function renderSeletorAno(){
+  const anos=anosDisponiveis();
+  if(!anos.includes(anoAtivo)) anoAtivo=anos.includes(new Date().getFullYear())?new Date().getFullYear():anos[anos.length-1];
+  $('selAno').innerHTML=anos.map(a=>`<option value="${a}" ${a===anoAtivo?'selected':''}>${a}</option>`).join('');
+}
+function abrirNovoAno(){
+  const anos=anosDisponiveis(); const sugerido=Math.max(...anos)+1;
+  const ativos=D.socios.filter(s=>s.ativo!==false);
+  abrirModal('Abrir novo ano', `
+    <div class="campo"><label>Ano</label><input type="number" id="mAno" value="${sugerido}" min="2020" max="2100"></div>
+    <div class="campo"><label>Valor da anuidade para o novo ano</label>
+      <input type="number" id="mVlrAnu" value="${+D.config.anuidadeSocio||300}" step="10"></div>
+    <div class="campo"><label class="check"><input type="checkbox" id="mCopiarSocios" checked>
+      Trazer os ${ativos.length} sócios atuais com a anuidade em aberto</label></div>
+    <div class="campo"><label class="check"><input type="checkbox" id="mCopiarAlunos" checked>
+      Manter os ${D.clubinho.alunos.filter(a=>a.ativo).length} alunos do clubinho</label></div>
+    <div class="aviso info"><span>O saldo do caixa não zera: ele continua acumulando de um ano para o outro.
+      O patrimônio e as regras seguem valendo para todos os anos.</span></div>
+  `, () => {
+    const ano=+$('mAno').value; if(!ano||ano<2020) return torrada('Informe um ano válido');
+    if(anosDisponiveis().includes(ano)) return torrada('Esse ano já existe no sistema');
+    const vlr=+$('mVlrAnu').value||0;
+    D.meta=D.meta||{}; D.meta.anos=[...new Set([...(D.meta.anos||anosDisponiveis()),ano])].sort((a,b)=>a-b);
+    if($('mCopiarSocios').checked) D.socios.filter(s=>s.ativo!==false).forEach(s=>{
+      s.anuidades=s.anuidades||{}; if(!s.anuidades[ano]) s.anuidades[ano]={valor:s.isento?0:vlr,pagoEm:'',obs:''}; });
+    if(!$('mCopiarAlunos').checked) D.clubinho.alunos.forEach(a=>a.ativo=false);
+    anoAtivo=ano; fecharModal(); salvar('Abertura do exercício de '+ano);
+  }, 'Abrir '+sugerido);
+}
+
+/* ---------- RENDER PRINCIPAL ---------- */
+function renderTudo(){
+  renderSeletorAno();
+  renderPainel(); renderSocios(); renderCaixa(); renderClubinho(); renderCaixaClube();
+  renderPatrimonio(); renderLight(); renderRegras(); renderAjustes();
+  $('chipSocios').textContent=dinheiroCurto(saldoSocios());
+  $('chipClubinho').textContent=dinheiroCurto(saldoClube());
+  $('rodapeS').textContent=dinheiroCurto(saldoSocios());
+  $('rodapeC').textContent=dinheiroCurto(saldoClube());
+  $('rodapeData').textContent=dataBR(D.meta&&D.meta.atualizadoEm);
+  $('vlrAnuidade').textContent=dinheiroCurto(D.config.anuidadeSocio);
+  $('vlrMensal').textContent=dinheiroCurto(D.config.mensalidadeClubinho);
+  $('respSocios').textContent=D.config.respSocios||'—';
+  $('respClubinho').textContent=D.config.respClubinho||'—';
+  if(!temNuvem()) marcarSync('local');
+}
+
+/* ---------- PAINEL ---------- */
+function renderPainel(){
+  const s=saldoSocios(), c=saldoClube();
+  $('kSaldo').textContent=dinheiroCurto(s);
+  $('kSaldo').parentElement.className='kpi '+(s>=0?'verde':'vermelho');
+  $('kSaldoSub').textContent=`${D.caixaSocios.filter(l=>noAno(l.data)).length} lançamentos em ${anoAtivo} · resp. ${(D.config.respSocios||'—').split('(')[0].trim()}`;
+  $('kClube').textContent=dinheiroCurto(c);
+  $('kClubeSub').textContent=`${D.clubinho.alunos.filter(a=>a.ativo).length} alunos · resp. ${(D.config.respClubinho||'—').split('(')[0].trim()}`;
+
+  const ativos=D.socios.filter(x=>x.ativo!==false);
+  const nAlunos=D.clubinho.alunos.filter(a=>a.ativo).length;
+  const mA=mesPrincipalClube(), mB=mesAnterior(mA);
+  const pA=participantesDoMes(mA), pB=participantesDoMes(mB);
+  $('kMesAtualRot').textContent='Participantes · '+pA.nome+(pA.ano!==anoAtivo?'/'+String(pA.ano).slice(2):'');
+  $('kMesAtual').textContent=pA.n;
+  $('kMesAtual').parentElement.className='kpi sol';
+  $('kMesAtualSub').textContent=dinheiroCurto(pA.valor);
+  $('kMesAntRot').textContent='Participantes · '+pB.nome+(pB.ano!==anoAtivo?'/'+String(pB.ano).slice(2):'');
+  $('kMesAnt').textContent=pB.n;
+  $('kMesAnt').parentElement.className='kpi';
+  $('kMesAntSub').textContent=dinheiroCurto(pB.valor);
+
+  /* alertas */
+  const al=[];
+  ativos.filter(x=>!x.isento&&!anu(x).pagoEm).forEach(x=>
+    al.push({t:'erro',m:`<b>${esc(x.nome)}</b> está com a anuidade de ${anoAtivo} em aberto.`}));
+  D.light.filter(l=>noAno(l.data)).forEach(l=>{ const f=(l.rateio||[]).filter(r=>!r.pago);
+    if(f.length) al.push({t:'alerta',m:`Light de ${dataBR(l.data)}: falta o Pix de <b>${f.map(r=>esc(r.quem)).join(', ')}</b> (${dinheiroCurto(f.reduce((s2,r)=>s2+(+r.valor||0),0))}).`}); });
+  const mAtual=hoje().slice(0,7);
+  if(anoDe(mAtual)===anoAtivo){
+    const semPag=D.clubinho.alunos.filter(a=>a.ativo&&!a.pagamentos[mAtual]);
+    if(semPag.length) al.push({t:'alerta',m:`Clubinho: <b>${semPag.length} aluno(s)</b> ainda não pagaram ${MESES_LONGO[+mAtual.slice(5)-1].toLowerCase()}.`});
+  }
+  const av=avisoChico();
+  if(av) al.push(av);
+  const naoInsc=D.clubinho.alunos.filter(a=>a.ativo&&!a.inscritoClinica);
+  if(naoInsc.length) al.push({t:'erro',m:`Clubinho: <b>${naoInsc.map(a=>esc(a.nome)).join(', ')}</b> não está(ão) inscrito(s) na Clínica.`});
+  const bolas=D.patrimonio.filter(p=>p.cat==='Bolas'&&(!p.com||p.com==='—'));
+  if(bolas.length) al.push({t:'erro',m:`<b>${bolas.length} bola(s)</b> sem responsável registrado.`});
+  if(!al.length) al.push({t:'ok',m:'Tudo em dia: anuidades pagas, Light rateada e material com responsável.'});
+  $('alertas').innerHTML=al.slice(0,8).map(a=>`<div class="aviso ${a.t}" style="margin-bottom:8px"><span>${a.m}</span></div>`).join('');
+
+  /* cartões de material — troca rápida */
+  const listaBolas=D.patrimonio.filter(p=>p.cat==='Bolas')
+    .sort((x,y)=>x.item.localeCompare(y.item,'pt-BR',{sensitivity:'base'}));
+  const redes=D.patrimonio.filter(p=>p.cat==='Redes');
+  const semDono=redes.filter(p=>!p.com||p.com==='—').length;
+  $('cartoesMaterial').innerHTML = (listaBolas.length ? listaBolas.map(p=>{
+    const tem=p.com&&p.com!=='—';
+    return `<div style="border:1.5px solid ${tem?'var(--linha)':'#F0CFCF'};border-radius:12px;padding:13px 14px;
+      background:${tem?'var(--branco)':'var(--vermelho-100)'};margin-bottom:10px">
+      <div class="mini-rot">${esc(p.item.replace(/^Bola /,''))}</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:5px">
+        <div style="flex:1;min-width:120px">
+          <div style="font-size:17px;font-weight:800;line-height:1.25;color:${tem?'var(--azul-700)':'var(--vermelho)'}">
+            ${tem?esc(p.com):'Sem responsável'}</div>
+          <div class="mini-rot">${p.desde?('desde '+dataBR(p.desde)):'ninguém registrado'}</div>
+        </div>
+        <button class="bt pri" onclick="passarItem('${p.id}')">Trocar</button>
+      </div></div>`;}).join('') : '<div class="vazio">Nenhuma bola cadastrada</div>')
+    + `<div class="mini-rot" style="margin-top:4px">Redes: ${redes.length} cadastrada(s)${semDono?` · <b style="color:var(--vermelho)">${semDono} sem responsável</b>`:' · todas com responsável'}</div>`;
+
+  /* contas fixas */
+  const cf=+D.config.chicoRedesMes||350, al2=+D.config.alisamentoDuasQuadras||150;
+  $('contasFixas').innerHTML=`
+    <table><tbody>
+      <tr><td class="forte">Light</td><td class="mudo">Rateada entre 3 barracas e a Rede do Popeye</td>
+        <td class="num"><span class="tag ok">Custo zero</span></td></tr>
+      <tr><td class="forte">Alisamento das quadras</td><td class="mudo">Toda sexta/sábado · caixa dos sócios</td>
+        <td class="num desp">${dinheiroCurto(al2)}</td></tr>
+      <tr><td class="forte">Chico — redes do fim de semana</td><td class="mudo">Pago no fim do mês anterior · caixa do clubinho</td>
+        <td class="num desp">${dinheiroCurto(cf)}</td></tr>
+      <tr><td class="forte">Contas eventuais</td><td class="mudo">Bombas, energia, bolas, redes, pintura das estacas</td>
+        <td class="num mudo">variável</td></tr>
+    </tbody></table>`;
+
+  const ult=D.caixaSocios.filter(l=>l.data&&noAno(l.data)).sort((a,b)=>b.data.localeCompare(a.data)).slice(0,8);
+  $('tbUltimos').innerHTML=`<thead><tr><th>Data</th><th>Descrição</th><th class="num">Valor</th></tr></thead><tbody>`+
+    (ult.length?ult.map(l=>`<tr><td class="mudo">${dataBR(l.data)}</td><td>${esc(l.desc).slice(0,70)}</td>
+      <td class="num ${l.receita?'rec':'desp'}">${l.receita?'+':'−'}${dinheiroCurto(l.receita||l.despesa)}</td></tr>`).join('')
+      :`<tr><td colspan="3" class="vazio">Nenhum lançamento em ${anoAtivo}</td></tr>`)+'</tbody>';
+  $('painelSub').textContent=`Exercício de ${anoAtivo} · atualizado em ${dataBR(D.meta&&D.meta.atualizadoEm)}`;
+  const sub=document.querySelector('.marca p'); if(sub) sub.textContent=`Quiosque · Quadras 1 e 2 · Controle ${anoAtivo}`;
+}
+
+function mesRefAtual(){
+  const h=hoje();
+  return (anoDe(h)===anoAtivo) ? h.slice(0,7) : `${anoAtivo}-12`;
+}
+function mesAnterior(m){
+  let ano=+m.slice(0,4), i=+m.slice(5)-1;
+  if(i===0){ ano--; i=12; }
+  return `${ano}-${String(i).padStart(2,'0')}`;
+}
+const DIA_VIRADA=25;
+function proxMesDe(m){
+  let ano=+m.slice(0,4), i=+m.slice(5)-1;
+  if(i===11){ ano++; i=-1; }
+  return `${ano}-${String(i+2).padStart(2,'0')}`;
+}
+/* A partir do dia 25 já se organiza o mês seguinte, então o cartão principal
+   passa a ser o mês seguinte e o de comparação, o mês corrente. */
+function mesPrincipalClube(dataRef){
+  const h=dataRef||hoje();
+  if(anoDe(h)!==anoAtivo) return `${anoAtivo}-12`;
+  const m=h.slice(0,7);
+  return (+h.slice(8,10) >= DIA_VIRADA) ? proxMesDe(m) : m;
+}
+function participantesDoMes(m){
+  const v=+D.config.mensalidadeClubinho||30;
+  const n=D.clubinho.alunos.filter(a=>a.pagamentos&&a.pagamentos[m]).length;
+  return {n, valor:n*v, mes:m, nome:MESES_LONGO[+m.slice(5)-1], ano:+m.slice(0,4)};
+}
+function proxMes(d){
+  const dt=d?new Date(d+'T12:00:00'):new Date();
+  dt.setMonth(dt.getMonth()+1);
+  return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0');
+}
+function avisoChico(){
+  const ag=new Date(); const dias=new Date(ag.getFullYear(),ag.getMonth()+1,0).getDate()-ag.getDate();
+  if(dias>7) return null;
+  const alvo=proxMes(hoje());
+  if(anoDe(alvo)!==anoAtivo) return null;
+  const pago=D.clubinho.caixa.some(l=>l.cat==='Chico — redes'&&(l.competencia===alvo));
+  const nome=MESES_LONGO[+alvo.slice(5)-1];
+  return pago
+    ? {t:'ok',m:`Chico de <b>${nome}</b> já está pago.`}
+    : {t:'alerta',m:`Falta pagar o Chico referente a <b>${nome}</b> — o pagamento é feito no fim deste mês.`};
+}
+
+/* ---------- CÁLCULOS ---------- */
+function totRec(){ return D.caixaSocios.filter(l=>noAno(l.data)).reduce((s,l)=>s+(+l.receita||0),0); }
+function totDesp(){ return D.caixaSocios.filter(l=>noAno(l.data)).reduce((s,l)=>s+(+l.despesa||0),0); }
+function saldoSocios(){ return D.caixaSocios.reduce((s,l)=>s+(+l.receita||0)-(+l.despesa||0),0); }
+function resultadoAno(){ return totRec()-totDesp(); }
+function mensalidadesClube(ano){
+  const v=+D.config.mensalidadeClubinho||30; const out=[];
+  D.clubinho.alunos.forEach(a=>Object.keys(a.pagamentos||{}).forEach(m=>{
+    if(a.pagamentos[m] && (!ano||anoDe(m)===ano)) out.push({mes:m,aluno:a.nome,valor:v}); }));
+  return out;
+}
+const compet = l => l.competencia || mesDe(l.data);
+function recClube(ano){ return mensalidadesClube(ano).reduce((s,x)=>s+x.valor,0)
+  + D.clubinho.caixa.filter(l=>!ano||anoDe(compet(l))===ano).reduce((s,l)=>s+(+l.receita||0),0); }
+function despClube(ano){ return D.clubinho.caixa.filter(l=>!ano||anoDe(compet(l))===ano).reduce((s,l)=>s+(+l.despesa||0),0); }
+function saldoClube(){ return (+D.config.saldoInicialClubinho||0)+recClube()-despClube(); }
+
+/* ---------- SÓCIOS ---------- */
+function renderSocios(){
+  const q=($('buscaSocio').value||'').toLowerCase();
+  const ativos=D.socios.filter(s=>s.ativo!==false);
+  let lista=ativos.filter(s=>s.nome.toLowerCase().includes(q));
+  if(fSocio==='pagos') lista=lista.filter(s=>anu(s).pagoEm||s.isento);
+  if(fSocio==='devendo') lista=lista.filter(s=>!anu(s).pagoEm&&!s.isento);
+  lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR',{sensitivity:'base'}));
+
+  const arrec=ativos.reduce((t,s)=>t+(anu(s).pagoEm?(+anu(s).valor||0):0),0);
+  const devendo=ativos.filter(s=>!anu(s).pagoEm&&!s.isento);
+  const aberto=devendo.length*(+D.config.anuidadeSocio||300);
+  $('sArrec').textContent=dinheiroCurto(arrec);
+  $('sArrecSub').textContent=`${ativos.filter(s=>anu(s).pagoEm).length} de ${ativos.length} sócios em ${anoAtivo}`;
+  $('sAberto').textContent=dinheiroCurto(aberto);
+  $('sAbertoSub').textContent=devendo.length?devendo.map(s=>s.nome.split(' ')[0]).join(', '):'Ninguém devendo';
+  $('sTotal').textContent=ativos.length;
+  $('sTotalSub').textContent=`${ativos.filter(s=>s.isento).length} isento(s)`;
+
+  $('tbSocios').innerHTML=`<thead><tr><th style="width:34px">#</th><th>Sócio</th><th class="num">Valor</th>
+    <th>Pagamento</th><th>Situação</th><th>Obs.</th><th style="width:76px"></th></tr></thead><tbody>`+
+    (lista.length?lista.map((s,i)=>{ const a=anu(s); return `<tr>
+      <td class="mudo">${i+1}</td>
+      <td class="forte">${esc(s.nome)}</td>
+      <td class="num">${s.isento?'<span class="mudo">—</span>':dinheiroCurto(a.valor)}</td>
+      <td class="mudo">${dataBR(a.pagoEm)}</td>
+      <td>${s.isento?'<span class="tag azul">Isento</span>':(a.pagoEm?'<span class="tag ok">Pago</span>':'<span class="tag deve">Em aberto</span>')}</td>
+      <td class="mudo">${esc(a.obs||'')}</td>
+      <td style="white-space:nowrap">
+        <button class="bt-icone" title="Editar" onclick="editarSocio('${s.id}')">✎</button>
+        <button class="bt-icone perigo" title="Remover" onclick="removerSocio('${s.id}')">✕</button></td>
+    </tr>`;}).join('')
+    :`<tr><td colspan="7" class="vazio">Nenhum sócio encontrado em ${anoAtivo}</td></tr>`)+
+    `</tbody><tfoot><tr class="linha-total"><td></td><td>Total arrecadado em ${anoAtivo}</td>
+      <td class="num">${dinheiroCurto(arrec)}</td><td colspan="4"></td></tr></tfoot>`;
+}
+function editarSocio(id){
+  const s=id?D.socios.find(x=>x.id===id):null;
+  const a=s?anu(s):{valor:+D.config.anuidadeSocio||300,pagoEm:'',obs:''};
+  abrirModal(id?'Editar sócio':'Novo sócio', `
+    <div class="campo"><label>Nome completo</label><input type="text" id="mNome" value="${esc(s?s.nome:'')}" placeholder="Nome e apelido"></div>
+    <div class="aviso info" style="margin-bottom:14px"><span>Os campos abaixo valem para o exercício de <b>${anoAtivo}</b>.</span></div>
+    <div class="campo-linha">
+      <div class="campo"><label>Valor da anuidade</label><input type="number" id="mValor" value="${a.valor||0}" step="10"></div>
+      <div class="campo"><label>Data do pagamento</label><input type="date" id="mPago" value="${a.pagoEm||''}"></div>
+    </div>
+    <div class="campo"><label>Observação</label><input type="text" id="mObs" value="${esc(a.obs||'')}" placeholder="Ex.: 2X, 3X, parcelado"></div>
+    <div class="campo"><label class="check"><input type="checkbox" id="mIsento" ${s&&s.isento?'checked':''}> Isento da anuidade (síndico)</label></div>
+  `, () => {
+    const nome=$('mNome').value.trim(); if(!nome) return torrada('Informe o nome do sócio');
+    let alvo=s;
+    if(!alvo){ alvo={id:uid('s'),nome,isento:false,ativo:true,anuidades:{}}; D.socios.push(alvo); }
+    alvo.nome=nome; alvo.isento=$('mIsento').checked; alvo.ativo=true;
+    const r=setAnu(alvo);
+    r.valor=alvo.isento?0:(+$('mValor').value||0); r.pagoEm=$('mPago').value; r.obs=$('mObs').value.trim();
+    fecharModal(); salvar(id?('Sócio atualizado: '+nome):('Novo sócio: '+nome));
+  });
+}
+function removerSocio(id){
+  const s=D.socios.find(x=>x.id===id);
+  if(!confirm(`Remover ${s.nome} da lista de sócios?`)) return;
+  D.socios=D.socios.filter(x=>x.id!==id); salvar('Sócio removido: '+s.nome);
+}
+
+/* ---------- CAIXA DOS SÓCIOS ---------- */
+function renderCaixa(){
+  const q=($('buscaLanc').value||'').toLowerCase();
+  const doAno=D.caixaSocios.filter(l=>noAno(l.data));
+  const meses=[...new Set(doAno.filter(l=>l.data).map(l=>mesDe(l.data)))].sort();
+  const cats=[...new Set(doAno.map(l=>l.cat).filter(Boolean))].sort();
+  const mSel=$('filtroMes').value, cSel=$('filtroCat').value;
+  $('filtroMes').innerHTML='<option value="">Todos os meses</option>'+
+    meses.map(m=>`<option value="${m}" ${m===mSel?'selected':''}>${MESES_LONGO[+m.slice(5)-1]} ${m.slice(0,4)}</option>`).join('');
+  $('filtroCat').innerHTML='<option value="">Todas as categorias</option>'+
+    cats.map(c=>`<option value="${esc(c)}" ${c===cSel?'selected':''}>${esc(c)}</option>`).join('');
+
+  let lista=doAno.filter(l=>(l.desc||'').toLowerCase().includes(q));
+  if(mSel) lista=lista.filter(l=>mesDe(l.data)===mSel);
+  if(cSel) lista=lista.filter(l=>l.cat===cSel);
+  lista=[...lista].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+
+  $('cRec').textContent=dinheiroCurto(totRec());
+  $('cRec').parentElement.querySelector('.rot').textContent='Receitas de '+anoAtivo;
+  $('cDesp').textContent=dinheiroCurto(totDesp());
+  $('cDesp').parentElement.querySelector('.rot').textContent='Despesas de '+anoAtivo;
+  $('cSaldo').textContent=dinheiroCurto(saldoSocios());
+  $('cSaldo').parentElement.className='kpi '+(saldoSocios()>=0?'verde':'vermelho');
+  $('cSaldo').parentElement.querySelector('.rot').textContent='Saldo acumulado';
+  $('cQtd').textContent=doAno.length;
+  $('cQtd').parentElement.querySelector('.rot').textContent='Lançamentos em '+anoAtivo;
+
+  const sr=lista.reduce((s,l)=>s+(+l.receita||0),0), sd=lista.reduce((s,l)=>s+(+l.despesa||0),0);
+  $('tbCaixa').innerHTML=`<thead><tr><th style="width:96px">Data</th><th>Descrição</th><th style="width:150px">Categoria</th>
+      <th class="num" style="width:110px">Receita</th><th class="num" style="width:110px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>`+
+    (lista.length?lista.map(l=>`<tr>
+      <td class="mudo">${dataBR(l.data)}</td>
+      <td>${esc(l.desc)}</td>
+      <td><span class="tag neutra">${esc(l.cat||'Outros')}</span></td>
+      <td class="num ${l.receita?'rec':'mudo'}">${l.receita?dinheiroCurto(l.receita):'—'}</td>
+      <td class="num ${l.despesa?'desp':'mudo'}">${l.despesa?dinheiroCurto(l.despesa):'—'}</td>
+      <td style="white-space:nowrap">
+        <button class="bt-icone" title="Editar" onclick="editarLanc('${l.id}')">✎</button>
+        <button class="bt-icone perigo" title="Remover" onclick="removerLanc('${l.id}')">✕</button></td>
+    </tr>`).join('')
+    :`<tr><td colspan="6" class="vazio">Nenhum lançamento encontrado em ${anoAtivo}</td></tr>`)+
+    `</tbody><tfoot><tr class="linha-total"><td colspan="3">${lista.length} lançamento(s) — resultado do filtro: ${dinheiroCurto(sr-sd)}</td>
+      <td class="num">${dinheiroCurto(sr)}</td><td class="num">${dinheiroCurto(sd)}</td><td></td></tr></tfoot>`;
+}
+
+/* ---------- CLUBINHO ---------- */
+function renderClubinho(){
+  const q=($('buscaAluno').value||'').toLowerCase();
+  const so=$('soAtivos').checked;
+  let lista=D.clubinho.alunos.filter(a=>a.nome.toLowerCase().includes(q)&&(!so||a.ativo));
+  lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR',{sensitivity:'base'}));
+  const v=+D.config.mensalidadeClubinho||30;
+  const ano=anoAtivo;
+  const mAtual=hoje().slice(0,7);
+  const mesRef=(anoDe(mAtual)===ano)?mAtual:`${ano}-12`;
+  const mesAtualIdx=(anoDe(mAtual)===ano)?new Date().getMonth():11;
+
+  const ativos=D.clubinho.alunos.filter(a=>a.ativo);
+  $('clAtivos').textContent=ativos.length;
+  $('clAtivosSub').textContent=`${D.clubinho.alunos.length} cadastrados no total`;
+  const pagosMes=ativos.filter(a=>a.pagamentos[mesRef]).length;
+  $('clMes').textContent=dinheiroCurto(pagosMes*v);
+  $('clMesSub').textContent=`${pagosMes} aluno(s) · ${MESES_LONGO[+mesRef.slice(5)-1]}`;
+  const mP=mesPrincipalClube();
+  const cA=participantesDoMes(mP), cB=participantesDoMes(mesAnterior(mP));
+  $('clAtualRot').textContent='Participantes · '+cA.nome+(cA.ano!==ano?'/'+String(cA.ano).slice(2):'');
+  $('clAtual').textContent=cA.n;
+  $('clAtual').parentElement.className='kpi sol';
+  $('clAtualSub').textContent=dinheiroCurto(cA.valor);
+  $('clAntRot').textContent='Participantes · '+cB.nome+(cB.ano!==ano?'/'+String(cB.ano).slice(2):'');
+  $('clAnt').textContent=cB.n;
+  $('clAntSub').textContent=dinheiroCurto(cB.valor);
+
+  let head=`<thead><tr><th>Aluno</th><th style="width:60px">Clínica</th>`+
+    MESES.map(m=>`<th style="width:34px">${m}</th>`).join('')+
+    `<th class="num" style="width:82px">Total</th><th style="width:66px"></th></tr></thead>`;
+  let body=lista.length?lista.map(a=>{
+    const pagos=MESES.map((_,i)=>`${ano}-${String(i+1).padStart(2,'0')}`).filter(k=>a.pagamentos[k]).length;
+    return `<tr>
+      <td class="forte">${esc(a.nome)}${a.ativo?'':' <span class="tag neutra">inativo</span>'}</td>
+      <td style="text-align:center"><button class="bt-icone" title="${a.inscritoClinica?'Inscrito na Clínica':'NÃO inscrito na Clínica'}"
+        onclick="alternarInscricao('${a.id}')" style="font-size:15px">${a.inscritoClinica?'✅':'⛔'}</button></td>`+
+      MESES.map((_,i)=>{ const k=`${ano}-${String(i+1).padStart(2,'0')}`; const fut=i>mesAtualIdx;
+        return `<td><button class="mes-bt ${a.pagamentos[k]?'pago':''} ${fut?'futuro':''}"
+          onclick="alternarMes('${a.id}','${k}')" title="${MESES_LONGO[i]} — ${a.pagamentos[k]?'pago':'em aberto'}">${a.pagamentos[k]?'✓':''}</button></td>`;}).join('')+
+      `<td class="num forte">${dinheiroCurto(pagos*v)}</td>
+      <td style="white-space:nowrap">
+        <button class="bt-icone" title="Editar" onclick="editarAluno('${a.id}')">✎</button>
+        <button class="bt-icone perigo" title="Remover" onclick="removerAluno('${a.id}')">✕</button></td></tr>`;
+  }).join('') : `<tr><td colspan="${MESES.length+4}" class="vazio">Nenhum aluno encontrado</td></tr>`;
+  const totMes=MESES.map((_,i)=>{ const k=`${ano}-${String(i+1).padStart(2,'0')}`;
+    return lista.filter(a=>a.pagamentos[k]).length; });
+  body+=`<tr class="linha-total"><td>Pagantes por mês</td><td></td>`+
+    totMes.map(n=>`<td style="text-align:center">${n||'—'}</td>`).join('')+
+    `<td class="num">${totMes.reduce((s,n)=>s+n,0)}</td><td></td></tr>`;
+  body+=`<tr class="linha-total"><td>Valor do mês</td><td></td>`+
+    totMes.map(n=>`<td style="text-align:center;font-size:11px;white-space:nowrap;color:${n?'var(--verde)':'var(--texto-3)'}">${n?(n*v):'—'}</td>`).join('')+
+    `<td class="num" style="color:var(--verde)">${dinheiroCurto(totMes.reduce((s,n)=>s+n,0)*v)}</td><td></td></tr>`;
+  $('tbClubinho').innerHTML=head+'<tbody>'+body+'</tbody>';
+  renderCelularClube(lista,v,ano,mesAtualIdx);
+  renderArrecClube();
+}
+
+let mesCel=null;
+function renderCelularClube(lista,v,ano,mesAtualIdx){
+  if(mesCel===null||anoDe(mesCel)!==ano) mesCel=mesPrincipalClube();
+  const i=+mesCel.slice(5)-1;
+  const pagos=lista.filter(a=>a.pagamentos[mesCel]).length;
+  $('clubinhoCelular').innerHTML=`
+    <div style="padding:13px 14px;border-bottom:1px solid var(--linha-2)">
+      <div class="mes-nav">
+        <button class="bt" onclick="passoMes(-1)" ${i===0?'disabled':''} aria-label="Mês anterior">‹</button>
+        <select onchange="mesCel=this.value;renderClubinho()">
+          ${MESES_LONGO.map((m,k)=>`<option value="${ano}-${String(k+1).padStart(2,'0')}" ${k===i?'selected':''}>${m} de ${ano}</option>`).join('')}
+        </select>
+        <button class="bt" onclick="passoMes(1)" ${i===11?'disabled':''} aria-label="Próximo mês">›</button>
+      </div>
+      <div style="display:flex;gap:14px;font-size:12.5px;font-weight:700">
+        <span style="color:var(--verde)">${pagos} pago(s) · ${dinheiroCurto(pagos*v)}</span>
+        <span style="color:var(--texto-3)">${lista.length} na lista</span>
+      </div>
+    </div>` +
+    (lista.length ? lista.map(a=>{
+      const pg=!!a.pagamentos[mesCel];
+      const tot=MESES.filter((_,k)=>a.pagamentos[`${ano}-${String(k+1).padStart(2,'0')}`]).length;
+      return `<div class="aluno-linha">
+        <button class="bt-icone" style="font-size:16px;padding:2px" onclick="alternarInscricao('${a.id}')"
+          title="${a.inscritoClinica?'Inscrito na Clínica':'NÃO inscrito na Clínica'}">${a.inscritoClinica?'✅':'⛔'}</button>
+        <div class="nome"><b>${esc(a.nome)}</b><span>${tot} mês(es) no ano · ${dinheiroCurto(tot*v)}</span></div>
+        <button class="pagar-bt ${pg?'pago':''}" onclick="alternarMes('${a.id}','${mesCel}')">${pg?'✓ Pago':'Marcar'}</button>
+      </div>`;}).join('') : '<div class="vazio">Nenhum aluno encontrado</div>');
+}
+function passoMes(d){
+  const ano=anoAtivo; let i=+mesCel.slice(5)-1+d;
+  i=Math.max(0,Math.min(11,i)); mesCel=`${ano}-${String(i+1).padStart(2,'0')}`; renderClubinho();
+}
+function renderArrecClube(){
+  const v=+D.config.mensalidadeClubinho||30, ano=anoAtivo;
+  $('anoClube').textContent=ano;
+  const alunos=D.clubinho.alunos, nAtivos=alunos.filter(a=>a.ativo).length;
+  const linhas=MESES.map((_,i)=>{
+    const k=`${ano}-${String(i+1).padStart(2,'0')}`;
+    const n=alunos.filter(a=>a.pagamentos[k]).length;
+    const outras=D.clubinho.caixa.filter(l=>compet(l)===k).reduce((s,l)=>s+(+l.receita||0),0);
+    const dp=D.clubinho.caixa.filter(l=>compet(l)===k).reduce((s,l)=>s+(+l.despesa||0),0);
+    return {i,k,n,arrec:n*v+outras,desp:dp};
+  });
+  const tA=linhas.reduce((s,l)=>s+l.arrec,0), tD=linhas.reduce((s,l)=>s+l.desp,0);
+  $('tbArrecClube').innerHTML=`<thead><tr><th>Mês</th><th class="num">Participantes</th>
+      <th class="num">Total arrecadado</th><th class="num">Despesas</th><th class="num">Resultado</th></tr></thead><tbody>`+
+    linhas.map(l=>`<tr>
+      <td class="forte">${MESES_LONGO[l.i]}</td>
+      <td class="num ${l.n?'':'mudo'}">${l.n||'—'}</td>
+      <td class="num ${l.arrec?'rec':'mudo'}">${l.arrec?dinheiroCurto(l.arrec):'—'}</td>
+      <td class="num ${l.desp?'desp':'mudo'}">${l.desp?dinheiroCurto(l.desp):'—'}</td>
+      <td class="num forte" style="color:${(l.arrec-l.desp)>=0?'var(--verde)':'var(--vermelho)'}">
+        ${(l.arrec||l.desp)?dinheiroCurto(l.arrec-l.desp):'—'}</td></tr>`).join('')+
+    `</tbody><tfoot><tr class="linha-total"><td>Total de ${ano}</td>
+      <td class="num">${linhas.reduce((s,l)=>s+l.n,0)} mensalidade(s)</td>
+      <td class="num">${dinheiroCurto(tA)}</td><td class="num">${dinheiroCurto(tD)}</td>
+      <td class="num">${dinheiroCurto(tA-tD)}</td></tr></tfoot>`;
+}
+
+/* ---------- CAIXA DO CLUBINHO ---------- */
+function renderCaixaClube(){
+  const v=+D.config.mensalidadeClubinho||30, ano=anoAtivo;
+  const mens=mensalidadesClube(ano);
+  const porMes={};
+  mens.forEach(x=>{ porMes[x.mes]=porMes[x.mes]||{n:0,v:0}; porMes[x.mes].n++; porMes[x.mes].v+=x.valor; });
+
+  $('ccRec').textContent=dinheiroCurto(recClube(ano));
+  $('ccRec').parentElement.querySelector('.rot').textContent='Recebido em '+ano;
+  $('ccRecSub').textContent=`${mens.length} mensalidade(s) de ${dinheiroCurto(v)}`;
+  $('ccDesp').textContent=dinheiroCurto(despClube(ano));
+  $('ccDesp').parentElement.querySelector('.rot').textContent='Despesas de '+ano;
+  $('ccDespSub').textContent=`${D.clubinho.caixa.filter(l=>l.despesa&&anoDe(compet(l))===ano).length} despesa(s) lançada(s)`;
+  $('ccSaldo').textContent=dinheiroCurto(saldoClube());
+  $('ccSaldo').parentElement.className='kpi '+(saldoClube()>=0?'verde':'vermelho');
+  $('ccSaldo').parentElement.querySelector('.rot').textContent='Saldo acumulado';
+  $('ccChico').textContent=dinheiroCurto(D.config.chicoRedesMes);
+
+  const auto=Object.keys(porMes).sort().map(m=>({data:m+'-01',competencia:m,
+    desc:`Mensalidades do clubinho — ${MESES_LONGO[+m.slice(5)-1]} (${porMes[m].n} aluno(s))`,
+    cat:'Mensalidades',receita:porMes[m].v,despesa:0,auto:true}));
+  const manuais=D.clubinho.caixa.filter(l=>anoDe(compet(l))===ano);
+  const todos=[...auto,...manuais].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+
+  $('tbCaixaClube').innerHTML=`<thead><tr><th style="width:96px">Pago em</th><th style="width:110px">Referente a</th>
+      <th>Descrição</th><th style="width:135px">Categoria</th>
+      <th class="num" style="width:105px">Receita</th><th class="num" style="width:105px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>`+
+    (todos.length?todos.map(l=>{ const c=compet(l);
+      return `<tr>
+      <td class="mudo">${dataBR(l.data)}</td>
+      <td>${c?`<span class="tag azul">${MESES_LONGO[+c.slice(5)-1]}/${c.slice(2,4)}</span>`:'<span class="mudo">—</span>'}</td>
+      <td>${esc(l.desc)}</td>
+      <td><span class="tag ${l.auto?'azul':'neutra'}">${esc(l.cat||'Outros')}</span></td>
+      <td class="num ${l.receita?'rec':'mudo'}">${l.receita?dinheiroCurto(l.receita):'—'}</td>
+      <td class="num ${l.despesa?'desp':'mudo'}">${l.despesa?dinheiroCurto(l.despesa):'—'}</td>
+      <td style="white-space:nowrap">${l.auto?'<span class="mudo" style="font-size:11px">automático</span>':
+        `<button class="bt-icone" title="Editar" onclick="editarLancClube('${l.id}')">✎</button>
+         <button class="bt-icone perigo" title="Remover" onclick="removerLancClube('${l.id}')">✕</button>`}</td>
+    </tr>`;}).join('')
+    :`<tr><td colspan="7" class="vazio">Nenhum lançamento em ${ano}</td></tr>`)+
+    `</tbody><tfoot><tr class="linha-total"><td colspan="4">Resultado de ${ano}</td>
+      <td class="num">${dinheiroCurto(recClube(ano))}</td><td class="num">${dinheiroCurto(despClube(ano))}</td><td></td></tr></tfoot>`;
+}
+function editarChico(){
+  abrirModal('Compromisso mensal com o Chico', `
+    <div class="campo"><label>Valor por mês</label>
+      <input type="number" id="mChico" value="${+D.config.chicoRedesMes||350}" step="10"></div>
+    <div class="aviso info"><span>Valor que o Chico recebe do caixa do clubinho para armar, desarmar e guardar as duas
+      redes nos fins de semana e feriados. O pagamento é feito no fim do mês anterior ao mês coberto.</span></div>
+  `, () => {
+    const v=+$('mChico').value||0; if(!v) return torrada('Informe um valor');
+    D.config.chicoRedesMes=v; fecharModal(); salvar('Compromisso do Chico ajustado para '+dinheiroCurto(v));
+  }, 'Salvar valor');
+}
+const CATS_CLUBE=['Chico — redes','Mensalidades','Material','Outros'];
+function editarLancClube(id){
+  const l=id?D.clubinho.caixa.find(x=>x.id===id):{id:'',data:hoje(),competencia:proxMes(hoje()),desc:'',cat:'Outros',receita:0,despesa:0};
+  const c=l.competencia||mesDe(l.data)||proxMes(hoje());
+  abrirModal(id?'Editar lançamento':'Novo lançamento no caixa do clubinho', `
+    <div class="campo-linha">
+      <div class="campo"><label>Data do pagamento</label><input type="date" id="mData" value="${l.data||hoje()}"></div>
+      <div class="campo"><label>Mês de referência</label><input type="month" id="mComp" value="${c}"></div>
+    </div>
+    <div class="campo"><label>Categoria</label><select id="mCat">${CATS_CLUBE.map(x=>`<option ${x===l.cat?'selected':''}>${x}</option>`).join('')}</select></div>
+    <div class="campo"><label>Descrição</label><input type="text" id="mDesc" value="${esc(l.desc)}" placeholder="Ex.: Chico — redes de agosto"></div>
+    <div class="campo-linha">
+      <div class="campo"><label>Receita</label><input type="number" id="mRec" value="${l.receita||''}" step="0.01"></div>
+      <div class="campo"><label>Despesa</label><input type="number" id="mDesp" value="${l.despesa||''}" step="0.01"></div>
+    </div>
+    <div class="aviso info"><span>O <b>mês de referência</b> é o mês que a despesa cobre — é por ele que a tabela de
+      arrecadação se organiza. O pagamento do Chico é feito no fim do mês anterior.</span></div>
+  `, () => {
+    const desc=$('mDesc').value.trim(); if(!desc) return torrada('Informe a descrição');
+    const o={data:$('mData').value,competencia:$('mComp').value,desc,cat:$('mCat').value,
+             receita:+$('mRec').value||0,despesa:+$('mDesp').value||0};
+    if(!o.receita&&!o.despesa) return torrada('Informe um valor');
+    if(id) Object.assign(D.clubinho.caixa.find(x=>x.id===id),o); else D.clubinho.caixa.push({id:uid('cc'),...o});
+    fecharModal(); salvar('Lançamento do clubinho: '+desc);
+  });
+}
+function lancRapido(tipo){
+  if(tipo==='alisamento'){
+    D.caixaSocios.push({id:uid('l'),data:hoje(),desc:'Alisamento das quadras 1 e 2 do Quiosque',
+      cat:'Alisamento das quadras',receita:0,despesa:+D.config.alisamentoDuasQuadras||150});
+    salvar('Alisamento lançado no caixa dos sócios'); irPara('caixa');
+  }
+  if(tipo==='chico'){
+    const alvo=proxMes(hoje()); const nome=MESES_LONGO[+alvo.slice(5)-1];
+    if(D.clubinho.caixa.some(l=>l.cat==='Chico — redes'&&l.competencia===alvo)
+       && !confirm(`O Chico referente a ${nome} já consta como pago. Lançar assim mesmo?`)) return;
+    D.clubinho.caixa.push({id:uid('cc'),data:hoje(),competencia:alvo,
+      desc:`Chico — armação e desarmação das redes (${nome})`,
+      cat:'Chico — redes',receita:0,despesa:+D.config.chicoRedesMes||350});
+    salvar(`Chico pago referente a ${nome}`); irPara('caixaClube');
+  }
+}
+
+/* ---------- LIGHT ---------- */
+function renderLight(){
+  const lista=D.light.filter(l=>noAno(l.data)).sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+  let rec=0,falta=0,nFalta=0;
+  lista.forEach(l=>(l.rateio||[]).forEach(r=>{ if(r.pago) rec+=(+r.valor||0); else { falta+=(+r.valor||0); nFalta++; } }));
+  $('lgRec').textContent=dinheiroCurto(rec);
+  $('lgRec').parentElement.querySelector('.rot').textContent='Recebido em '+anoAtivo;
+  $('lgRecSub').textContent=`${lista.length} conta(s) rateada(s)`;
+  $('lgFalta').textContent=dinheiroCurto(falta);
+  $('lgFaltaSub').textContent=nFalta?`${nFalta} Pix pendente(s)`:'Nenhum Pix pendente';
+
+  $('listaLight').innerHTML=lista.length?lista.map(l=>{
+    const pago=(l.rateio||[]).filter(r=>r.pago).reduce((s,r)=>s+(+r.valor||0),0);
+    const pct=l.valor?Math.round(pago/l.valor*100):0;
+    return `<div class="card" style="margin-bottom:12px">
+      <div class="card-cab">
+        <h3>Light de ${dataBR(l.data)} — ${dinheiroCurto(l.valor)}</h3>
+        <div class="dir">
+          <span class="tag ${pct>=100?'ok':'sol'}">${pct}% recebido</span>
+          <button class="bt-icone" title="Editar" onclick="editarLight('${l.id}')">✎</button>
+          <button class="bt-icone perigo" title="Remover" onclick="removerLight('${l.id}')">✕</button>
+        </div>
+      </div>
+      <div class="card-corpo">
+        <div class="barra" style="margin-bottom:14px"><i class="${pct>=100?'verde':'sol'}" style="width:${Math.min(pct,100)}%"></i></div>
+        <div class="grade g4">
+          ${(l.rateio||[]).map((r,i)=>`
+            <div onclick="alternarLight('${l.id}',${i})" style="cursor:pointer;border:1px solid ${r.pago?'#B9E4D0':'var(--linha)'};
+              background:${r.pago?'var(--verde-100)':'var(--branco)'};border-radius:10px;padding:11px 13px;transition:.15s">
+              <div style="font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px">
+                ${r.pago?'✅':'⬜'} ${esc(r.quem)}
+                ${(r.pct||r.pct===0)?`<span class="tag neutra" style="margin-left:auto;font-size:10.5px">${r.pct}%</span>`:''}</div>
+              <div style="font-size:16px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums;
+                color:${r.pago?'#15734C':'var(--texto-2)'}">${dinheiroCurto(r.valor)}</div>
+              <div class="mini-rot" style="margin-top:2px">${r.pago?('Pix em '+dataBR(r.pagoEm||l.data)):'aguardando Pix'}</div>
+            </div>`).join('')}
+        </div>
+      </div></div>`;
+  }).join(''):`<div class="card"><div class="vazio">Nenhuma conta da Light em ${anoAtivo}</div></div>`;
+}
+
+/* ---------- AJUSTES ---------- */
+function renderAjustes(){
+  $('cfgAnuidade').value=D.config.anuidadeSocio||300;
+  $('cfgMensal').value=D.config.mensalidadeClubinho||30;
+  $('cfgChico').value=D.config.chicoRedesMes||350;
+  $('cfgAlisa').value=D.config.alisamentoQuadra||75;
+  $('cfgRespS').value=D.config.respSocios||'';
+  $('cfgRespC').value=D.config.respClubinho||'';
+  $('cfgRespCl').value=D.config.respClinica||'';
+  if($('cfgEuNome')!==document.activeElement) $('cfgEuNome').value=euNome;
+
+  const b=$('badgeNuvem');
+  if(!temNuvem()) b.innerHTML='<span class="tag sol">Modo local</span>';
+  else if(erroRede) b.innerHTML='<span class="tag deve">Sem conexão</span>';
+  else b.innerHTML='<span class="tag ok">Conectado</span>';
+
+  $('avisoNuvem').innerHTML = !temNuvem()
+    ? `<div class="aviso alerta"><span><b>A nuvem ainda não foi configurada.</b> Por enquanto as alterações ficam salvas só neste aparelho.</span></div>`
+    : erroRede
+    ? `<div class="aviso erro"><span>Não estou conseguindo falar com a nuvem. Suas alterações estão guardadas aqui e serão enviadas assim que a conexão voltar.</span></div>`
+    : `<div class="aviso ok"><span>Tudo sincronizado. Qualquer sócio com o link edita e todos veem na hora.
+        Última alteração ${ultimoQuando?('em '+new Date(ultimoQuando).toLocaleString('pt-BR')):''} por <b>${esc(ultimoAutor||'—')}</b>.</span></div>`;
+
+  $('statusDados').textContent = temNuvem()
+    ? `Versão ${versao} · ${D.socios.length} sócios · ${D.caixaSocios.length} lançamentos · ${D.clubinho.alunos.length} alunos`
+    : 'Modo local — as alterações não estão sendo compartilhadas.';
+
+  const anos=anosDisponiveis();
+  $('badgeAnos').innerHTML=`<span class="tag azul">${anos.length} ano(s)</span>`;
+  $('infoAnos').textContent=`Anos no sistema: ${anos.join(', ')} · exercício aberto: ${anoAtivo}`;
+
+  const log=(D.log||[]).slice(0,20);
+  $('tbLog').innerHTML=`<thead><tr><th style="width:150px">Quando</th><th style="width:130px">Quem</th><th>O que</th></tr></thead><tbody>`+
+    (log.length?log.map(l=>`<tr><td class="mudo">${new Date(l.q).toLocaleString('pt-BR')}</td>
+      <td class="forte">${esc(l.n||'—')}</td><td>${esc(l.o||'Alteração')}</td></tr>`).join('')
+      :'<tr><td colspan="3" class="vazio">Nenhuma alteração registrada ainda</td></tr>')+'</tbody>';
+}
+
+/* ---------- gerador de planilha .xlsx (sem depender de internet) ---------- */
+const _CRC=(()=>{const t=new Uint32Array(256);
+  for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}
+  return t;})();
+function _crc32(u8){let c=0xFFFFFFFF;for(let i=0;i<u8.length;i++)c=_CRC[(c^u8[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0;}
+const _u8=s=>new TextEncoder().encode(s);
+function _zip(arquivos){
+  const partes=[],central=[]; let off=0;
+  arquivos.forEach(f=>{
+    const nome=_u8(f.nome), crc=_crc32(f.dados), tam=f.dados.length;
+    const lh=new Uint8Array(30+nome.length), v=new DataView(lh.buffer);
+    v.setUint32(0,0x04034b50,true); v.setUint16(4,20,true); v.setUint16(6,0x0800,true);
+    v.setUint16(8,0,true); v.setUint16(10,0,true); v.setUint16(12,0,true);
+    v.setUint32(14,crc,true); v.setUint32(18,tam,true); v.setUint32(22,tam,true);
+    v.setUint16(26,nome.length,true); v.setUint16(28,0,true); lh.set(nome,30);
+    partes.push(lh,f.dados);
+    const ch=new Uint8Array(46+nome.length), w=new DataView(ch.buffer);
+    w.setUint32(0,0x02014b50,true); w.setUint16(4,20,true); w.setUint16(6,20,true);
+    w.setUint16(8,0x0800,true); w.setUint16(10,0,true); w.setUint16(12,0,true); w.setUint16(14,0,true);
+    w.setUint32(16,crc,true); w.setUint32(20,tam,true); w.setUint32(24,tam,true);
+    w.setUint16(28,nome.length,true); w.setUint16(30,0,true); w.setUint16(32,0,true);
+    w.setUint16(34,0,true); w.setUint16(36,0,true); w.setUint32(38,0,true); w.setUint32(42,off,true);
+    ch.set(nome,46); central.push(ch);
+    off+=lh.length+tam;
+  });
+  const tamCentral=central.reduce((s,c)=>s+c.length,0);
+  const eo=new Uint8Array(22), e=new DataView(eo.buffer);
+  e.setUint32(0,0x06054b50,true); e.setUint16(4,0,true); e.setUint16(6,0,true);
+  e.setUint16(8,arquivos.length,true); e.setUint16(10,arquivos.length,true);
+  e.setUint32(12,tamCentral,true); e.setUint32(16,off,true); e.setUint16(20,0,true);
+  const todas=[...partes,...central,eo];
+  const total=todas.reduce((s,p)=>s+p.length,0);
+  const saida=new Uint8Array(total); let pos=0;
+  todas.forEach(p=>{ saida.set(p,pos); pos+=p.length; });
+  return saida;
+}
+const _xe=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&apos;').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g,'');
+function _colLetra(n){ let s=''; n++; while(n>0){ const r=(n-1)%26; s=String.fromCharCode(65+r)+s; n=(n-1-r)/26; } return s; }
+function _folha(linhas,cols){
+  let xml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">';
+  if(cols&&cols.length) xml+='<cols>'+cols.map((c,i)=>
+    `<col min="${i+1}" max="${i+1}" width="${c}" customWidth="1"/>`).join('')+'</cols>';
+  xml+='<sheetData>';
+  linhas.forEach((linha,r)=>{
+    xml+=`<row r="${r+1}">`;
+    (linha||[]).forEach((cel,c)=>{
+      if(cel===null||cel===undefined||cel==='') return;
+      const ref=_colLetra(c)+(r+1);
+      if(typeof cel==='number'&&isFinite(cel)) xml+=`<c r="${ref}"><v>${cel}</v></c>`;
+      else xml+=`<c r="${ref}" t="inlineStr"><is><t xml:space="preserve">${_xe(cel)}</t></is></c>`;
+    });
+    xml+='</row>';
+  });
+  return xml+'</sheetData></worksheet>';
+}
+function baixarXLSX(nomeArquivo,abas){
+  const N=abas.length;
+  const tipos='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+    '<Default Extension="xml" ContentType="application/xml"/>'+
+    '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'+
+    abas.map((_,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')+
+    '</Types>';
+  const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+  const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '+
+    'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'+
+    abas.map((a,i)=>`<sheet name="${_xe(a.nome).slice(0,31)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join('')+
+    '</sheets></workbook>';
+  const wbRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    abas.map((_,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join('')+
+    '</Relationships>';
+  const arquivos=[
+    {nome:'[Content_Types].xml',dados:_u8(tipos)},
+    {nome:'_rels/.rels',dados:_u8(rels)},
+    {nome:'xl/workbook.xml',dados:_u8(wb)},
+    {nome:'xl/_rels/workbook.xml.rels',dados:_u8(wbRels)},
+    ...abas.map((a,i)=>({nome:`xl/worksheets/sheet${i+1}.xml`,dados:_u8(_folha(a.linhas,a.cols))}))
+  ];
+  const blob=new Blob([_zip(arquivos)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  const el=document.createElement('a'); el.href=URL.createObjectURL(blob); el.download=nomeArquivo;
+  el.click(); setTimeout(()=>URL.revokeObjectURL(el.href),4000);
+}
+
+/* ---------- EXPORTAR PLANILHA (formato original) ---------- */
+function exportarPlanilha(){
+  const ano=anoAtivo, abas=[];
+  const dt=s=>s?dataBR(s):'';
+  const r2=n=>Math.round((+n||0)*100)/100;
+
+  /* --- Caixa --- */
+  const lanc=D.caixaSocios.filter(l=>noAno(l.data)).sort((a,b)=>(a.data||'').localeCompare(b.data||''));
+  const rec=lanc.reduce((s,l)=>s+(+l.receita||0),0), desp=lanc.reduce((s,l)=>s+(+l.despesa||0),0);
+  const aCaixa=[[`Planilha do Caixa da Rede em ${ano}`,'','',''],['Data','Motivo','Receitas','Despesas']];
+  lanc.forEach(l=>aCaixa.push([dt(l.data),l.desc,l.receita?r2(l.receita):null,l.despesa?r2(l.despesa):null]));
+  aCaixa.push([]); aCaixa.push(['','Sub-Total',r2(rec),r2(desp)]); aCaixa.push([]);
+  aCaixa.push(['','Total Geral do Caixa','',r2(saldoSocios())]);
+  abas.push({nome:'Caixa',linhas:aCaixa,cols:[10.3,93,12.7,12.7]});
+
+  /* --- Rede e Bolas --- */
+  const aPat=[['Controle do Uso: Bolas - Redes - Bombas','','',''],
+              ['Com quem estão','Início Uso','Observações Bolas / Redes','Em Uso'],['','','','']];
+  D.patrimonio.forEach(p=>aPat.push([p.com||'-----',p.desde?dt(p.desde):'-----',p.item,p.obs||'-----']));
+  abas.push({nome:'Rede e Bolas',linhas:aPat,cols:[30.7,13.7,30,29.7]});
+
+  /* --- Pagtos --- */
+  const soc=D.socios.filter(s=>s.ativo!==false).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR',{sensitivity:'base'}));
+  const aPag=[[`Sócios - Anuidade ${ano}`,'','',''],['','Sócio','Valor','Pagto']];
+  let totPag=0;
+  soc.forEach((s,i)=>{ const a=anu(s);
+    if(a.pagoEm) totPag+=(+a.valor||0);
+    aPag.push([i+1,s.nome,s.isento?'ISENTO':r2(a.valor),s.isento?'ISENTO':(a.pagoEm?dt(a.pagoEm):(a.obs||'DEVE'))]); });
+  aPag.push([]); aPag.push(['','Total',r2(totPag),'']);
+  abas.push({nome:'Pagtos',linhas:aPag,cols:[3,41.7,12.4,11.1]});
+
+  /* --- Clubinho --- */
+  const v=+D.config.mensalidadeClubinho||30;
+  const aCl=[[`Clubinho - Mensalidades ${ano} (R$ ${v},00 por mês)`],
+             ['Aluno','Inscrito na Clínica',...MESES_LONGO,'Total']];
+  D.clubinho.alunos.filter(a=>a.ativo).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR',{sensitivity:'base'})).forEach(a=>{
+    const cels=MESES.map((_,i)=>a.pagamentos[`${ano}-${String(i+1).padStart(2,'0')}`]?'PAGO':'');
+    aCl.push([a.nome,a.inscritoClinica?'SIM':'NÃO',...cels,r2(cels.filter(Boolean).length*v)]); });
+  aCl.push([]);
+  aCl.push(['Mês','Participantes','Total arrecadado','Despesas','Resultado']);
+  MESES.forEach((_,i)=>{ const k=`${ano}-${String(i+1).padStart(2,'0')}`;
+    const n=D.clubinho.alunos.filter(a=>a.pagamentos[k]).length;
+    const outras=D.clubinho.caixa.filter(l=>compet(l)===k).reduce((s,l)=>s+(+l.receita||0),0);
+    const dp=D.clubinho.caixa.filter(l=>compet(l)===k).reduce((s,l)=>s+(+l.despesa||0),0);
+    aCl.push([MESES_LONGO[i],n,r2(n*v+outras),r2(dp),r2(n*v+outras-dp)]); });
+  abas.push({nome:'Clubinho',linhas:aCl,cols:[26,16,...MESES.map(()=>9),11]});
+
+  baixarXLSX(`Rede${ano}.xlsx`,abas);
+  torrada(`Planilha Rede${ano}.xlsx exportada`);
+}
+
 
 /* ---------- MODAL ---------- */
 let _ok = null;
