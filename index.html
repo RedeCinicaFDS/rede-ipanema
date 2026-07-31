@@ -91,7 +91,8 @@ section.on{display:block}
 .kpi.verde::before{background:var(--verde)} .kpi.sol::before{background:var(--sol)}
 .kpi.vermelho::before{background:var(--vermelho)}
 .kpi .rot{font-size:11.5px;font-weight:700;color:var(--texto-2);text-transform:uppercase;letter-spacing:.6px}
-.kpi .val{font-size:25px;font-weight:800;letter-spacing:-.9px;margin-top:5px;font-variant-numeric:tabular-nums}
+.kpi .val{font-size:25px;font-weight:800;letter-spacing:-.9px;margin-top:5px;font-variant-numeric:tabular-nums;
+  overflow-wrap:anywhere;line-height:1.15}
 .kpi .sub{font-size:12px;color:var(--texto-3);margin-top:3px}
 .kpi.verde .val{color:var(--verde)} .kpi.vermelho .val{color:var(--vermelho)}
 
@@ -223,13 +224,16 @@ footer b{color:var(--texto-2)}
   transition:.3s;box-shadow:var(--sombra-lg);pointer-events:none;max-width:92vw;text-align:center}
 .torrada.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ---------- CELULAR ---------- */
+/* ---------- MODO DE VISUALIZAÇÃO ---------- */
 .so-celular{display:none}
+body.modo-celular .so-celular{display:block}
+body.modo-celular .so-computador{display:none!important}
+body.modo-computador .so-celular{display:none!important}
 @media(max-width:760px){
-  .so-celular{display:block}
-  .so-computador{display:none!important}
+  body.modo-auto .so-celular{display:block}
+  body.modo-auto .so-computador{display:none!important}
   .grade.g4{grid-template-columns:1fr 1fr;gap:10px}
-  .kpi{padding:13px 13px} .kpi .val{font-size:19px} .kpi .rot{font-size:10px}
+  .kpi{padding:13px 13px} .kpi .val{font-size:17px;letter-spacing:-.5px} .kpi .rot{font-size:10px}
   .kpi .sub{font-size:11px}
   nav button{padding:10px 12px 12px;font-size:13px}
   .cab h2{font-size:18px}
@@ -238,6 +242,44 @@ footer b{color:var(--texto-2)}
   .bt{padding:9px 13px}
   .selo{gap:6px}
 }
+
+/* ---------- EXTRATO (estilo de banco) ---------- */
+.extrato{padding:0}
+.ext-mes{padding:15px 16px 9px;font-size:17px;font-weight:800;letter-spacing:-.3px;color:var(--texto)}
+.ext-dia{display:flex;align-items:baseline;gap:10px;padding:9px 16px;background:var(--azul-50);
+  border-top:1px solid var(--linha-2);border-bottom:1px solid var(--linha-2)}
+.ext-dia .quando{font-size:12.5px;font-weight:700;color:var(--texto-2)}
+.ext-dia .saldo{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--texto-2);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.ext-item{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--linha-2);
+  width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left;cursor:pointer}
+.ext-item:last-child{border-bottom:0}
+.ext-item:active{background:var(--azul-50)}
+.ext-icone{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;
+  font-size:16px;font-weight:800;line-height:1}
+.ext-icone.entra{background:var(--verde-100);color:#15734C}
+.ext-icone.sai{background:var(--vermelho-100);color:#A82F2F}
+.ext-icone.neutro{background:var(--linha-2);color:var(--texto-3)}
+.ext-txt{flex:1;min-width:0}
+.ext-txt b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  font-size:14px;font-weight:700;line-height:1.35;color:var(--texto)}
+.ext-txt span{display:block;font-size:11.5px;color:var(--texto-3);font-weight:600;margin-top:2px}
+.ext-val{font-size:14.5px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.ext-val.entra{color:var(--verde)} .ext-val.sai{color:var(--vermelho)}
+.ext-val.neutro{color:var(--texto-3);font-weight:600;font-size:12.5px}
+.ext-resumo{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--linha-2)}
+.ext-resumo div{flex:1 1 0;min-width:0;background:var(--azul-50);border-radius:10px;padding:9px 10px}
+.ext-resumo .r{font-size:9.5px;font-weight:700;color:var(--texto-2);text-transform:uppercase;letter-spacing:.3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ext-resumo .v{font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px;
+  white-space:nowrap;letter-spacing:-.4px}
+
+/* seletor PC / Celular */
+.modo-sel{display:inline-flex;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+  border-radius:99px;padding:2px;gap:2px}
+.modo-sel button{border:0;background:none;color:rgba(255,255,255,.65);font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:99px;cursor:pointer;white-space:nowrap;line-height:1.5}
+.modo-sel button.on{background:rgba(255,255,255,.92);color:var(--azul-900)}
 @media(max-width:640px){
   body{font-size:14.5px}
   .marca h1{font-size:17px} .selo{width:100%;margin-left:0;margin-top:4px}
@@ -247,7 +289,7 @@ footer b{color:var(--texto-2)}
   th,td{padding:9px 10px}
   main{padding:18px 12px 34px} .topo-in{padding:16px 12px 0}
   .grade.g3{grid-template-columns:1fr 1fr;gap:10px}
-  .cab .acoes .bt{flex:1;justify-content:center}
+  .cab .acoes{gap:7px} .cab .acoes .bt{flex:1 1 44%;justify-content:center;font-size:12.5px;padding:9px 8px}
   footer{padding-bottom:80px}
   body{padding-bottom:0}
 }
@@ -313,6 +355,10 @@ footer b{color:var(--texto-2)}
         <span class="chip-topo">Saldo sócios <b id="chipSocios">—</b></span>
         <span class="chip-topo">Caixa clubinho <b id="chipClubinho">—</b></span>
         <span class="chip-topo" id="chipSync" title="Estado da sincronização">Conectando…</span>
+        <span class="modo-sel" id="modoSel" title="Como mostrar as listas">
+          <button type="button" data-modo="computador" onclick="mudarModo('computador')">PC</button>
+          <button type="button" data-modo="celular" onclick="mudarModo('celular')">Celular</button>
+        </span>
         <select id="selAno" onchange="mudarAno(this.value)" title="Ano do exercício"
           style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;
           padding:5px 10px;border-radius:99px;font-size:11.5px;font-weight:700;cursor:pointer;width:auto"></select>
@@ -412,7 +458,7 @@ footer b{color:var(--texto-2)}
     </div>
   </div>
 
-  <div class="grade g4" style="margin-bottom:16px">
+  <div class="grade g4 so-computador" style="margin-bottom:16px">
     <div class="kpi verde"><div class="rot">Receitas</div><div class="val" id="cRec">—</div></div>
     <div class="kpi vermelho"><div class="rot">Despesas</div><div class="val" id="cDesp">—</div></div>
     <div class="kpi"><div class="rot">Saldo atual</div><div class="val" id="cSaldo">—</div></div>
@@ -420,14 +466,15 @@ footer b{color:var(--texto-2)}
   </div>
 
   <div class="barra-ferramentas">
-    <div class="busca"><input type="text" id="buscaLanc" placeholder="Buscar lançamento..." oninput="renderCaixa()"></div>
+    <div class="busca" style="max-width:none"><input type="text" id="buscaLanc" placeholder="Buscar lançamento..." oninput="renderCaixa()"></div>
     <select id="filtroMes" onchange="renderCaixa()" style="max-width:170px"></select>
     <select id="filtroCat" onchange="renderCaixa()" style="max-width:200px"></select>
     <button class="bt" onclick="limparFiltrosCaixa()">Limpar</button>
   </div>
 
   <div class="card">
-    <div class="tabela-wrap"><table id="tbCaixa"></table></div>
+    <div class="tabela-wrap so-computador"><table id="tbCaixa"></table></div>
+    <div class="so-celular extrato" id="extratoCaixa"></div>
   </div>
   <p class="mini-rot" style="margin-top:10px">Os lançamentos com o raio ⚡ vêm da aba Light e são gerados sozinhos:
     a conta entra como despesa e cada Pix recebido entra como receita. Para mexer neles, é na aba Light.</p>
@@ -477,7 +524,7 @@ footer b{color:var(--texto-2)}
     </div>
   </div>
 
-  <div class="grade g4" style="margin-bottom:16px">
+  <div class="grade g4 so-computador" style="margin-bottom:16px">
     <div class="kpi verde"><div class="rot">Mensalidades recebidas</div><div class="val" id="ccRec">—</div><div class="sub" id="ccRecSub">—</div></div>
     <div class="kpi vermelho"><div class="rot">Despesas</div><div class="val" id="ccDesp">—</div><div class="sub" id="ccDespSub">—</div></div>
     <div class="kpi"><div class="rot">Saldo do clubinho</div><div class="val" id="ccSaldo">—</div><div class="sub">Receitas menos despesas</div></div>
@@ -489,7 +536,8 @@ footer b{color:var(--texto-2)}
   <div class="card" style="margin-bottom:16px">
     <div class="card-cab"><h3>Lançamentos do clubinho</h3>
       <div class="dir mini-rot">As mensalidades marcadas na aba Clubinho entram aqui automaticamente</div></div>
-    <div class="tabela-wrap"><table id="tbCaixaClube"></table></div>
+    <div class="tabela-wrap so-computador"><table id="tbCaixaClube"></table></div>
+    <div class="so-celular extrato" id="extratoClube"></div>
   </div>
 
 </section>
@@ -694,6 +742,26 @@ const NUVEM = (typeof CONFIG_NUVEM !== 'undefined') ? CONFIG_NUVEM : {url:'',cha
 const temNuvem = () => !!(NUVEM.url && NUVEM.chave && !/COLE_AQUI/i.test(NUVEM.url+NUVEM.chave));
 let versao = 0, sincronizando = false, pendente = false, erroRede = false, ultimoAutor = '', ultimoQuando = '';
 let anoAtivo = 0, precisaGravar = false;
+let modoVis='auto';
+try{ modoVis=localStorage.getItem('redeModoVis')||'auto'; }catch(e){}
+const DIAS_SEM=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+function modoEfetivo(){
+  return modoVis!=='auto' ? modoVis : (window.innerWidth<=760?'celular':'computador');
+}
+function aplicarModo(){
+  document.body.classList.remove('modo-auto','modo-celular','modo-computador');
+  document.body.classList.add('modo-'+modoVis);
+  const ef=modoEfetivo();
+  document.querySelectorAll('#modoSel button').forEach(b=>b.classList.toggle('on',b.dataset.modo===ef));
+}
+function mudarModo(m){
+  modoVis = (modoVis===m) ? 'auto' : m;
+  try{ localStorage.setItem('redeModoVis',modoVis); }catch(e){}
+  aplicarModo();
+  torrada(modoVis==='auto' ? 'Voltou ao automático (segue o tamanho da tela)'
+    : (m==='celular'?'Vendo no formato de celular':'Vendo no formato de computador'));
+}
+window.addEventListener('resize',()=>{ if(modoVis==='auto') aplicarModo(); });
 let euNome = ''; try{ euNome = localStorage.getItem('redeEuNome')||''; }catch(e){}
 
 const apiURL = q => NUVEM.url.replace(/\/+$/,'') + '/rest/v1/rede' + (q||'');
@@ -731,7 +799,7 @@ async function iniciar(){
   } else { D=recuperarLocal()||semente; }
 
   if(!D){ document.querySelector('main').innerHTML='<div class="aviso erro">Não foi possível carregar os dados.</div>'; return; }
-  normalizar(); renderTudo();
+  normalizar(); aplicarModo(); renderTudo();
   if(precisaGravar){ precisaGravar=false; salvar('Contas da Light passaram a entrar no caixa dos sócios'); }
   if(temNuvem()){ setInterval(verificarNuvem,15000);
     window.addEventListener('online',()=>{ if(erroRede) enviarNuvem(); });
@@ -962,6 +1030,56 @@ function irParaLight(idLuz){
 function removerLanc(id){
   if(String(id).startsWith(PREFIXO_LIGHT)) return torrada('Esse lançamento vem da aba Light — remova a conta por lá'); if(!confirm('Remover este lançamento?')) return;
   D.caixaSocios = D.caixaSocios.filter(x=>x.id!==id); salvar('Lançamento removido'); }
+/* ---------- EXTRATO (celular) ---------- */
+function saldosPorDia(todos){
+  const ord=[...todos].filter(l=>l.data).sort((a,b)=>a.data.localeCompare(b.data));
+  const mapa={}; let acc=0;
+  ord.forEach(l=>{ acc+=(+l.receita||0)-(+l.despesa||0); mapa[l.data]=acc; });
+  return mapa;
+}
+function renderExtrato(alvo,lista,todos,opts){
+  opts=opts||{};
+  const el=$(alvo); if(!el) return;
+  const saldos=saldosPorDia(todos);
+  const itens=[...lista].filter(l=>l.data).sort((a,b)=>b.data.localeCompare(a.data)||String(b.id).localeCompare(String(a.id)));
+  const semData=lista.filter(l=>!l.data);
+  if(!itens.length&&!semData.length){ el.innerHTML='<div class="vazio">Nenhum lançamento</div>'; return; }
+  const rec=lista.reduce((s,l)=>s+(+l.receita||0),0), desp=lista.reduce((s,l)=>s+(+l.despesa||0),0);
+  const num=n=>(Number(n)||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const sld=opts.saldo!==undefined?opts.saldo:(rec-desp);
+  let html=`<div class="ext-resumo">
+    <div><div class="r">Entrou</div><div class="v" style="color:var(--verde)">${num(rec)}</div></div>
+    <div><div class="r">Saiu</div><div class="v" style="color:var(--vermelho)">${num(desp)}</div></div>
+    <div><div class="r">Saldo</div>
+      <div class="v" style="color:${sld>=0?'var(--texto)':'var(--vermelho)'}">${num(sld)}</div></div></div>`;
+  let mesAtual='', diaAtual='';
+  itens.forEach(l=>{
+    const m=mesDe(l.data);
+    if(m!==mesAtual){ mesAtual=m; diaAtual='';
+      html+=`<div class="ext-mes">${MESES_LONGO[+m.slice(5)-1]}${anoDe(l.data)!==anoAtivo?' de '+anoDe(l.data):''}</div>`; }
+    if(l.data!==diaAtual){ diaAtual=l.data;
+      const d=new Date(l.data+'T12:00:00');
+      html+=`<div class="ext-dia"><span class="quando">${DIAS_SEM[d.getDay()]}, ${dataBR(l.data)}</span>
+        ${saldos[l.data]!==undefined?`<span class="saldo">Saldo ${dinheiroCurto(saldos[l.data])}</span>`:''}</div>`; }
+    const v=(+l.receita||0)||(+l.despesa||0);
+    const entra=(+l.receita||0)>0;
+    const cls=v?(entra?'entra':'sai'):'neutro';
+    const acao=opts.aoTocar?opts.aoTocar(l):'';
+    html+=`<button type="button" class="ext-item" ${acao?`onclick="${acao}"`:''}>
+      <span class="ext-icone ${cls}">${v?(entra?'↓':'↑'):'•'}</span>
+      <span class="ext-txt"><b>${esc(l.desc)}</b>
+        <span>${esc(l.cat||'Outros')}${l.competencia?' · ref. '+MESES_LONGO[+l.competencia.slice(5)-1]:''}${geradoPelaLight(l)?' · ⚡ vem da Light':''}</span></span>
+      <span class="ext-val ${cls}">${v?((entra?'+':'−')+dinheiroCurto(v)):'sem custo'}</span>
+    </button>`;
+  });
+  if(semData.length) html+=`<div class="ext-dia"><span class="quando">Sem data</span></div>`+
+    semData.map(l=>`<button type="button" class="ext-item" ${opts.aoTocar?`onclick="${opts.aoTocar(l)}"`:''}>
+      <span class="ext-icone ${l.receita?'entra':'sai'}">${l.receita?'↓':'↑'}</span>
+      <span class="ext-txt"><b>${esc(l.desc)}</b><span>${esc(l.cat||'Outros')}</span></span>
+      <span class="ext-val ${l.receita?'entra':'sai'}">${l.receita?'+':'−'}${dinheiroCurto(l.receita||l.despesa)}</span></button>`).join('');
+  el.innerHTML=html;
+}
+
 /* ---------- CLUBINHO ---------- */function alternarMes(id,k){ const a = D.clubinho.alunos.find(x=>x.id===id);
   if(a.pagamentos[k]) delete a.pagamentos[k]; else a.pagamentos[k]=true; salvar(); }
 function alternarInscricao(id){ const a = D.clubinho.alunos.find(x=>x.id===id);
@@ -1572,6 +1690,9 @@ function renderCaixa(){
   $('cQtd').parentElement.querySelector('.rot').textContent='Lançamentos em '+anoAtivo;
 
   const sr=lista.reduce((s,l)=>s+(+l.receita||0),0), sd=lista.reduce((s,l)=>s+(+l.despesa||0),0);
+  renderExtrato('extratoCaixa',lista,D.caixaSocios,
+    {saldo:saldoSocios(), rotuloSaldo:'Saldo acumulado',
+     aoTocar:l=>geradoPelaLight(l)?`irParaLight('${l.luz}')`:`editarLanc('${l.id}')`});
   $('tbCaixa').innerHTML=`<thead><tr><th style="width:96px">Data</th><th>Descrição</th><th style="width:150px">Categoria</th>
       <th class="num" style="width:110px">Receita</th><th class="num" style="width:110px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>`+
     (lista.length?lista.map(l=>`<tr>
@@ -1588,6 +1709,56 @@ function renderCaixa(){
     :`<tr><td colspan="6" class="vazio">Nenhum lançamento encontrado em ${anoAtivo}</td></tr>`)+
     `</tbody><tfoot><tr class="linha-total"><td colspan="3">${lista.length} lançamento(s) — resultado do filtro: ${dinheiroCurto(sr-sd)}</td>
       <td class="num">${dinheiroCurto(sr)}</td><td class="num">${dinheiroCurto(sd)}</td><td></td></tr></tfoot>`;
+}
+
+/* ---------- EXTRATO (celular) ---------- */
+function saldosPorDia(todos){
+  const ord=[...todos].filter(l=>l.data).sort((a,b)=>a.data.localeCompare(b.data));
+  const mapa={}; let acc=0;
+  ord.forEach(l=>{ acc+=(+l.receita||0)-(+l.despesa||0); mapa[l.data]=acc; });
+  return mapa;
+}
+function renderExtrato(alvo,lista,todos,opts){
+  opts=opts||{};
+  const el=$(alvo); if(!el) return;
+  const saldos=saldosPorDia(todos);
+  const itens=[...lista].filter(l=>l.data).sort((a,b)=>b.data.localeCompare(a.data)||String(b.id).localeCompare(String(a.id)));
+  const semData=lista.filter(l=>!l.data);
+  if(!itens.length&&!semData.length){ el.innerHTML='<div class="vazio">Nenhum lançamento</div>'; return; }
+  const rec=lista.reduce((s,l)=>s+(+l.receita||0),0), desp=lista.reduce((s,l)=>s+(+l.despesa||0),0);
+  const num=n=>(Number(n)||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const sld=opts.saldo!==undefined?opts.saldo:(rec-desp);
+  let html=`<div class="ext-resumo">
+    <div><div class="r">Entrou</div><div class="v" style="color:var(--verde)">${num(rec)}</div></div>
+    <div><div class="r">Saiu</div><div class="v" style="color:var(--vermelho)">${num(desp)}</div></div>
+    <div><div class="r">Saldo</div>
+      <div class="v" style="color:${sld>=0?'var(--texto)':'var(--vermelho)'}">${num(sld)}</div></div></div>`;
+  let mesAtual='', diaAtual='';
+  itens.forEach(l=>{
+    const m=mesDe(l.data);
+    if(m!==mesAtual){ mesAtual=m; diaAtual='';
+      html+=`<div class="ext-mes">${MESES_LONGO[+m.slice(5)-1]}${anoDe(l.data)!==anoAtivo?' de '+anoDe(l.data):''}</div>`; }
+    if(l.data!==diaAtual){ diaAtual=l.data;
+      const d=new Date(l.data+'T12:00:00');
+      html+=`<div class="ext-dia"><span class="quando">${DIAS_SEM[d.getDay()]}, ${dataBR(l.data)}</span>
+        ${saldos[l.data]!==undefined?`<span class="saldo">Saldo ${dinheiroCurto(saldos[l.data])}</span>`:''}</div>`; }
+    const v=(+l.receita||0)||(+l.despesa||0);
+    const entra=(+l.receita||0)>0;
+    const cls=v?(entra?'entra':'sai'):'neutro';
+    const acao=opts.aoTocar?opts.aoTocar(l):'';
+    html+=`<button type="button" class="ext-item" ${acao?`onclick="${acao}"`:''}>
+      <span class="ext-icone ${cls}">${v?(entra?'↓':'↑'):'•'}</span>
+      <span class="ext-txt"><b>${esc(l.desc)}</b>
+        <span>${esc(l.cat||'Outros')}${l.competencia?' · ref. '+MESES_LONGO[+l.competencia.slice(5)-1]:''}${geradoPelaLight(l)?' · ⚡ vem da Light':''}</span></span>
+      <span class="ext-val ${cls}">${v?((entra?'+':'−')+dinheiroCurto(v)):'sem custo'}</span>
+    </button>`;
+  });
+  if(semData.length) html+=`<div class="ext-dia"><span class="quando">Sem data</span></div>`+
+    semData.map(l=>`<button type="button" class="ext-item" ${opts.aoTocar?`onclick="${opts.aoTocar(l)}"`:''}>
+      <span class="ext-icone ${l.receita?'entra':'sai'}">${l.receita?'↓':'↑'}</span>
+      <span class="ext-txt"><b>${esc(l.desc)}</b><span>${esc(l.cat||'Outros')}</span></span>
+      <span class="ext-val ${l.receita?'entra':'sai'}">${l.receita?'+':'−'}${dinheiroCurto(l.receita||l.despesa)}</span></button>`).join('');
+  el.innerHTML=html;
 }
 
 /* ---------- CLUBINHO ---------- */
@@ -1732,6 +1903,10 @@ function renderCaixaClube(){
   const manuais=D.clubinho.caixa.filter(l=>anoDe(compet(l))===ano);
   const todos=[...auto,...manuais].sort((a,b)=>(b.data||'').localeCompare(a.data||''));
 
+  renderExtrato('extratoClube',todos.filter(l=>!l.auto||l.receita||l.despesa),
+    [...D.clubinho.caixa, ...mensalidadesClube().map(x=>({data:x.mes+'-01',receita:x.valor,despesa:0}))],
+    {saldo:saldoClube(), rotuloSaldo:'Saldo do clubinho',
+     aoTocar:l=>l.auto?'':`editarLancClube('${l.id}')`});
   $('tbCaixaClube').innerHTML=`<thead><tr><th style="width:96px">Pago em</th><th style="width:110px">Referente a</th>
       <th>Descrição</th><th style="width:135px">Categoria</th>
       <th class="num" style="width:105px">Receita</th><th class="num" style="width:105px">Despesa</th><th style="width:76px"></th></tr></thead><tbody>`+
