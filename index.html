@@ -1522,11 +1522,6 @@ function renderPainel(){
     al.push({t:'erro',m:`<b>${esc(x.nome)}</b> está com a anuidade de ${anoAtivo} em aberto.`}));
   D.light.filter(l=>noAno(l.data)).forEach(l=>{ const f=(l.rateio||[]).filter(r=>!r.pago);
     if(f.length) al.push({t:'alerta',m:`Light de ${dataBR(l.data)}: falta o Pix de <b>${f.map(r=>esc(r.quem)).join(', ')}</b> (${dinheiroCurto(f.reduce((s2,r)=>s2+(+r.valor||0),0))}).`}); });
-  const mAtual=hoje().slice(0,7);
-  if(anoDe(mAtual)===anoAtivo){
-    const semPag=D.clubinho.alunos.filter(a=>a.ativo&&!a.pagamentos[mAtual]);
-    if(semPag.length) al.push({t:'alerta',m:`Clubinho: <b>${semPag.length} aluno(s)</b> ainda não pagaram ${MESES_LONGO[+mAtual.slice(5)-1].toLowerCase()}.`});
-  }
   const av=avisoChico();
   if(av) al.push(av);
   const naoInsc=D.clubinho.alunos.filter(a=>a.ativo&&!a.inscritoClinica);
@@ -1851,11 +1846,13 @@ function renderClubinho(){
   const ativos=D.clubinho.alunos.filter(a=>a.ativo);
   $('clAtivos').textContent=ativos.length;
   $('clAtivosSub').textContent=`${D.clubinho.alunos.length} cadastrados no total`;
-  const pagosMes=ativos.filter(a=>a.pagamentos[mesRef]).length;
-  $('clMes').textContent=dinheiroCurto(pagosMes*v);
-  $('clMesSub').textContent=`${pagosMes} aluno(s) · ${MESES_LONGO[+mesRef.slice(5)-1]}`;
   const mP=mesPrincipalClube();
   const cA=participantesDoMes(mP), cB=participantesDoMes(mesAnterior(mP));
+  const pagosMes=cA.n;
+  $('clMes').parentElement.querySelector('.rot').textContent=
+    'Recebido · '+cA.nome+(cA.ano!==ano?'/'+String(cA.ano).slice(2):'');
+  $('clMes').textContent=dinheiroCurto(cA.valor);
+  $('clMesSub').textContent=`${pagosMes} aluno(s) pagaram · mês de referência`;
   $('clAtualRot').textContent='Participantes · '+cA.nome+(cA.ano!==ano?'/'+String(cA.ano).slice(2):'');
   $('clAtual').textContent=cA.n;
   $('clAtual').parentElement.className='kpi sol';
