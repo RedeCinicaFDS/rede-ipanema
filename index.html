@@ -429,7 +429,8 @@ footer b{color:var(--texto-2)}
   <div class="card">
     <div class="tabela-wrap"><table id="tbCaixa"></table></div>
   </div>
-  <p class="mini-rot" style="margin-top:10px">A conta da Light entra como despesa e volta como contribuição dos rateados — o efeito no caixa é zero.</p>
+  <p class="mini-rot" style="margin-top:10px">Os lançamentos com o raio ⚡ vêm da aba Light e são gerados sozinhos:
+    a conta entra como despesa e cada Pix recebido entra como receita. Para mexer neles, é na aba Light.</p>
 </section>
 
 <!-- ============ CLUBINHO ============ -->
@@ -527,14 +528,17 @@ footer b{color:var(--texto-2)}
     <div class="acoes"><button class="bt pri" onclick="editarLight()">+ Nova conta</button></div>
   </div>
 
-  <div class="grade g3" style="margin-bottom:16px">
-    <div class="kpi"><div class="rot">Custo para a rede</div><div class="val" style="color:var(--verde)">R$ 0,00</div><div class="sub">Rateado 100% entre os usuários</div></div>
+  <div class="grade g4" style="margin-bottom:16px">
+    <div class="kpi verde"><div class="rot">Efeito no caixa dos sócios</div><div class="val" id="lgCaixa">—</div>
+      <div class="sub" id="lgCaixaSub">—</div></div>
     <div class="kpi verde"><div class="rot">Recebido em 2026</div><div class="val" id="lgRec">—</div><div class="sub" id="lgRecSub">—</div></div>
     <div class="kpi vermelho"><div class="rot">A receber</div><div class="val" id="lgFalta">—</div><div class="sub" id="lgFaltaSub">—</div></div>
   </div>
 
   <div class="aviso info" style="margin-bottom:16px">
-    <span>Clique no nome de quem pagou para marcar ou desmarcar o Pix. O rateio atual é de 25% para cada: Barraca do Luciano, Barraca do Chico, Barraca do Abelha e Rede do Popeye.</span>
+    <span>Clique no nome de quem pagou para marcar ou desmarcar o Pix. Cada conta lançada aqui vira automaticamente
+      uma <b>despesa</b> no caixa dos sócios, e cada Pix marcado vira uma <b>receita</b> — não precisa lançar nada lá.
+      O rateio atual é de 25% para cada: Barraca do Luciano, Barraca do Chico, Barraca do Abelha e Rede do Popeye.</span>
   </div>
 
   <div id="listaLight"></div>
@@ -689,7 +693,7 @@ function torrada(msg){ const t=$('torrada'); t.textContent=msg; t.classList.add(
 const NUVEM = (typeof CONFIG_NUVEM !== 'undefined') ? CONFIG_NUVEM : {url:'',chave:''};
 const temNuvem = () => !!(NUVEM.url && NUVEM.chave && !/COLE_AQUI/i.test(NUVEM.url+NUVEM.chave));
 let versao = 0, sincronizando = false, pendente = false, erroRede = false, ultimoAutor = '', ultimoQuando = '';
-let anoAtivo = 0;
+let anoAtivo = 0, precisaGravar = false;
 let euNome = ''; try{ euNome = localStorage.getItem('redeEuNome')||''; }catch(e){}
 
 const apiURL = q => NUVEM.url.replace(/\/+$/,'') + '/rest/v1/rede' + (q||'');
@@ -728,6 +732,7 @@ async function iniciar(){
 
   if(!D){ document.querySelector('main').innerHTML='<div class="aviso erro">Não foi possível carregar os dados.</div>'; return; }
   normalizar(); renderTudo();
+  if(precisaGravar){ precisaGravar=false; salvar('Contas da Light passaram a entrar no caixa dos sócios'); }
   if(temNuvem()){ setInterval(verificarNuvem,15000);
     window.addEventListener('online',()=>{ if(erroRede) enviarNuvem(); });
     document.addEventListener('visibilitychange',()=>{ if(!document.hidden) verificarNuvem(); }); }
@@ -752,10 +757,52 @@ function normalizar(){
   D.light.forEach(l=>{ const t=+l.valor||0;
     (l.rateio||[]).forEach(r=>{ if(r.pct===undefined||r.pct===null||r.pct==='')
       r.pct = t ? Math.round((+r.valor||0)/t*10000)/100 : Math.round(10000/Math.max((l.rateio||[]).length,1))/100; }); });
+  if(!D.meta.lightCentavos){
+    D.light.forEach(l=>ajustarRateio(l.valor,l.rateio||[]));
+    D.meta.lightCentavos=true; precisaGravar=true;
+  }
   D.meta=D.meta||{}; D.meta.anos=D.meta.anos||[+anoBase];
+  if(!D.meta.lightNoCaixa){
+    D.caixaSocios=D.caixaSocios.filter(l=>l.cat!=='Light (rateio)');
+    D.meta.lightNoCaixa=true; precisaGravar=true;
+  }
+  const antes=JSON.stringify(D.caixaSocios.filter(geradoPelaLight));
+  sincronizarLightCaixa();
+  if(antes!==JSON.stringify(D.caixaSocios.filter(geradoPelaLight))) precisaGravar=true;
 }
 
+const PREFIXO_LIGHT='lightg-';
+const c2=n=>Math.round((+n||0)*100)/100;
+/* Reparte o total pelos percentuais em centavos inteiros e joga o resíduo
+   do arredondamento na última linha, para a soma fechar exatamente. */
+function ajustarRateio(valor,linhas){
+  const total=c2(valor);
+  linhas.forEach(r=>{ r.valor=c2(total*(+r.pct||0)/100); });
+  const alvo=c2(total*linhas.reduce((s,r)=>s+(+r.pct||0),0)/100);
+  const soma=c2(linhas.reduce((s,r)=>s+r.valor,0));
+  const dif=c2(alvo-soma);
+  if(dif&&linhas.length) linhas[linhas.length-1].valor=c2(linhas[linhas.length-1].valor+dif);
+  return linhas;
+}
+const geradoPelaLight = l => String(l.id||'').startsWith(PREFIXO_LIGHT);
+function sincronizarLightCaixa(){
+  const novos=[];
+  (D.light||[]).forEach(l=>{
+    const base=PREFIXO_LIGHT+l.id;
+    novos.push({id:base+'-conta', data:l.data, luz:l.id,
+      desc:`Light — conta de ${dataBR(l.data)}`, cat:'Light (rateio)', receita:0, despesa:Math.round((+l.valor||0)*100)/100});
+    (l.rateio||[]).forEach((r,i)=>{
+      if(!r.pago) return;
+      novos.push({id:base+'-'+i, data:l.data, luz:l.id,
+        desc:`Contribuição Light — ${r.quem}${(r.pct||r.pct===0)?` (${r.pct}%)`:''}`,
+        cat:'Light (rateio)', receita:Math.round((+r.valor||0)*100)/100, despesa:0});
+    });
+  });
+  D.caixaSocios=D.caixaSocios.filter(l=>!geradoPelaLight(l));
+  D.caixaSocios.push(...novos);
+}
 function salvar(desc){
+  sincronizarLightCaixa();
   D.meta=D.meta||{}; D.meta.atualizadoEm=hoje();
   D.log=D.log||[];
   D.log.unshift({q:new Date().toISOString(), n:euNome||'sem nome', o:(typeof desc==='string'&&desc)?desc:'Alteração'});
@@ -885,6 +932,7 @@ function filtroSocio(bt,f){ fSocio=f; document.querySelectorAll('[data-fs]').for
 /* ---------- CAIXA DOS SÓCIOS ---------- */
 function limparFiltrosCaixa(){ $('buscaLanc').value=''; $('filtroMes').value=''; $('filtroCat').value=''; renderCaixa(); }const CATS = ['Alisamento das quadras','Light (rateio)','Anuidade','Bolas','Redes e marcações','Manutenção','Contribuições','Saldo anterior','Outros'];
 function editarLanc(id){
+  if(String(id).startsWith(PREFIXO_LIGHT)) return irParaLight((D.caixaSocios.find(x=>x.id===id)||{}).luz);
   const l = id ? D.caixaSocios.find(x=>x.id===id) : {id:'',data:hoje(),desc:'',cat:'Outros',receita:0,despesa:0};
   abrirModal(id?'Editar lançamento':'Novo lançamento no caixa dos sócios', `
     <div class="campo-linha">
@@ -905,7 +953,14 @@ function editarLanc(id){
     fecharModal(); salvar(id?'Lançamento atualizado':'Lançamento registrado');
   });
 }
-function removerLanc(id){ if(!confirm('Remover este lançamento?')) return;
+function irParaLight(idLuz){
+  const l=D.light.find(x=>x.id===idLuz);
+  if(l && anoDe(l.data)!==anoAtivo) mudarAno(anoDe(l.data));
+  irPara('light');
+  torrada('Este lançamento vem da conta da Light — edite aqui');
+}
+function removerLanc(id){
+  if(String(id).startsWith(PREFIXO_LIGHT)) return torrada('Esse lançamento vem da aba Light — remova a conta por lá'); if(!confirm('Remover este lançamento?')) return;
   D.caixaSocios = D.caixaSocios.filter(x=>x.id!==id); salvar('Lançamento removido'); }
 /* ---------- CLUBINHO ---------- */function alternarMes(id,k){ const a = D.clubinho.alunos.find(x=>x.id===id);
   if(a.pagamentos[k]) delete a.pagamentos[k]; else a.pagamentos[k]=true; salvar(); }
@@ -1066,7 +1121,7 @@ function removerItem(id){ const p = D.patrimonio.find(x=>x.id===id);
 
 /* ---------- LIGHT ---------- */function alternarLight(id,i){
   const l = D.light.find(x=>x.id===id); const r = l.rateio[i];
-  r.pago = !r.pago; r.pagoEm = r.pago ? hoje() : '';
+  r.pago = !r.pago; r.pagoEm = r.pago ? l.data : '';
   salvar(r.pago?`${r.quem} marcado como pago`:`${r.quem} marcado como pendente`);
 }
 function editarLight(id){
@@ -1095,10 +1150,11 @@ function editarLight(id){
     const dados=lerRateio();
     if(!dados.length) return torrada('Informe pelo menos um pagador');
     const antigos=l.rateio||[];
-    const rateio=dados.map(d=>{ const ant=antigos.find(x=>x.quem===d.quem);
-      return {quem:d.quem, pct:d.pct, valor:Math.round(valor*d.pct)/100,
-              pago:ant?!!ant.pago:false, pagoEm:ant?(ant.pagoEm||''):''}; });
+    const rateio=ajustarRateio(valor, dados.map(d=>{ const ant=antigos.find(x=>x.quem===d.quem);
+      return {quem:d.quem, pct:d.pct, valor:0,
+              pago:ant?!!ant.pago:false, pagoEm:ant?(ant.pagoEm||''):''}; }));
     const o={data:$('mData').value, valor, rateio};
+    o.rateio.forEach(r=>{ if(r.pago) r.pagoEm=o.data; });
     if(id) Object.assign(D.light.find(x=>x.id===id),o); else D.light.push({id:uid('lz'),...o});
     fecharModal(); salvar('Conta da Light de '+dataBR(o.data)+' salva');
   });
@@ -1521,12 +1577,13 @@ function renderCaixa(){
     (lista.length?lista.map(l=>`<tr>
       <td class="mudo">${dataBR(l.data)}</td>
       <td>${esc(l.desc)}</td>
-      <td><span class="tag neutra">${esc(l.cat||'Outros')}</span></td>
+      <td><span class="tag ${geradoPelaLight(l)?'azul':'neutra'}">${esc(l.cat||'Outros')}</span></td>
       <td class="num ${l.receita?'rec':'mudo'}">${l.receita?dinheiroCurto(l.receita):'—'}</td>
       <td class="num ${l.despesa?'desp':'mudo'}">${l.despesa?dinheiroCurto(l.despesa):'—'}</td>
-      <td style="white-space:nowrap">
-        <button class="bt-icone" title="Editar" onclick="editarLanc('${l.id}')">✎</button>
-        <button class="bt-icone perigo" title="Remover" onclick="removerLanc('${l.id}')">✕</button></td>
+      <td style="white-space:nowrap">${geradoPelaLight(l)
+        ? `<button class="bt-icone" title="Vem da aba Light — clique para editar lá" onclick="irParaLight('${l.luz}')">⚡</button>`
+        : `<button class="bt-icone" title="Editar" onclick="editarLanc('${l.id}')">✎</button>
+           <button class="bt-icone perigo" title="Remover" onclick="removerLanc('${l.id}')">✕</button>`}</td>
     </tr>`).join('')
     :`<tr><td colspan="6" class="vazio">Nenhum lançamento encontrado em ${anoAtivo}</td></tr>`)+
     `</tbody><tfoot><tr class="linha-total"><td colspan="3">${lista.length} lançamento(s) — resultado do filtro: ${dinheiroCurto(sr-sd)}</td>
@@ -1758,6 +1815,16 @@ function renderLight(){
   $('lgRecSub').textContent=`${lista.length} conta(s) rateada(s)`;
   $('lgFalta').textContent=dinheiroCurto(falta);
   $('lgFaltaSub').textContent=nFalta?`${nFalta} Pix pendente(s)`:'Nenhum Pix pendente';
+  const contas=lista.reduce((s,l)=>s+(+l.valor||0),0);
+  const efeito=rec-contas;
+  const kc=$('lgCaixa');
+  if(kc){ kc.textContent=dinheiroCurto(efeito);
+    kc.parentElement.className='kpi '+(Math.abs(efeito)<0.01?'verde':'vermelho');
+    $('lgCaixaSub').textContent=Math.abs(efeito)<0.01
+      ? `${dinheiroCurto(contas)} em contas, tudo devolvido`
+      : (efeito<0
+        ? `${dinheiroCurto(contas)} em contas · ${dinheiroCurto(-efeito)} a rede ainda não recebeu`
+        : `${dinheiroCurto(contas)} em contas · ${dinheiroCurto(efeito)} recebidos a mais`); }
 
   $('listaLight').innerHTML=lista.length?lista.map(l=>{
     const pago=(l.rateio||[]).filter(r=>r.pago).reduce((s,r)=>s+(+r.valor||0),0);
@@ -1773,6 +1840,10 @@ function renderLight(){
       </div>
       <div class="card-corpo">
         <div class="barra" style="margin-bottom:14px"><i class="${pct>=100?'verde':'sol'}" style="width:${Math.min(pct,100)}%"></i></div>
+        <div class="mini-rot" style="margin-bottom:12px">No caixa dos sócios em ${dataBR(l.data)}:
+          <b style="color:var(--vermelho)">−${dinheiroCurto(l.valor)}</b> da conta
+          ${pago?` e <b style="color:var(--verde)">+${dinheiroCurto(pago)}</b> de contribuições`:''}
+          ${pct<100?` · faltam <b>${dinheiroCurto((+l.valor||0)-pago)}</b>`:''}</div>
         <div class="grade g4">
           ${(l.rateio||[]).map((r,i)=>`
             <div onclick="alternarLight('${l.id}',${i})" style="cursor:pointer;border:1px solid ${r.pago?'#B9E4D0':'var(--linha)'};
@@ -1782,7 +1853,7 @@ function renderLight(){
                 ${(r.pct||r.pct===0)?`<span class="tag neutra" style="margin-left:auto;font-size:10.5px">${r.pct}%</span>`:''}</div>
               <div style="font-size:16px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums;
                 color:${r.pago?'#15734C':'var(--texto-2)'}">${dinheiroCurto(r.valor)}</div>
-              <div class="mini-rot" style="margin-top:2px">${r.pago?('Pix em '+dataBR(r.pagoEm||l.data)):'aguardando Pix'}</div>
+              <div class="mini-rot" style="margin-top:2px">${r.pago?('receita no caixa em '+dataBR(l.data)):'aguardando Pix'}</div>
             </div>`).join('')}
         </div>
       </div></div>`;
