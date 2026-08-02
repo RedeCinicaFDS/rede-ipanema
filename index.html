@@ -180,7 +180,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--azul-500);b
 .barra-ferramentas{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
 .pilulas{display:flex;gap:5px;flex-wrap:wrap}
 .pilula{padding:5px 12px;border:1px solid var(--linha);background:var(--branco);border-radius:99px;font-size:12.5px;
-  font-weight:600;cursor:pointer;transition:.15s}
+  font-weight:600;cursor:pointer;transition:.15s;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pilula:hover{border-color:var(--azul-300)}
 .pilula.on{background:var(--azul-700);border-color:var(--azul-700);color:#fff}
 .regra{padding:15px 18px;border-bottom:1px solid var(--linha-2)}
@@ -311,6 +311,25 @@ body.modo-computador .so-celular{display:none!important}
 .nome-op small{display:block;font-size:11.5px;color:var(--texto-3);font-weight:600;margin-top:1px}
 .nomes-vazio{padding:16px 13px;font-size:13.5px;color:var(--texto-3);text-align:center}
 
+/* linha do tempo do patrimônio */
+.tl{position:relative;padding-left:24px;margin-left:6px}
+.tl::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:var(--linha)}
+.tl-item{position:relative;padding:9px 0}
+.tl-item::before{content:"";position:absolute;left:-24px;top:14px;width:12px;height:12px;border-radius:50%;
+  background:var(--branco);border:3px solid var(--azul-300);box-sizing:border-box}
+.tl-item.atual::before{border-color:var(--verde);background:var(--verde)}
+.tl-nome{font-size:14.5px;font-weight:800;line-height:1.3}
+.tl-per{font-size:12px;color:var(--texto-3);font-weight:600;margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;
+  align-items:center}
+.tl-dur{background:var(--linha-2);color:var(--texto-2);border-radius:99px;padding:1px 8px;font-size:11px;font-weight:700}
+.tl-item.atual .tl-dur{background:var(--verde-100);color:#15734C}
+.tl-item .item-nome{font-size:11.5px;color:var(--azul-600);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.rank{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.rank div{background:var(--azul-50);border:1px solid var(--linha);border-radius:99px;padding:6px 12px;
+  font-size:12.5px;font-weight:700;display:flex;gap:7px;align-items:center}
+.rank div b{color:var(--azul-700)}
+.rank div span{color:var(--texto-3);font-weight:600;font-size:11.5px}
+
 /* editor de rateio da Light */
 .rat-linha{display:grid;grid-template-columns:1fr 78px 96px 32px;gap:7px;align-items:center;margin-bottom:7px}
 .rat-linha input{padding:7px 9px;font-size:13.5px}
@@ -408,7 +427,7 @@ body.modo-computador .so-celular{display:none!important}
   <div class="grade g2" style="margin-bottom:16px">
     <div class="card">
       <div class="card-cab"><h3>Bolas</h3>
-        <div class="dir"><button class="bt mini" onclick="irPara('patrimonio')">Redes e patrimônio</button></div></div>
+        <div class="dir"><button class="bt mini" onclick="verHistoricoBolas()">Histórico</button></div></div>
       <div id="cartoesMaterial" class="card-corpo"></div>
     </div>
     <div class="card">
@@ -569,7 +588,8 @@ body.modo-computador .so-celular{display:none!important}
 
   <div class="card">
     <div class="card-cab"><h3>Licenças de redes / módulos esportivos</h3>
-      <div class="dir mini-rot">Tudo dos sócios, apesar de cada uma estar em um nome (obrigatório uma por CPF)</div></div>
+      <div class="dir"><span class="mini-rot">Uma por CPF</span>
+        <button class="bt mini" onclick="editarLicenca()">+ Licença</button></div></div>
     <div class="tabela-wrap"><table id="tbLicencas2"></table></div>
   </div>
 </section>
@@ -746,7 +766,7 @@ function torrada(msg){ const t=$('torrada'); t.textContent=msg; t.classList.add(
 const NUVEM = (typeof CONFIG_NUVEM !== 'undefined') ? CONFIG_NUVEM : {url:'',chave:''};
 const temNuvem = () => !!(NUVEM.url && NUVEM.chave && !/COLE_AQUI/i.test(NUVEM.url+NUVEM.chave));
 let versao = 0, sincronizando = false, pendente = false, erroRede = false, ultimoAutor = '', ultimoQuando = '';
-let anoAtivo = 0, precisaGravar = false;
+let anoAtivo = 0, precisaGravar = false, ajustesFeitos = [];
 let modoVis='auto';
 try{ modoVis=localStorage.getItem('redeModoVis')||'auto'; }catch(e){}
 const DIAS_SEM=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
@@ -805,7 +825,9 @@ async function iniciar(){
 
   if(!D){ document.querySelector('main').innerHTML='<div class="aviso erro">Não foi possível carregar os dados.</div>'; return; }
   normalizar(); aplicarModo(); renderTudo();
-  if(precisaGravar){ precisaGravar=false; salvar('Contas da Light passaram a entrar no caixa dos sócios'); }
+  if(precisaGravar){ precisaGravar=false;
+    const txt='Ajuste automático: '+(ajustesFeitos.length?ajustesFeitos.join('; '):'sincronização dos lançamentos');
+    ajustesFeitos=[]; salvarSistema(txt); }
   if(temNuvem()){ setInterval(verificarNuvem,15000);
     window.addEventListener('online',()=>{ if(erroRede) enviarNuvem(); });
     document.addEventListener('visibilitychange',()=>{ if(!document.hidden) verificarNuvem(); }); }
@@ -832,25 +854,29 @@ function normalizar(){
       r.pct = t ? Math.round((+r.valor||0)/t*10000)/100 : Math.round(10000/Math.max((l.rateio||[]).length,1))/100; }); });
   if(!D.meta.lightCentavos){
     D.light.forEach(l=>ajustarRateio(l.valor,l.rateio||[]));
-    D.meta.lightCentavos=true; precisaGravar=true;
+    D.meta.lightCentavos=true; precisaGravar=true; ajustesFeitos.push('centavos do rateio da Light');
   }
   D.meta=D.meta||{}; D.meta.anos=D.meta.anos||[+anoBase];
   if(!D.meta.lightNoCaixa){
     D.caixaSocios=D.caixaSocios.filter(l=>l.cat!=='Light (rateio)');
-    D.meta.lightNoCaixa=true; precisaGravar=true;
+    D.meta.lightNoCaixa=true; precisaGravar=true; ajustesFeitos.push('Light passou a lançar no caixa');
   }
   if(!D.meta.anuidadeNoCaixa){
     D.caixaSocios=D.caixaSocios.filter(l=>l.cat!=='Anuidade');
-    D.meta.anuidadeNoCaixa=true; precisaGravar=true;
+    D.meta.anuidadeNoCaixa=true; precisaGravar=true; ajustesFeitos.push('anuidades passaram a lançar uma a uma');
   }
   if(!D.meta.ressarcimento2026){
     D.caixaSocios.forEach(l=>{ if(/Transferência do saldo/i.test(l.desc||'')){
-      l.data='2026-01-01'; l.cat='Saldo anterior'; precisaGravar=true; } });
+      l.data='2026-01-01'; l.cat='Saldo anterior'; precisaGravar=true;
+      ajustesFeitos.push('ressarcimento ao Dunga movido para 2026'); } });
     D.meta.ressarcimento2026=true;
   }
   const antes=JSON.stringify(D.caixaSocios.filter(gerado));
   sincronizarLightCaixa(); sincronizarAnuidadeCaixa();
-  if(antes!==JSON.stringify(D.caixaSocios.filter(gerado))) precisaGravar=true;
+  if(antes!==JSON.stringify(D.caixaSocios.filter(gerado))){
+    precisaGravar=true;
+    if(!ajustesFeitos.length) ajustesFeitos.push('lançamentos automáticos regerados');
+  }
 }
 
 const PREFIXO_LIGHT='lightg-';
@@ -900,11 +926,25 @@ function sincronizarLightCaixa(){
   D.caixaSocios=D.caixaSocios.filter(l=>!geradoPelaLight(l));
   D.caixaSocios.push(...novos);
 }
+function salvarSistema(desc){
+  const jaTem=(D.log||[]).some(l=>l.o===desc);
+  if(jaTem){ guardarLocal(); renderTudo(); if(temNuvem()) agendarEnvio(); return; }
+  D.meta=D.meta||{}; D.meta.atualizadoEm=hoje();
+  D.log=D.log||[];
+  D.log.unshift({q:new Date().toISOString(), n:'Sistema', o:desc});
+  D.log=D.log.slice(0,40);
+  guardarLocal(); renderTudo();
+  if(temNuvem()) agendarEnvio(); else marcarSync('local');
+}
 function salvar(desc){
   sincronizarLightCaixa(); sincronizarAnuidadeCaixa();
   D.meta=D.meta||{}; D.meta.atualizadoEm=hoje();
   D.log=D.log||[];
-  D.log.unshift({q:new Date().toISOString(), n:euNome||'sem nome', o:(typeof desc==='string'&&desc)?desc:'Alteração'});
+  const texto=(typeof desc==='string'&&desc)?desc:'Alteração';
+  const quem=euNome||'sem nome';
+  const ult=D.log[0];
+  if(!(ult&&ult.o===texto&&ult.n===quem&&(new Date()-new Date(ult.q))<120000))
+    D.log.unshift({q:new Date().toISOString(), n:quem, o:texto});
   D.log=D.log.slice(0,40);
   guardarLocal(); renderTudo();
   if(typeof desc==='string'&&desc) torrada(desc);
@@ -1174,6 +1214,37 @@ function renderPatrimonio(){
         <button class="bt-icone" title="Editar" onclick="editarItem('${p.id}')">✎</button>
         <button class="bt-icone perigo" title="Remover" onclick="removerItem('${p.id}')">✕</button></td>
     </tr>`).join('') : '<tr><td colspan="7" class="vazio">Nenhum item encontrado</td></tr>') + '</tbody>';
+
+  const tl=$('tbLicencas2');
+  if(tl) tl.innerHTML=`<thead><tr><th style="width:110px">Módulo</th><th>Titular</th>
+    <th style="width:76px"></th></tr></thead><tbody>`+
+    (D.licencas.length ? D.licencas.map((l,i)=>`<tr>
+      <td class="forte">${esc(l.modulo)}</td><td>${esc(l.titular)}</td>
+      <td style="white-space:nowrap">
+        <button class="bt-icone" title="Editar" onclick="editarLicenca(${i})">✎</button>
+        <button class="bt-icone perigo" title="Remover" onclick="removerLicenca(${i})">✕</button></td></tr>`).join('')
+      : '<tr><td colspan="3" class="vazio">Nenhuma licença cadastrada</td></tr>')+'</tbody>';
+}
+function editarLicenca(i){
+  const existe=(i!==undefined&&i!==null&&D.licencas[i]);
+  const l=existe?D.licencas[i]:{modulo:'',titular:''};
+  abrirModal(existe?'Editar licença':'Nova licença', `
+    <div class="campo-linha">
+      <div class="campo"><label>Módulo</label><input type="text" id="mMod" value="${esc(l.modulo)}" placeholder="Ex.: 55A"></div>
+      <div class="campo"><label>Titular</label><input type="text" id="mTit" value="${esc(l.titular)}" placeholder="Nome no CPF"></div>
+    </div>
+    <div class="aviso info"><span>As licenças são todas dos sócios, apesar de cada uma estar em um nome — é obrigatório uma por CPF.</span></div>
+  `, () => {
+    const modulo=$('mMod').value.trim(); if(!modulo) return torrada('Informe o módulo');
+    const o={id:l.id||uid('lic'), modulo, titular:$('mTit').value.trim()};
+    if(existe) D.licencas[i]=o; else D.licencas.push(o);
+    fecharModal(); salvar('Licença '+modulo+' salva');
+  });
+}
+function removerLicenca(i){
+  const l=D.licencas[i];
+  if(!confirm(`Remover a licença ${l.modulo} (${l.titular})?`)) return;
+  D.licencas.splice(i,1); salvar('Licença '+l.modulo+' removida');
 }
 let NOMES_TROCA=[], NOMES_TOPO=[], NOME_SEL='';
 function passarItem(id){
@@ -1245,13 +1316,28 @@ function atualizarBotaoTroca(){
   bt.textContent = nome ? ('Passar para '+primeiro) : 'Registrar troca';
 }
 function verHistorico(id){
-  const p = D.patrimonio.find(x=>x.id===id);
-  const h = [...(p.historico||[])].reverse();
-  abrirModal(`Histórico — ${p.item}`, h.length ? `
-    <table><thead><tr><th>Com quem</th><th>De</th><th>Até</th></tr></thead><tbody>` +
-    h.map(x=>`<tr><td class="forte">${esc(x.com)}</td><td class="mudo">${dataBR(x.desde)}</td>
-      <td>${x.ate?`<span class="mudo">${dataBR(x.ate)}</span>`:'<span class="tag ok">atual</span>'}</td></tr>`).join('') +
-    `</tbody></table>` : '<div class="vazio">Ainda não há trocas registradas para este item.</div>', null, null, 'Fechar');
+  const p=D.patrimonio.find(x=>x.id===id);
+  if(!p) return;
+  const irmaos=D.patrimonio.filter(x=>x.cat===p.cat);
+  const per=periodosDe(p).sort((x,y)=>(y.desde||'').localeCompare(x.desde||'')||(x.atual?-1:1));
+
+  const abas=irmaos.length>1
+    ? `<div class="pilulas" style="margin-bottom:14px">`+irmaos.map(x=>
+        `<button type="button" class="pilula ${x.id===p.id?'on':''}"
+          onclick="verHistorico('${x.id}')">${esc(nomeCurto(x))}</button>`).join('')+`</div>`
+    : '';
+
+  const tabela = per.length
+    ? `<div class="tabela-wrap"><table><thead><tr>
+        <th>Com quem</th><th style="width:96px">De</th><th style="width:96px">Até</th></tr></thead><tbody>`+
+      per.map(x=>`<tr>
+        <td class="forte">${esc(x.com||'—')}</td>
+        <td class="mudo">${x.desde?dataBR(x.desde):'—'}</td>
+        <td>${x.atual?'<span class="tag ok">atual</span>':`<span class="mudo">${dataBR(x.ate)}</span>`}</td>
+      </tr>`).join('')+`</tbody></table></div>`
+    : '<div class="vazio">Ainda não há trocas registradas para este item.</div>';
+
+  abrirModal(`Histórico — ${nomeCurto(p)}`, abas+tabela, null, null, 'Fechar');
 }
 const CATS_PAT = ['Bolas','Redes','Bombas','Estrutura','Outros'];
 function editarItem(id){
@@ -1279,6 +1365,35 @@ function editarItem(id){
 function removerItem(id){ const p = D.patrimonio.find(x=>x.id===id);
   if(!confirm(`Remover "${p.item}" do patrimônio?`)) return;
   D.patrimonio = D.patrimonio.filter(x=>x.id!==id); salvar('Item removido'); }
+
+/* ---------- HISTÓRICO DO PATRIMÔNIO ---------- */
+function diasEntre(d1,d2){
+  if(!d1) return null;
+  const a1=new Date(d1+'T12:00:00'), a2=d2?new Date(d2+'T12:00:00'):new Date();
+  return Math.max(0,Math.round((a2-a1)/86400000));
+}
+function textoDuracao(d){
+  if(d===null) return '';
+  if(d===0) return 'hoje';
+  if(d===1) return '1 dia';
+  if(d<45) return d+' dias';
+  const m=Math.round(d/30);
+  if(m<24) return m+(m===1?' mês':' meses');
+  const an=Math.floor(d/365), rm=Math.round((d%365)/30);
+  return an+(an===1?' ano':' anos')+(rm?` e ${rm} ${rm===1?'mês':'meses'}`:'');
+}
+function periodosDe(p){
+  const h=[...(p.historico||[])];
+  if(!h.length&&p.com&&p.com!=='—') h.push({com:p.com,desde:p.desde||'',ate:''});
+  return h.map(x=>({...x,item:p.item,cat:p.cat,idItem:p.id,
+    dias:diasEntre(x.desde, x.ate||null), atual:!x.ate}));
+}
+function verHistoricoBolas(){
+  const bolas=D.patrimonio.filter(p=>p.cat==='Bolas');
+  if(!bolas.length) return torrada('Nenhuma bola cadastrada');
+  verHistorico(bolas[0].id);
+}
+function nomeCurto(p){ return p.item; }
 
 /* ---------- LIGHT ---------- */function alternarLight(id,i){
   const l = D.light.find(x=>x.id===id); const r = l.rateio[i];
@@ -1538,16 +1653,19 @@ function renderPainel(){
   const semDono=redes.filter(p=>!p.com||p.com==='—').length;
   $('cartoesMaterial').innerHTML = (listaBolas.length ? listaBolas.map(p=>{
     const tem=p.com&&p.com!=='—';
-    return `<div style="border:1.5px solid ${tem?'var(--linha)':'#F0CFCF'};border-radius:12px;padding:13px 14px;
-      background:${tem?'var(--branco)':'var(--vermelho-100)'};margin-bottom:10px">
+    return `<div onclick="verHistorico('${p.id}')" title="Ver o histórico desta bola"
+      style="border:1.5px solid ${tem?'var(--linha)':'#F0CFCF'};border-radius:12px;padding:13px 14px;
+      background:${tem?'var(--branco)':'var(--vermelho-100)'};margin-bottom:10px;cursor:pointer">
       <div class="mini-rot">${esc(p.item.replace(/^Bola /,''))}</div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:5px">
         <div style="flex:1;min-width:120px">
           <div style="font-size:17px;font-weight:800;line-height:1.25;color:${tem?'var(--azul-700)':'var(--vermelho)'}">
             ${tem?esc(p.com):'Sem responsável'}</div>
-          <div class="mini-rot">${p.desde?('desde '+dataBR(p.desde)):'ninguém registrado'}</div>
+          <div class="mini-rot">${p.desde?('desde '+dataBR(p.desde)+(diasEntre(p.desde)!==null?' · '+textoDuracao(diasEntre(p.desde)):'')):'ninguém registrado'}</div>
+          ${(()=>{const h=(p.historico||[]).filter(x=>x.ate).sort((x,y)=>(y.ate||'').localeCompare(x.ate||''));
+            return h.length?`<div class="mini-rot" style="color:var(--texto-3)">antes: ${esc(h[0].com)}</div>`:'';})()}
         </div>
-        <button class="bt pri" onclick="passarItem('${p.id}')">Trocar</button>
+        <button class="bt pri" onclick="event.stopPropagation();passarItem('${p.id}')">Trocar</button>
       </div></div>`;}).join('') : '<div class="vazio">Nenhuma bola cadastrada</div>')
     + `<div class="mini-rot" style="margin-top:4px">Redes: ${redes.length} cadastrada(s)${semDono?` · <b style="color:var(--vermelho)">${semDono} sem responsável</b>`:' · todas com responsável'}</div>`;
 
